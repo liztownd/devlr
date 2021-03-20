@@ -2,11 +2,10 @@
 const passport = require("../passport");
 // Import the model (user.js) to use its database functions.
 const db = require('../../models/user');
-const express = require('express');
-const router = express.Router();
+
 
 module.exports = function(app) {
-router.get('/', (req, res) => {
+app.get('/', (req, res) => {
   user.all((data) => {
     const hbsObject = {
       users: data,
@@ -19,7 +18,7 @@ router.get('/', (req, res) => {
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
-  router.post("/api/signup", (req, res) => {
+  app.post("/api/signup", (req, res) => {
     db.User.create({
       email: req.body.email,
       password: req.body.password
