@@ -1,4 +1,256 @@
+body {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  background-color: var(--dark) !important;
+  color: var(--light) !important;
+}
+
+/* Color Themes */
+
+:root {
+  --light: linen;
+  --secondary: transparent;
+  --dark: #222222;
+  --keycap: #90959A;
+  --sand: #BBB092;
+  --putty: #D4ADA9;
+  --seaglass: #8FBC8F;
+  --lagoon: #7FAEB9;
+  --thistle: #9F879F;
+}
+
+/* Component Utilities */
+
+.container {
+  width: 100vw;
+  height:auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.tab {
+  padding: 1.5rem;
+  border-radius: 20px;
+  margin-bottom: 2rem;
+}
+
+.separator {
+    min-width: calc(100% + 48px);
+    height: 0px;
+    margin-left: -24px;
+    border: 1px solid linen;
+}
+
+.list-group {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.material-icons {
+  display: inline-flex;
+  vertical-align: text-bottom;
+  font-size: 22px;
+  margin-right: .5rem;
+}
+
+.language.disabled {
+  opacity: .9;
+  color: var(--light);
+  border-radius: 20px;
+  background: rgb(245, 245, 245);
+  background: linear-gradient(
+    180deg,
+    rgba(245, 245, 245, 0.1) 0%,
+    rgba(250, 240, 230, 0.1) 49.48%
+  );
+  border: none;
+}
+
+.circle {
+  border-radius: 50%;
+  padding: 0;
+  margin: 0;
+}
+
+.comment {
+  width: 100%;
+}
+
+#left-col #middle-col #right-col {
+  flex-direction: column;
+}
+
+#middle-col {
+  width: 60%;
+}
+
+/* HTML element styles*/
+
 form.signup,
 form.login {
   margin-top: 50px;
 }
+
+textarea {
+  width: 100%;
+  background-color: transparent!important;
+  border: none;
+  resize: none;
+}
+
+textarea::placeholder {
+  color: var(--light)!important;
+}
+
+input {
+  width: 100%;
+  background-color: transparent!important;
+  border: none;
+  resize: none;
+}
+
+input::placeholder {
+  color: var(--light)!important;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+div.scroll {
+  width: 100%;
+  max-height: 700px;
+  overflow: auto;
+  text-align: justify;
+}
+
+div.feed {
+    width: 100%;
+    max-height: 400px;
+    overflow: auto;
+    text-align: left;
+}
+
+ul {
+  list-style: none;
+}
+
+li, .nav-icon {
+  margin: 1rem;
+  font-weight: 500;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+a {
+  color: var(--light);
+}
+
+a:hover, a:active, a:focus {
+  color: var(--light);
+  opacity: .6;
+  text-decoration: none;
+}
+
+/* Color Utilities*/
+
+.gradient {
+  background: rgb(245, 245, 245);
+  background: linear-gradient(
+    180deg,
+    rgba(245, 245, 245, 0.2) 0%,
+    rgba(250, 240, 230, 0.2) 49.48%
+  );
+  border: 1px solid linen;
+}
+
+.bg-light {
+  background-color: var(--light) !important;
+}
+.bg-dark {
+  background-color: var(--dark) !important;
+}
+.bg-secondary {
+  background-color: var(--secondary) !important;
+}
+
+/* Btn Styles */
+
+.btn-secondary {
+  background-color: var(--secondary);
+  border-color: linen;
+}
+.btn-secondary:hover {
+  background-color: var(--secondary);
+  border-color: linen;
+}
+.btn-secondary:active,
+.btn-secondary:focus {
+  background-color: var(--secondary);
+  border-color: linen !important;
+  box-shadow: 0 0 0 0.2rem transparent !important;
+}
+
+/* Targeted Styles*/
+
+#newBtn {
+  width: 144px;
+  border-radius: 20px;
+  background: rgb(245, 245, 245);
+  background: linear-gradient(
+    180deg,
+    rgba(245, 245, 245, 0.1) 0%,
+    rgba(250, 240, 230, 0.1) 49.48%
+  );
+}
+
+#postBox {
+  width: 30rem;
+  border: none;
+}
+
+#postBtn {
+  width: 100px;
+  border-radius: 20px;
+  background: rgb(245, 245, 245);
+  background: linear-gradient(
+    180deg,
+    rgba(245, 245, 245, 0.1) 0%,
+    rgba(250, 240, 230, 0.1) 49.48%
+  );
+}
+
+#appearanceBtn {
+  border-radius: 20px;
+  background: rgb(245, 245, 245);
+  background: linear-gradient(
+    180deg,
+    rgba(245, 245, 245, 0.1) 0%,
+    rgba(250, 240, 230, 0.1) 49.48%
+  );
+  border: none;
+}
+
+#userPic {
+  background-color: linen;
+  width: 100px;
+  height: 100px;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  vertical-align: middle;
+}
+
+#devPic {
+  background-color: linen;
+  width: 50px;
+  height: 50px;
+  margin-left: .5rem;
+}
+
