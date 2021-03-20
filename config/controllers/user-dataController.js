@@ -1,7 +1,7 @@
 // Requiring our models and passport as we've configured it
-const passport = require("../../config/passport");
+const passport = require("../passport");
 // Import the model (user.js) to use its database functions.
-const db = require('../models/user');
+const db = require('../../models');
 
 module.exports = function(app) {
   // Route for getting some data about our user to be used client side

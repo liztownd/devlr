@@ -28,8 +28,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Index route
-// index route loads signup
+
+// Index route loads signup
 app.get('/', (req, res) => {
   res.render(path.join(__dirname, '/views/index.handlebars'))
 });
@@ -38,6 +38,10 @@ app.get('/', (req, res) => {
 // require("./public/delete/routes/html-routes.js")(app);
 // require("./public/delete/routes/api-routes.js")(app);
 require("./config/controllers/signupController")(app);
+require("./config/controllers/loginController")(app);
+require("./config/controllers/homeController")(app);
+require("./config/controllers/logoutController")(app);
+require("./config/controllers/user-dataController")(app);
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(() => {
@@ -49,5 +53,4 @@ db.sequelize.sync().then(() => {
     );
   });
 });
-
 

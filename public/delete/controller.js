@@ -4,7 +4,7 @@ const passport = require("../../config/passport");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
-  // If the user has valid login credentials, send them to the members page.
+  // If the user has valid login credentials, send them to the home page.
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
     // Sending back a password, even a hashed password, isn't a good idea
@@ -15,10 +15,10 @@ module.exports = function(app) {
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
-  // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
+  // how we configured our Sequelize Users Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", (req, res) => {
-    db.User.create({
+    db.Users.create({
       email: req.body.email,
       password: req.body.password
     })
@@ -59,18 +59,18 @@ const isAuthenticated = require("../middleware/isAuthenticated");
 
 module.exports = function(app) {
   app.get("/", (req, res) => {
-    // If the user already has an account send them to the members page
+    // If the user already has an account send them to the home page
     if (req.user) {
-      res.redirect("/members");
+      res.redirect("/home");
     }
     res.sendFile(path.join(__dirname, "/views/index.handlebars"));
     // res.sendFile(path.join(__dirname, "../../views/signup.handlebars"));
   });
 
   app.get("/login", (req, res) => {
-    // If the user already has an account send them to the members page
+    // If the user already has an account send them to the home page
     if (req.user) {
-      res.redirect("/members");
+      res.redirect("/home");
     }
     console.log(__dirname);
     res.render(path.join(__dirname, "../../views/login.handlebars"));
@@ -78,7 +78,7 @@ module.exports = function(app) {
 
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
-  app.get("/members", isAuthenticated, (req, res) => {
-    res.sendFile(path.join(__dirname, "../../views/members.handlebars"));
+  app.get("/home", isAuthenticated, (req, res) => {
+    res.sendFile(path.join(__dirname, "../../views/home.handlebars"));
   });
 };
