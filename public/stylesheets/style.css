@@ -81,7 +81,7 @@ body {
   width: 100%;
 }
 
-#left-col #middle-col #right-col {
+#left-col, #middle-col, #right-col {
   flex-direction: column;
 }
 
@@ -89,15 +89,24 @@ body {
   width: 60%;
 }
 
+#signUp, #logIn {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* HTML element styles*/
 
 form.signup,
 form.login {
-  margin-top: 50px;
+  margin-top: 2rem;
 }
 
 textarea {
   width: 100%;
+  color: var(--light)!important;
   background-color: transparent!important;
   border: none;
   resize: none;
@@ -108,6 +117,7 @@ textarea::placeholder {
 }
 
 input {
+  color: var(--light)!important;
   width: 100%;
   background-color: transparent!important;
   border: none;
@@ -116,6 +126,19 @@ input {
 
 input::placeholder {
   color: var(--light)!important;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+  color: var(--light);
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: var(--light);
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: var(--light);
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: var(--light);
 }
 
 ::-webkit-scrollbar {
@@ -142,7 +165,7 @@ ul {
 
 li, .nav-icon {
   margin: 1rem;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 p {
