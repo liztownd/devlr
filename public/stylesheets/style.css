@@ -85,6 +85,10 @@ body {
   flex-direction: column;
 }
 
+#left-col {
+  height: 900px;
+}
+
 #middle-col {
   width: 60%;
 }
