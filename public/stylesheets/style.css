@@ -149,6 +149,10 @@ input::placeholder {
   width: 2px;
 }
 
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
 .modal-header, .modal-body, .modal-footer {
 background-color: var(--dark)!important;
 }
