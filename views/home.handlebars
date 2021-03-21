@@ -93,164 +93,189 @@
     </div>
   </div>
 </div>
-</div>
 
 <main class="container position-relative">
-      <div class="d-flex flex-row align-items-center justify-content-around">
-        <!--LEFT column-->
-        <div class="bg-secondary mr-4" id="left-col">
-          <h1>devlr</h1>
-          <div id="side-nav">
-            <ul class="list-group">
-              <li><a href="/home"><i class="material-icons">home</i> Home</li></a>
-              <li><a href="#" data-toggle="modal" data-target="#editProfileModal"><i class="material-icons">dashboard</i> Edit Profile</li></a>
-              <li><a href="#"><i class="material-icons">find_in_page</i> Browse</li></a>
-              <li><a href="#"><i class="material-icons">star_border</i> Starred</li></a>
-              <li><a href="#"><i class="material-icons">person_outline</i> Account</li></a>
-              <li><a href="/logout"><i class="material-icons">keyboard_return</i> Logout</li></a>
-            </ul>
-          </div>
-          <div class="d-flex flex-column align-items-center">
-            <button class="btn btn-lg btn-secondary mt-3" id="newBtn">
-              New
-            </button>
-            <div class="circle" id="userPic"></div>
-            <h5 class="text-center">First Last</h5>
-            <h6 class="text-center">@username</h6>
-            <button class="btn btn-lg btn-secondary mt-3" id="appearanceBtn">
-              <i class="material-icons">palette</i>Appearance
-            </button>
+  <div class="d-flex flex-row align-items-center justify-content-around">
+    <!--LEFT column-->
+    <div class="bg-secondary mr-4"
+         id="left-col">
+      <h1>devlr</h1>
+      <div id="side-nav">
+        <ul class="list-group">
+          <li class="m-3"><a href="/home"><i class="material-icons">home</i> Home</li></a>
+          <li class="m-3"><a href="#"
+               data-toggle="modal"
+               data-target="#editProfileModal"><i class="material-icons">dashboard</i> Edit Profile</li></a>
+          <li class="m-3"><a href="#"><i class="material-icons">find_in_page</i> Browse</li></a>
+          <li class="m-3"><a href="#"><i class="material-icons">star_border</i> Starred</li></a>
+          <li class="m-3"><a href="#"><i class="material-icons">person_outline</i> Account</li></a>
+          <li class="m-3"><a href="/logout"><i class="material-icons">keyboard_return</i> Logout</li></a>
+        </ul>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <button class="btn btn-lg btn-secondary mt-3"
+                id="newBtn">
+          New
+        </button>
+        <div class="circle"
+             id="userPic"></div>
+        <h5 class="text-center">First Last</h5>
+        <h6 class="text-center">@username</h6>
+        <button class="btn btn-lg btn-secondary mt-3"
+                id="appearanceBtn">
+          <i class="material-icons">palette</i>Appearance
+        </button>
+      </div>
+    </div>
+
+    <!--MIDDLE Column-->
+    <div class="bg-secondary m-3"
+         id="middle-col">
+      <div class="tab bg-secondary gradient bg-scroll"
+           id="MyBackground">
+        <h5>My Background</h5>
+        <div class="separator mb-3"></div>
+        <ul class="mb-2" id="backgroundWrapper">
+          <li class="mb-1">Skills: {{{userSkills}}}</li>
+          <li class="mb-1">Highest Graduation: {{{userGraduation}}}</li>
+          <li class="mb-1">School: {{{userSchool}}}</li>
+          <li class="mb-1">Skills: {{{userSkills}}}</li>
+          <li class="mb-1">Years of Experience: {{{userExperience}}}</li>
+          <li class="mb-1">Position: {{{userPosition}}}</li>
+          <li class="mb-1">Company: {{{userCompany}}}</li>
+          <li class="mb-1">Started: {{{userStartDate}}}</li>
+          <li class="mb-1">Ended: {{{userEndDate}}}</li>
+          <li class="mb-1">GitHub: {{{userGitHub}}}</li>
+        </ul>
+      </div>
+      <div class="tab bg-secondary gradient"
+           id="MyLanguages">
+        <h5>My Languages</h5>
+        <div class="separator"></div>
+        <button class="btn btn-secondary mt-3 language disabled">JavaScript</button>
+        <button class="btn btn-secondary mt-3 language disabled">HTML5</button>
+        <button class="btn btn-secondary mt-3 language disabled">CSS3</button>
+        <button class="btn btn-secondary mt-3 language disabled">SQL</button>
+      </div>
+      <div class="tab bg-secondary gradient"
+           id="MyWall">
+        <h5>My Wall</h5>
+        <div class="separator"></div>
+        <div class="tab bg-secondary mt-3 mb-1 gradient"
+             id="postBox">
+          <textarea placeholder="What's on your mind?"
+                    rows="3"></textarea>
+        </div>
+        <button class="btn btn-sm btn-secondary mt-2"
+                id="postBtn">
+          Post
+        </button>
+      </div>
+      <div class="tab bg-secondary gradient feed"
+           id="feed">
+        <h5>Feed</h5>
+        <div class="separator mb-3"></div>
+        <div class="row align-items-center comment">
+          <div class="col float-right mb-3">
+            <h6>First Last</h6>
+            <p>Hey, I read this article about the top 7 full-stack projects you need to try in 2021 and I thought you
+              would enjoy it too. Here is a link to the full article:<br>https://www.google.com/</p>
           </div>
         </div>
-
-        <!--MIDDLE Column-->
-        <div class="bg-secondary m-3" id="middle-col">
-          <div class="tab bg-secondary gradient bg-scroll" id="MyBackground">
-            <h5>My Background</h5>
-            <div class="separator mb-3"></div>
-            <p class="mb-2">
-              <strong>Skills:</strong> list of skills, list of skills, list of
-              skills, list of skills, list of skills
-            </p>
-            <p class="mb-2">
-              <strong>Education:</strong> University, certificate, program
-            </p>
-            <p><strong>Experience:</strong> place, place, place</p>
-          </div>
-          <div class="tab bg-secondary gradient" id="MyLanguages">
-            <h5>My Languages</h5>
-            <div class="separator"></div>
-            <button class="btn btn-secondary mt-3 language disabled">JavaScript</button>
-            <button class="btn btn-secondary mt-3 language disabled">HTML5</button>
-            <button class="btn btn-secondary mt-3 language disabled">CSS3</button>
-            <button class="btn btn-secondary mt-3 language disabled">SQL</button>
-          </div>
-          <div class="tab bg-secondary gradient" id="MyWall">
-            <h5>My Wall</h5>
-            <div class="separator"></div>
-            <div class="tab bg-secondary mt-3 mb-1 gradient" id="postBox">
-              <textarea placeholder="What's on your mind?" rows="3"></textarea>
-            </div>
-            <button class="btn btn-sm btn-secondary mt-2" id="postBtn">
-              Post
-            </button>
-          </div>
-          <div class="tab bg-secondary gradient feed" id="feed">
-            <h5>Feed</h5>
-            <div class="separator mb-3"></div>
-            <div class="row align-items-center comment">
-                <div class="col float-right mb-3">
-                    <h6>First Last</h6>
-                    <p>Hey, I read this article about the top 7 full-stack projects you need to try in 2021 and I thought you would enjoy it too. Here is a link to the full article:<br>https://www.google.com/</p>
-                </div>
-            </div>
-            <div class="separator mb-3"></div>
-            <div class="row align-items-center comment">
-                <div class="col float-right mb-3">
-                    <h6>First Last</h6>
-                    <p>Hey, I read this article about the top 7 full-stack projects you need to try in 2021 and I thought you would enjoy it too. Here is a link to the full article:<br>https://www.google.com/</p>
-                </div>
-            </div>
-            <div class="separator mb-3"></div>
-            <div class="row align-items-center comment">
-                <div class="col float-right mb-3">
-                    <h6>First Last</h6>
-                    <p>Hey, I read this article about the top 7 full-stack projects you need to try in 2021 and I thought you would enjoy it too. Here is a link to the full article:<br>https://www.google.com/</p>
-                </div>
-            </div>
+        <div class="separator mb-3"></div>
+        <div class="row align-items-center comment">
+          <div class="col float-right mb-3">
+            <h6>First Last</h6>
+            <p>Hey, I read this article about the top 7 full-stack projects you need to try in 2021 and I thought you
+              would enjoy it too. Here is a link to the full article:<br>https://www.google.com/</p>
           </div>
         </div>
-
-        <!--RIGHT Column-->
-        <div class="bg-secondary m-3" id="right-col">
-          <div class="tab bg-secondary gradient pp-scroll" id="PinnedProjects">
-            <h5>My Pinned Projects</h5>
-            <div class="separator"></div>
-            <div class="mt-2 project">
-              <input placeholder="Project Title"></input>
-              <textarea
-                placeholder="This is where you can write a blurb about your project, or try our autofill feature by linking your GitHub account."
-                rows="5"
-              ></textarea>
-            </div>
-            <div class="separator"></div>
-            <div class="mt-2 project">
-                <input placeholder="Project Title"></input>
-              <textarea
-                placeholder="This is where you can write a blurb about your project, or try our autofill feature by linking your GitHub account."
-                rows="5"
-              ></textarea>
-            </div>
-            <div class="separator"></div>
-            <div class="mt-2 project">
-                <input placeholder="Project Title"></input>
-              <textarea
-                placeholder="This is where you can write a blurb about your project, or try our autofill feature by linking your GitHub account."
-                rows="5"
-              ></textarea>
-            </div>
-            <div class="separator"></div>
-            <div class="mt-2 project">
-                <input placeholder="Project Title"></input>
-              <textarea
-                placeholder="This is where you can write a blurb about your project, or try our autofill feature by linking your GitHub account."
-                rows="4"
-              ></textarea>
-            </div>
-          </div>
-          <div class="tab bg-secondary gradient" id="Featured">
-            <h5>Featured Devs</h5>
-            <div class="separator"></div>
-            <div class="dev row align-items-center">
-                <div class="circle mt-3" id="devPic"></div>
-                <div class="ml-3 mt-3">
-                    <h5 class="text-center">First Last</h5>
-                    <h6 class="text-center">@username</h6>
-                </div>
-            </div>
-            <div class="separator mt-3"></div>
-            <div class="dev row align-items-center">
-                <div class="circle mt-3" id="devPic"></div>
-                <div class="ml-3 mt-3">
-                    <h5 class="text-center">First Last</h5>
-                    <h6 class="text-center">@username</h6>
-                </div>
-            </div>
-            <div class="separator mt-3"></div>
-            <div class="dev row align-items-center">
-                <div class="circle mt-3" id="devPic"></div>
-                <div class="ml-3 mt-3">
-                    <h5 class="text-center">First Last</h5>
-                    <h6 class="text-center">@username</h6>
-                </div>
-            </div>
+        <div class="separator mb-3"></div>
+        <div class="row align-items-center comment">
+          <div class="col float-right mb-3">
+            <h6>First Last</h6>
+            <p>Hey, I read this article about the top 7 full-stack projects you need to try in 2021 and I thought you
+              would enjoy it too. Here is a link to the full article:<br>https://www.google.com/</p>
           </div>
         </div>
       </div>
-    </main>
+    </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="/js/home.js"></script>
+    <!--RIGHT Column-->
+    <div class="bg-secondary m-3"
+         id="right-col">
+      <div class="tab bg-secondary gradient pp-scroll"
+           id="PinnedProjects">
+        <h5>My Pinned Projects</h5>
+        <div class="separator"></div>
+        <div class="mt-2 project">
+          <input placeholder="Project Title"></input>
+          <textarea placeholder="This is where you can write a blurb about your project, or try our autofill feature by linking your GitHub account."
+                    rows="5"></textarea>
+        </div>
+        <div class="separator"></div>
+        <div class="mt-2 project">
+          <input placeholder="Project Title"></input>
+          <textarea placeholder="This is where you can write a blurb about your project, or try our autofill feature by linking your GitHub account."
+                    rows="5"></textarea>
+        </div>
+        <div class="separator"></div>
+        <div class="mt-2 project">
+          <input placeholder="Project Title"></input>
+          <textarea placeholder="This is where you can write a blurb about your project, or try our autofill feature by linking your GitHub account."
+                    rows="5"></textarea>
+        </div>
+        <div class="separator"></div>
+        <div class="mt-2 project">
+          <input placeholder="Project Title"></input>
+          <textarea placeholder="This is where you can write a blurb about your project, or try our autofill feature by linking your GitHub account."
+                    rows="4"></textarea>
+        </div>
+      </div>
+      <div class="tab bg-secondary gradient"
+           id="Featured">
+        <h5>Featured Devs</h5>
+        <div class="separator"></div>
+        <div class="dev row align-items-center">
+          <div class="circle mt-3"
+               id="devPic"></div>
+          <div class="ml-3 mt-3">
+            <h5 class="text-center">First Last</h5>
+            <h6 class="text-center">@username</h6>
+          </div>
+        </div>
+        <div class="separator mt-3"></div>
+        <div class="dev row align-items-center">
+          <div class="circle mt-3"
+               id="devPic"></div>
+          <div class="ml-3 mt-3">
+            <h5 class="text-center">First Last</h5>
+            <h6 class="text-center">@username</h6>
+          </div>
+        </div>
+        <div class="separator mt-3"></div>
+        <div class="dev row align-items-center">
+          <div class="circle mt-3"
+               id="devPic"></div>
+          <div class="ml-3 mt-3">
+            <h5 class="text-center">First Last</h5>
+            <h6 class="text-center">@username</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+<script type="text/javascript"
+        src="/js/home.js"></script>
