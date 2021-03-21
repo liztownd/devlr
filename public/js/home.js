@@ -7,16 +7,14 @@ $(document).ready(() => {
 
   // to change appearance
 
-  //$('#appearanceModal').modal('shown.bs.modal', function () {
    
     $('.cssTheme').on('click', function (event) {
       event.preventDefault();
-      console.log('test')
-      // Grab the button's id, corresponding the CSS file of the same name,
+
       let color = $(this).attr('id')
       let r = document.querySelector(':root');
 
-      console.log(color);
+      //console.log(color);
 
       if (color === 'linen') {
         r.style.setProperty('--main-bg-color', `#${color}`);
@@ -29,10 +27,7 @@ $(document).ready(() => {
       r.style.setProperty('--secondary-bg-color', 'transparent');
       };
 
-      // and change the CSS source of the page to the corresponding CSS file.
-     // $("#csstheme").attr("href", "/stylesheets/" + theme + ".css")
 
     });
-// });
 
 });
