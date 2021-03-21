@@ -145,7 +145,15 @@ input::placeholder {
   width: 2px;
 }
 
-div.scroll {
+.modal-header, .modal-body, .modal-footer {
+background-color: var(--dark)!important;
+}
+
+.modal-content {
+  border-radius: 20px;
+}
+
+div.pp-scroll {
   width: 100%;
   max-height: 700px;
   overflow: auto;
@@ -157,6 +165,13 @@ div.feed {
     max-height: 400px;
     overflow: auto;
     text-align: left;
+}
+
+div.bg-scroll {
+  width: 100%;
+  max-height: 220px;
+  overflow: auto;
+  text-align: left;
 }
 
 ul {
