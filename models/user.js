@@ -25,6 +25,11 @@ module.exports = function(sequelize, DataTypes) {
     Users.hasMany(models.Post, {
       onDelete: 'cascade',
     });
+    // associating with profile
+    //when a user is deleted, also deletes the associated profile
+    Users.hasOne(models.Profile, {
+      onDelete: 'cascade',
+    });
   };
   /* Creating a custom method for our Users model. This will check if an un-hashed password
   entered by the user can be compared to the hashed password stored in our database */

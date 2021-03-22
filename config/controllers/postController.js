@@ -4,18 +4,13 @@ const db = require('../../models');
 module.exports= function(app){
 
     // route to get all posts
-    app.get('/api/posts', (req,res)=>{
-    const query= {};
-    if(req.query.user_id){
-        query.UserId = req.query.user_id;
-    }
-        db.POST.findAll({
-            where: query,
-            include: [db.Users],
-
-        }).then(dbPost => res.status(200).json(dbPost));
-    });
     
+    app.get('/api/posts', (req,res)=>{
+        db.Post.findAll({
+            include:[db.Users]
+        })
+        .then(dbPosts=> res.status(200).json(dbPosts));
+    })
     //route to get a single post for a user 
     app.get('/api/posts/:id', (req, res) => {
         // Here we add an "include" property to our options in our findOne query
@@ -26,10 +21,11 @@ module.exports= function(app){
             id: req.params.id,
           },
           include: [db.Users],
-        }).then((dbPost) => res.status(200).json(dbPost));
+        }).then((dbPost) => res.status(200).json(dbPost))
+        .catch(err=> res.status(404).json({msg: "cannot find a post for this id!"}))
       });
 
-      //post route for adding a new post
+    //post route for adding a new post
       app.post('/api/posts', (req, res) => {
           const body = req.body;
           db.Users.findOne(
@@ -47,7 +43,8 @@ module.exports= function(app){
         .catch(err=> res.status(404).json({msg: "user does'nt exist with this userId"}) )
       });
 // app.post('/api/posts', (req, res) => {
-//     db.Post.create(req.body).then((dbPost) => res.json(dbPost));
+//     db.Post.create(req.body)
+//     .then((dbPost) => res.json(dbPost));
 //   });
 
 // DELETE route for deleting posts
@@ -61,12 +58,13 @@ app.delete('/api/posts/:id', (req, res) => {
   });
 
   // PUT route for updating posts
-  app.put('/api/posts', (req, res) => {
+  app.put('/api/posts/:id', (req, res) => {
     db.Post.update(req.body, {
       where: {
-        id: req.body.id,
+        id: req.params.id,
       },
-    }).then((dbPost) => res.json(dbPost));
+    }).then((dbPost) => res.json(dbPost))
+    .catch(err=> res.status(500).json({msg: "server error"}))
   });
 
  }

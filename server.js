@@ -42,7 +42,8 @@ require("./config/controllers/loginController")(app);
 require("./config/controllers/homeController")(app);
 require("./config/controllers/logoutController")(app);
 require("./config/controllers/user-dataController")(app);
-require('./config/controllers/postController')(app)
+require('./config/controllers/postController')(app);
+require('./config/controllers/profileController')(app);
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(() => {
