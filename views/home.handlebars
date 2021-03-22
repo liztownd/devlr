@@ -119,8 +119,8 @@
         </button>
         <div class="circle"
              id="userPic"></div>
-        <h5 class="text-center">First Last</h5>
-        <h6 class="text-center">@username</h6>
+        <h5 class="text-center">{{Profile.name}}</h5>
+        <h6 class="text-center">{{Profile.gitUserName}}</h6>
         <button class="btn btn-lg btn-secondary mt-3"
                 id="appearanceBtn">
           <i class="material-icons">palette</i>Appearance
@@ -136,15 +136,15 @@
         <h5>My Background</h5>
         <div class="separator mb-3"></div>
         <ul class="mb-2" id="backgroundWrapper">
-          <li class="mb-1">Highest Graduation: {{{userGraduation}}}</li>
-          <li class="mb-1">School: {{{userSchool}}}</li>
-          <li class="mb-1">Skills: {{{userSkills}}}</li>
-          <li class="mb-1">Years of Experience: {{{userExperience}}}</li>
-          <li class="mb-1">Position: {{{userPosition}}}</li>
-          <li class="mb-1">Company: {{{userCompany}}}</li>
-          <li class="mb-1">Started: {{{userStartDate}}}</li>
-          <li class="mb-1">Ended: {{{userEndDate}}}</li>
-          <li class="mb-1">GitHub: {{{userGitHub}}}</li>
+          <li class="mb-1">GitHub Profile: {{gitUserName}}</li>
+          <li class="mb-1">Highest Graduation: {{highestGraduation}}</li>
+          <li class="mb-1">School: {{school}}</li>
+          <li class="mb-1">Skills: {{skills}}</li>
+          <li class="mb-1">Years of Experience: {{TotalYearsOfexp}}</li>
+          <li class="mb-1">Position: {{currentPosition}}</li>
+          <li class="mb-1">Company: {{companyName}}</li>
+          <li class="mb-1">Started: {{from}}</li>
+          <li class="mb-1">Ended: {{to}}</li>
         </ul>
       </div>
       <div class="tab bg-secondary gradient"
