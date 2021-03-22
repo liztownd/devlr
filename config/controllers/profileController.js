@@ -1,6 +1,7 @@
 
 const db = require('../../models');
 require('dotenv').config();
+const axios= require('axios');
 module.exports= function(app){
     //route to get all profiles
     app.get('/api/profiles', (req,res)=>{
@@ -66,7 +67,7 @@ module.exports= function(app){
         .catch(err=> res.status(500).json({msg: "internal server error"}))
     });
 
-    app.get('/github/:username', (req,res)=>{
+    app.get('/github/:username',async (req,res)=>{
         try {
               
             const uri = encodeURI(
@@ -74,12 +75,10 @@ module.exports= function(app){
               );
               const headers = {
                 'user-agent': 'node.js',
-                Authorization: `token ${process.env.GITHUB_TOKEN}`
+                Authorization: process.env.GIT_TOKEN
               }; 
-            //   fetch(uri, {headers})
-            //   .then(response=>response.json())
-            //   .then(responseData=> console.log(responseData))
-
+              const gitHubResponse = await axios.get(uri,{ headers });
+              return res.json(gitHubResponse.data);
         } catch (error) {
             console.log(error);
             return res.status(404).json({msg: "No github profile found"});
