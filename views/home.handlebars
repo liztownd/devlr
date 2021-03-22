@@ -135,7 +135,8 @@
            id="MyBackground">
         <h5>My Background</h5>
         <div class="separator mb-3"></div>
-        <ul class="mb-2" id="backgroundWrapper">
+        <ul class="mb-2"
+            id="backgroundWrapper">
           <li class="mb-1">GitHub Profile: {{gitUserName}}</li>
           <li class="mb-1">Highest Graduation: {{highestGraduation}}</li>
           <li class="mb-1">School: {{school}}</li>
@@ -149,7 +150,40 @@
       </div>
       <div class="tab bg-secondary gradient"
            id="MyLanguages">
+           <div class="d-flex flex-row align-items-center justify-content-between">
         <h5>My Languages</h5>
+                <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle ml-3 mb-2"
+                  type="button"
+                  id="languageChoice"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false">
+            Choose
+          </button>
+          <div class="dropdown-menu"
+               aria-labelledby="languageChoice">
+            <a class="dropdown-item"
+               href="#">HTML5</a>
+            <a class="dropdown-item"
+               href="#">CSS3</a>
+            <a class="dropdown-item"
+               href="#">SQL</a>
+            <a class="dropdown-item"
+               href="#">JavaScript</a>
+            <a class="dropdown-item"
+               href="#">TypeScript</a>
+            <a class="dropdown-item"
+               href="#">jQuery</a>
+            <a class="dropdown-item"
+               href="#">Python</a>
+            <a class="dropdown-item"
+               href="#">PHP</a>
+            <a class="dropdown-item"
+               href="#">C</a>
+          </div>
+        </div>
+        </div>
         <div class="separator"></div>
         <button class="btn btn-secondary mt-3 language disabled">JavaScript</button>
         <button class="btn btn-secondary mt-3 language disabled">HTML5</button>
