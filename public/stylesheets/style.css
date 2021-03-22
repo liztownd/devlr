@@ -62,8 +62,17 @@ body {
   background-color: var(--dark)!important;
 }
 
+.dropdown-menu .dropdown-item > a:hover {
+  background-image: none!important;
+  background-color:var(--dark)!important;
+}
+
 .dropdown-item {
   color: var(--light)!important;
+}
+
+.dropdown-content a:hover {
+  background-color: transparent!important;
 }
 
 .language.disabled {
