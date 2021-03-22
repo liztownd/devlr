@@ -210,7 +210,15 @@
         <div class="separator mb-3"></div>
         <div class="row align-items-center comment">
           <div class="col float-right mb-3">
-            <h6>First Last</h6>
+            <h6>{{Profile.name}}</h6>
+            <p>Hey, I read this article about the top 7 full-stack projects you need to try in 2021 and I thought you
+              would enjoy it too.
+          </div>
+        </div>
+        <div class="separator mb-3"></div>
+        <div class="row align-items-center comment">
+          <div class="col float-right mb-3">
+            <h6>{{Profile.name}}</h6>
             <p>Hey, I read this article about the top 7 full-stack projects you need to try in 2021 and I thought you
               would enjoy it too. Here is a link to the full article:<br>https://www.google.com/</p>
           </div>
@@ -218,15 +226,7 @@
         <div class="separator mb-3"></div>
         <div class="row align-items-center comment">
           <div class="col float-right mb-3">
-            <h6>First Last</h6>
-            <p>Hey, I read this article about the top 7 full-stack projects you need to try in 2021 and I thought you
-              would enjoy it too. Here is a link to the full article:<br>https://www.google.com/</p>
-          </div>
-        </div>
-        <div class="separator mb-3"></div>
-        <div class="row align-items-center comment">
-          <div class="col float-right mb-3">
-            <h6>First Last</h6>
+            <h6>{{Profile.name}}</h6>
             <p>Hey, I read this article about the top 7 full-stack projects you need to try in 2021 and I thought you
               would enjoy it too. Here is a link to the full article:<br>https://www.google.com/</p>
           </div>
@@ -241,27 +241,27 @@
            id="PinnedProjects">
         <h5>My Pinned Projects</h5>
         <div class="separator"></div>
-        <div class="mt-2 project">
-          <input placeholder="Project Title"></input>
-          <textarea placeholder="This is where you can write a blurb about your project, or try our autofill feature by linking your GitHub account."
-                    rows="5"></textarea>
+        <div class="mt-2">
+          <input placeholder="Click to Edit"></input>
+          <textarea placeholder="This is where you can write a blurb about your project or edit the data pulled from GitHub."
+                    rows="4"></textarea>
         </div>
         <div class="separator"></div>
-        <div class="mt-2 project">
-          <input placeholder="Project Title"></input>
-          <textarea placeholder="This is where you can write a blurb about your project, or try our autofill feature by linking your GitHub account."
-                    rows="5"></textarea>
+        <div class="mt-2">
+          <input placeholder="Click to Edit"></input>
+          <textarea placeholder="This is where you can write a blurb about your project or edit the data pulled from GitHub."
+                    rows="4"></textarea>
         </div>
         <div class="separator"></div>
-        <div class="mt-2 project">
+        <div class="mt-2">
           <input placeholder="Project Title"></input>
-          <textarea placeholder="This is where you can write a blurb about your project, or try our autofill feature by linking your GitHub account."
-                    rows="5"></textarea>
+          <textarea class="project" placeholder="This is where you can write a blurb about your project or edit the data pulled from GitHub."
+                    rows="4"></textarea>
         </div>
         <div class="separator"></div>
-        <div class="mt-2 project">
+        <div class="mt-2">
           <input placeholder="Project Title"></input>
-          <textarea placeholder="This is where you can write a blurb about your project, or try our autofill feature by linking your GitHub account."
+          <textarea class="project" placeholder="This is where you can write a blurb about your project, or try our autofill feature by linking your GitHub account."
                     rows="4"></textarea>
         </div>
       </div>
@@ -273,8 +273,8 @@
           <div class="circle mt-3"
                id="devPic"></div>
           <div class="ml-3 mt-3">
-            <h5 class="text-center">First Last</h5>
-            <h6 class="text-center">@username</h6>
+            <h5 class="text-center">user.id</h5>
+            <h6 class="text-center">@user.name</h6>
           </div>
         </div>
         <div class="separator mt-3"></div>
@@ -282,8 +282,8 @@
           <div class="circle mt-3"
                id="devPic"></div>
           <div class="ml-3 mt-3">
-            <h5 class="text-center">First Last</h5>
-            <h6 class="text-center">@username</h6>
+            <h5 class="text-center">user.id</h5>
+            <h6 class="text-center">@user.name</h6>
           </div>
         </div>
         <div class="separator mt-3"></div>
@@ -291,8 +291,8 @@
           <div class="circle mt-3"
                id="devPic"></div>
           <div class="ml-3 mt-3">
-            <h5 class="text-center">First Last</h5>
-            <h6 class="text-center">@username</h6>
+            <h5 class="text-center">user.id</h5>
+            <h6 class="text-center">@user.name</h6>
           </div>
         </div>
       </div>
