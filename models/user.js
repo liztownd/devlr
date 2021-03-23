@@ -34,15 +34,23 @@ module.exports = function(sequelize, DataTypes) {
     // Associating Users with Posts
     // When an User is deleted, also delete any associated Posts
     Users.hasMany(models.Post, {
+<<<<<<< HEAD
       onDelete: 'cascade',
       
+=======
+      // onDelete:'cascade'
+>>>>>>> 83ceceab09a3c1c6bc1b30fad43f0be224397782
     });
     // associating with profile
     //when a user is deleted, also deletes the associated profile
     Users.hasOne(models.Profile, {
+<<<<<<< HEAD
       
       onDelete: 'cascade',
     
+=======
+      // onDelete: 'cascade',
+>>>>>>> 83ceceab09a3c1c6bc1b30fad43f0be224397782
     });
   };
   return Users;
