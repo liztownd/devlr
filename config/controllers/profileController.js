@@ -44,7 +44,7 @@ module.exports= function(app){
       .then(data=> {res.status(200).json(data);
         console.log(data)
     })
-      .catch(err=> res.status(404).json({msg: "user does'nt exist with this userId"}) )
+      .catch(err=> res.status(404).json(err) )
     });
 
     
