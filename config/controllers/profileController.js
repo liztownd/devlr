@@ -2,6 +2,7 @@
 const db = require('../../models');
 require('dotenv').config();
 const axios= require('axios');
+
 module.exports= function(app){
     //route to get all profiles
     app.get('/api/profiles', (req,res)=>{
@@ -29,8 +30,7 @@ module.exports= function(app){
     // route to post the profile
     app.post('/api/profiles', (req, res) => {
         const body = req.body;
-        console.log(body)
-        db.Users.findOne(
+       db.Users.findOne(
           {
            where: {
                id: body.UserId
@@ -42,7 +42,7 @@ module.exports= function(app){
           include: [db.Users]
       }))
       .then(data=> {res.status(200).json(data);
-        console.log(data)
+        
     })
       .catch(err=> res.status(404).json(err) )
     });
@@ -55,7 +55,7 @@ module.exports= function(app){
              id: req.params.id
             }
         }).then(dbProfile=> req.status(200).json(dbProfile))
-        .catch(err=> res.status(500).json({msg: "internal server error"}))
+        .catch(err=> res.status(500).json(err))
     })
     //route for updating the profile
     app.put('/api/profiles/:id',(req,res)=>{
@@ -64,9 +64,10 @@ module.exports= function(app){
              id: req.params.id
          },
         }).then(dbProfile=> res.status(200).json(dbProfile))
-        .catch(err=> res.status(500).json({msg: "internal server error"}))
+        .catch(err=> res.status(500).json(err))
     });
 
+    //route for getting git repositories once we get gitusername from the profile
     app.get('/github/:username',async (req,res)=>{
         try {
               
