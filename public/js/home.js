@@ -30,4 +30,21 @@ $(document).ready(() => {
 
     });
 
+    // add languages
+
+    $('#saveLang').on('click', function() {
+
+      let languages = [];
+
+      $.each($("input[name='langOpt']:checked"), function() {
+          languages.push($(this).val());
+        
+      });
+      
+      console.log(languages);
+
+  });
+
+
+
 });
