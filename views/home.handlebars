@@ -121,10 +121,40 @@
              id="userPic"></div>
         <h5 class="text-center">{{Profile.name}}</h5>
         <h6 class="text-center">{{Profile.gitUserName}}</h6>
-        <button class="btn btn-lg btn-secondary mt-3"
-                id="appearanceBtn">
+                <!-- Button trigger modal -->
+        <button type="button" class="btn btn-lg btn-secondary mt-3" data-toggle="modal" data-target="#appearanceModal">
           <i class="material-icons">palette</i>Appearance
         </button>
+        <!-- Modal -->
+        <div class="modal fade" id="appearanceModal" tabindex="-1" role="dialog" aria-labelledby="appearanceTitle"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="appearanceTitle">Change Appearance</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <button type="button" class="btn btn-dark cssTheme m-2" id="222222">Dark</button>
+                <button type="button" class="btn btn-light cssTheme m-2" id="linen">Light</button>
+                <button type="button" class="btn btn-secondary cssTheme m-2" id="transparent">Muted</button>
+                <button type="button" class="btn btn-keycap cssTheme m-2" id="90959A">Keycap</button>
+                <button type="button" class="btn btn-sand cssTheme m-2" id="BBB092">Sand</button>
+                <button type="button" class="btn btn-putty cssTheme m-2" id="D4ADA9">Putty</button>
+                <button type="button" class="btn btn-seaglass cssTheme m-2" id="8FBC8F">Seaglass</button>
+                <button type="button" class="btn btn-lagoon cssTheme m-2" id="7FAEB9">Lagoon</button>
+                <button type="button" class="btn btn-thistle cssTheme m-2" id="9F879F">Thistle</button>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
       </div>
     </div>
 
@@ -190,6 +220,7 @@
         <button class="btn btn-secondary mt-3 language disabled">CSS3</button>
         <button class="btn btn-secondary mt-3 language disabled">SQL</button>
       </div>
+
       <div class="tab bg-secondary gradient"
            id="MyWall">
         <h5>My Wall</h5>
@@ -235,6 +266,7 @@
     </div>
 
     <!--RIGHT Column-->
+
     <div class="bg-secondary m-3"
          id="right-col">
       <div class="tab bg-secondary gradient pp-scroll"
@@ -300,6 +332,7 @@
   </div>
 </main>
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -312,3 +345,4 @@
         crossorigin="anonymous"></script>
 <script type="text/javascript"
         src="/js/home.js"></script>
+
