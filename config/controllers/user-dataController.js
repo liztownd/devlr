@@ -24,11 +24,7 @@ module.exports = function(app) {
       where:{
         id: req.params.id
       }
-<<<<<<< HEAD
     }).then(dbUser=> res.status(200).json({msg: "user deleted"}))
-=======
-    }).then(dbUser=> res.status(200).json(dbUser))
->>>>>>> 83ceceab09a3c1c6bc1b30fad43f0be224397782
     .catch(err=> res.status(500).json(err));
   })
 
