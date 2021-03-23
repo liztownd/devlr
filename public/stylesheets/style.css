@@ -64,16 +64,16 @@ body {
 }
 
 .dropdown-menu {
-  background-color: var(--dark)!important;
+  background-color: var(--main-bg-color)!important;
 }
 
 .dropdown-menu .dropdown-item > a:hover {
   background-image: none!important;
-  background-color:var(--dark)!important;
+  background-color:var(--main-bg-color)!important;
 }
 
 .dropdown-item {
-  color: var(--light)!important;
+  color: var(--main-text-color)!important;
 }
 
 .dropdown-content a:hover {
@@ -133,7 +133,7 @@ form.login {
 
 textarea {
   width: 100%;
-  color: var(--light)!important;
+  color: var(--main-text-color)!important;
   background-color: transparent!important;
   border: none;
   resize: none;
@@ -145,7 +145,7 @@ textarea::placeholder {
 }
 
 input {
-  color: var(--light)!important;
+  color: var(--main-text-color)!important;
   width: 100%;
   background-color: transparent!important;
   border: none;
@@ -157,16 +157,16 @@ input::placeholder {
 }
 
 ::-webkit-input-placeholder { /* WebKit browsers */
-  color: var(--light);
+  color: var(--main-text-color);
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-  color: var(--light);
+  color: var(--main-text-color);
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-  color: var(--light);
+  color: var(--main-text-color);
 }
 :-ms-input-placeholder { /* Internet Explorer 10+ */
-  color: var(--light);
+  color: var(--main-text-color);
 }
 
 ::-webkit-scrollbar {
@@ -178,7 +178,7 @@ input::placeholder {
 }
 
 .modal-header, .modal-body, .modal-footer {
-background-color: var(--dark)!important;
+background-color: var(--main-bg-color)!important;
 }
 
 .modal-content {
