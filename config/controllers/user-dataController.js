@@ -18,4 +18,14 @@ module.exports = function(app) {
       });
     }
   });
+  // route for deleting the user
+  app.delete('/api/users/:id', (req,res)=>{
+    db.Users.destroy({
+      where:{
+        id: req.params.id
+      }
+    }).then(dbUser=> res.status(200).json({msg: "user deleted"}))
+    .catch(err=> res.status(500).json(err));
+  })
+
 };
