@@ -81,12 +81,12 @@
         <div class="circle" id="userPic"></div>
         <h5 class="text-center">{{Profile.name}}</h5>
         <h6 class="text-center">{{Profile.gitUserName}}</h6>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-lg btn-secondary mt-3" data-toggle="modal" data-target="#appearanceModal">
+                <!-- Button trigger modal -->
+        <button type="button" class="btn btn-lg btn-secondary mt-3" data-toggle="modal" data-target="#appearanceModal" id="appearanceBtn">
           <i class="material-icons">palette</i>Appearance
         </button>
         <!-- Modal -->
-        <div class="modal fade" id="appearanceModal" tabindex="-1" role="dialog" aria-labelledby="appearanceTitle"
+        <div class="modal fade gradient" id="appearanceModal" tabindex="-1" role="dialog" aria-labelledby="appearanceTitle"
           aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -114,7 +114,6 @@
         </div>
       </div>
     </div>
-  </div>
   </div>
 
   <!--MIDDLE Column-->
@@ -257,15 +256,36 @@
 
   <!--RIGHT Column-->
 
-  <div class="bg-secondary m-3" id="right-col">
-    <div class="tab bg-secondary gradient pp-scroll" id="PinnedProjects">
-      <h5>My Pinned Projects</h5>
-      <div class="separator"></div>
-      <div class="mt-2">
-        <input placeholder="Click to Edit"></input>
-        <textarea
-          placeholder="This is where you can write a blurb about your project or edit the data pulled from GitHub."
-          rows="4"></textarea>
+    <div class="bg-secondary m-3"
+         id="right-col">
+      <div class="tab bg-secondary gradient pp-scroll"
+           id="PinnedProjects">
+        <h5>My Pinned Projects</h5>
+        <div class="separator"></div>
+        <div class="mt-2">
+          <h6>Project Title</h6>
+          <p class="mb-2">This is where you can display your projects with data pulled from GitHub. Click on Edit Profile and add your GitHub username.</p>
+        </div>
+        <div class="separator"></div>
+        <div class="mt-2">
+          <h6>Project Title</h6>
+          <p class="mb-2">This is where you can display your projects with data pulled from GitHub. Click on Edit Profile and add your GitHub username.</p>
+        </div>
+        <div class="separator"></div>
+        <div class="mt-2">
+          <h6>Project Title</h6>
+          <p class="mb-2">This is where you can display your projects with data pulled from GitHub. Click on Edit Profile and add your GitHub username.</p>
+        </div>
+        <div class="separator"></div>
+        <div class="mt-2">
+          <h6>Project Title</h6>
+          <p class="mb-2">This is where you can display your projects with data pulled from GitHub. Click on Edit Profile and add your GitHub username.</p>
+        </div>
+        <div class="separator"></div>
+        <div class="mt-2">
+          <h6>Project Title</h6>
+          <p class="mb-2">This is where you can display your projects with data pulled from GitHub. Click on Edit Profile and add your GitHub username.</p>
+        </div>
       </div>
       <div class="separator"></div>
       <div class="mt-2">

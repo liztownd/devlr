@@ -50,17 +50,18 @@ module.exports = function(sequelize, DataTypes) {
       },
       gitUserName:{
           type: DataTypes.STRING,
-          allowNull: false
-      }
+          allowNull: false,
+          unique: true
+      },
+ uniqueOne: { type: DataTypes.STRING,  unique: 'compositeIndex' },
+
       
     });
     Profile.associate = (models) => {
-        // We're saying that a Post should belong to an User
+        // We're saying that a Profile should belong to an User
         // A Profile can't be created without a User due to the foreign key constraint
         Profile.belongsTo(models.Users, {
-          foreignKey: {
-            allowNull: false,
-          },
+          
         });
       };
  return Profile;
