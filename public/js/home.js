@@ -9,8 +9,6 @@ $(document).ready(() => {
     saveLanguage(UserId);
   });
 
-
-
   function editProfile(UserId) {
     $('form').on("submit", (e) => {
       e.preventDefault();
@@ -54,6 +52,24 @@ $(document).ready(() => {
       });
     })
   }
+
+  // My Background section on Home Page - Handlebars
+  $.get("/api/profiles").then(data => {
+    let fromDate = data[0].from;
+    fromDate = fromDate.split('T')[0];
+    let startDate = data[0].from;
+    startDate = startDate.split('T')[0];
+    $(".highestGraduation").text(`Highest Graduation: ${data[0].highestGraduation}`);
+    $(".school").text(`School: ${data[0].school}`);
+    $(".name").text(`Name: ${data[0].name}`);
+    $(".skills").text(`Skills: ${data[0].skills}`);
+    $(".experience").text(`Years of Experience: ${data[0].TotalYearsOfexp}`);
+    $(".position").text(`Position: ${data[0].currentPosition}`);
+    $(".company").text(`Company: ${data[0].companyName}`);
+    $(".startDate").text(`Started: ${fromDate}`);
+    $(".endDate").text(`Ended: ${startDate}`);
+    $(".gitUserName").text(`Git User Name: ${data[0].gitUserName}`);
+  });
 
   // to change appearance
 
