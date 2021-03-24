@@ -13,7 +13,7 @@ module.exports = function (app) {
             .catch(err => res.status(404).json({ msg: "cannot find profiles!" }))
     });
 
-    //route to get a single post for a user 
+    //route to get a single post for a user
     app.get('/api/profiles/:id', (req, res) => {
         // Here we add an "include" property to our options in our findOne query
         // We set the value to an array of the models we want to include in a left outer join
