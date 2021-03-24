@@ -1,10 +1,6 @@
 <!--<h2>Welcome <span class="member-name"></span></h2>-->
 
-<div class="modal fade gradient"
-     id="editProfileModal"
-     tabindex="-1"
-     role="dialog"
-     aria-hidden="true">
+<div class="modal fade gradient" id="editProfileModal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -14,81 +10,49 @@
         <form>
           <div class="form-group">
             <label for="name">Name</label>
-            <input type="text"
-                   class="form-control"
-                   id="userName"
-                   placeholder="Dev Doe">
+            <input type="text" class="form-control" id="userName" placeholder="Dev Doe">
           </div>
           <div class="form-group">
             <label for="highestGraduation">Highest Graduation</label>
-            <input type="text"
-                   class="form-control"
-                   id="userGraduation"
-                   placeholder="Masters">
+            <input type="text" class="form-control" id="userGraduation" placeholder="Masters">
           </div>
           <div class="form-group">
             <label for="school">School</label>
-            <input type="text"
-                   class="form-control"
-                   id="userSchool"
-                   placeholder="Dev University">
+            <input type="text" class="form-control" id="userSchool" placeholder="Dev University">
           </div>
           <div class="form-group">
             <label for="skills">Skills</label>
-            <input type="text"
-                   class="form-control"
-                   id="userSkills"
-                   placeholder="Relevant Skills">
+            <input type="text" class="form-control" id="userSkills" placeholder="Relevant Skills">
           </div>
           <div class="form-group">
             <label for="experience">Experience</label>
-            <input type="number"
-                   class="form-control"
-                   id="userExperience"
-                   placeholder="Years of Experience">
+            <input type="number" class="form-control" id="userExperience" placeholder="Years of Experience">
           </div>
           <div class="form-group">
             <label for="position">Position</label>
-            <input type="text"
-                   class="form-control"
-                   id="userPosition"
-                   placeholder="Current Position">
+            <input type="text" class="form-control" id="userPosition" placeholder="Current Position">
           </div>
           <div class="form-group">
             <label for="company">Company</label>
-            <input type="text"
-                   class="form-control"
-                   id="userCompany"
-                   placeholder="Company">
+            <input type="text" class="form-control" id="userCompany" placeholder="Company">
           </div>
           <div class="form-group">
             <label for="startDate">Start Date</label>
-            <input type="date"
-                   class="form-control"
-                   id="userStartDate"
-                   placeholder="MM/DD/YYYY">
+            <input type="date" class="form-control" id="userStartDate" placeholder="MM/DD/YYYY">
           </div>
           <div class="form-group">
             <label for="startDate">End Date</label>
-            <input type="date"
-                   class="form-control"
-                   id="userEndDate"
-                   placeholder="MM/DD/YYYY">
+            <input type="date" class="form-control" id="userEndDate" placeholder="MM/DD/YYYY">
           </div>
           <div class="form-group">
             <label for="gitUserName">GitHub Username</label>
-            <input type="text"
-                   class="form-control"
-                   id="userGitHub"
-                   placeholder="@username">
+            <input type="text" class="form-control" id="userGitHub" placeholder="@username">
           </div>
-          <button type="submit"
-                  class="btn btn-secondary gradient">Update Profile</button>
+          <button type="submit" class="btn btn-secondary gradient">Update Profile</button>
         </form>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-small btn-secondary"
-                data-dismiss="modal">Exit</button>
+        <button class="btn btn-small btn-secondary" data-dismiss="modal">Exit</button>
       </div>
     </div>
   </div>
@@ -97,15 +61,13 @@
 <main class="container position-relative">
   <div class="d-flex flex-row align-items-center justify-content-around">
     <!--LEFT column-->
-    <div class="bg-secondary mr-4"
-         id="left-col">
+    <div class="bg-secondary mr-4" id="left-col">
       <h1>devlr</h1>
       <div id="side-nav">
         <ul class="list-group">
           <li class="m-3"><a href="/home"><i class="material-icons">home</i> Home</li></a>
-          <li class="m-3"><a href="#"
-               data-toggle="modal"
-               data-target="#editProfileModal"><i class="material-icons">dashboard</i> Edit Profile</li></a>
+          <li class="m-3"><a href="#" data-toggle="modal" data-target="#editProfileModal"><i
+                class="material-icons">dashboard</i> Edit Profile</li></a>
           <li class="m-3"><a href="#"><i class="material-icons">find_in_page</i> Browse</li></a>
           <li class="m-3"><a href="#"><i class="material-icons">star_border</i> Starred</li></a>
           <li class="m-3"><a href="#"><i class="material-icons">person_outline</i> Account</li></a>
@@ -113,12 +75,10 @@
         </ul>
       </div>
       <div class="d-flex flex-column align-items-center">
-        <button class="btn btn-lg btn-secondary mt-3"
-                id="newBtn">
+        <button class="btn btn-lg btn-secondary mt-3" id="newBtn">
           New
         </button>
-        <div class="circle"
-             id="userPic"></div>
+        <div class="circle" id="userPic"></div>
         <h5 class="text-center">{{Profile.name}}</h5>
         <h6 class="text-center">{{Profile.gitUserName}}</h6>
                 <!-- Button trigger modal -->
@@ -156,114 +116,145 @@
     </div>
   </div>
 
-    <!--MIDDLE Column-->
-    <div class="bg-secondary m-3"
-         id="middle-col">
-      <div class="tab bg-secondary gradient bg-scroll"
-           id="MyBackground">
-        <h5>My Background</h5>
-        <div class="separator mb-3"></div>
-        <ul class="mb-2"
-            id="backgroundWrapper">
-          <li class="mb-1">GitHub Profile: {{gitUserName}}</li>
-          <li class="mb-1">Highest Graduation: {{highestGraduation}}</li>
-          <li class="mb-1">School: {{school}}</li>
-          <li class="mb-1">Skills: {{skills}}</li>
-          <li class="mb-1">Years of Experience: {{TotalYearsOfexp}}</li>
-          <li class="mb-1">Position: {{currentPosition}}</li>
-          <li class="mb-1">Company: {{companyName}}</li>
-          <li class="mb-1">Started: {{from}}</li>
-          <li class="mb-1">Ended: {{to}}</li>
-        </ul>
-      </div>
-      <div class="tab bg-secondary gradient"
-           id="MyLanguages">
-           <div class="d-flex flex-row align-items-center justify-content-between">
+  <!--MIDDLE Column-->
+  <div class="bg-secondary m-3" id="middle-col">
+    <div class="tab bg-secondary gradient bg-scroll" id="MyBackground">
+      <h5>My Background</h5>
+      <div class="separator mb-3"></div>
+      <ul class="mb-2" id="backgroundWrapper">
+        <li class="mb-1">GitHub Profile: {{gitUserName}}</li>
+        <li class="mb-1">Highest Graduation: {{highestGraduation}}</li>
+        <li class="mb-1">School: {{school}}</li>
+        <li class="mb-1">Skills: {{skills}}</li>
+        <li class="mb-1">Years of Experience: {{TotalYearsOfexp}}</li>
+        <li class="mb-1">Position: {{currentPosition}}</li>
+        <li class="mb-1">Company: {{companyName}}</li>
+        <li class="mb-1">Started: {{from}}</li>
+        <li class="mb-1">Ended: {{to}}</li>
+      </ul>
+    </div>
+    <div class="tab bg-secondary gradient" id="MyLanguages">
+      <div class="d-flex flex-row align-items-center justify-content-between">
         <h5>My Languages</h5>
-                <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle ml-3 mb-2"
-                  type="button"
-                  id="languageChoice"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-secondary mb-2" data-toggle="modal" data-target="#languagesModal">
+          Choose Languages
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="languagesModal" tabindex="-1" role="dialog" aria-labelledby="languages"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="languages">Choose your languages:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-secondary langBtn m-2">
+                    <input type="checkbox" name="langOpt" autocomplete="off" value="HTML5">HTML5
+                  </label>
+                  <label class="btn btn-secondary langBtn m-2">
+                    <input type="checkbox" name="langOpt" autocomplete="off" value="CSS3"> CSS3
+                  </label>
+                  <label class="btn btn-secondary langBtn m-2">
+                    <input type="checkbox" name="langOpt" autocomplete="off" value="SQL"> SQL
+                  </label>
+                  <label class="btn btn-secondary langBtn m-2">
+                    <input type="checkbox" name="langOpt" autocomplete="off" value="JavaScript"> JavaScript
+                  </label>
+                  <label class="btn btn-secondary langBtn m-2">
+                    <input type="checkbox" name="langOpt" autocomplete="off" value="TypeScript"> TypeScript
+                  </label>
+                  <label class="btn btn-secondary langBtn m-2">
+                    <input type="checkbox" name="langOpt" autocomplete="off" value="jQuery"> jQuery
+                  </label>
+                  <label class="btn btn-secondary langBtn m-2">
+                    <input type="checkbox" name="langOpt" autocomplete="off" value="Python"> Python
+                  </label>
+                  <label class="btn btn-secondary langBtn m-2">
+                    <input type="checkbox" name="langOpt" autocomplete="off" value="PHP"> PHP
+                  </label>
+                  <label class="btn btn-secondary langBtn m-2">
+                    <input type="checkbox" name="langOpt" autocomplete="off" value="C"> C
+                  </label>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" id="saveLang">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{!-- <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle ml-3 mb-2" type="button" id="languageChoice"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Choose
           </button>
-          <div class="dropdown-menu dropdown-content"
-               aria-labelledby="languageChoice">
-            <a class="dropdown-item"
-               href="#">HTML5</a>
-            <a class="dropdown-item"
-               href="#">CSS3</a>
-            <a class="dropdown-item"
-               href="#">SQL</a>
-            <a class="dropdown-item"
-               href="#">JavaScript</a>
-            <a class="dropdown-item"
-               href="#">TypeScript</a>
-            <a class="dropdown-item"
-               href="#">jQuery</a>
-            <a class="dropdown-item"
-               href="#">Python</a>
-            <a class="dropdown-item"
-               href="#">PHP</a>
-            <a class="dropdown-item"
-               href="#">C</a>
+          <div class="dropdown-menu dropdown-content" aria-labelledby="languageChoice">
+            <a class="dropdown-item" href="#" id="html">HTML5</a>
+            <a class="dropdown-item" href="#" id="css">CSS3</a>
+            <a class="dropdown-item" href="#" id="sql">SQL</a>
+            <a class="dropdown-item" href="#" id="javascript">JavaScript</a>
+            <a class="dropdown-item" href="#" id="typescript">TypeScript</a>
+            <a class="dropdown-item" href="#" id="jquery">jQuery</a>
+            <a class="dropdown-item" href="#" id="python">Python</a>
+            <a class="dropdown-item" href="#" id="php">PHP</a>
+            <a class="dropdown-item" href="#" id="c-lang">C</a>
           </div>
-        </div>
-        </div>
-        <div class="separator"></div>
-        <button class="btn btn-secondary mt-3 language disabled">JavaScript</button>
-        <button class="btn btn-secondary mt-3 language disabled">HTML5</button>
-        <button class="btn btn-secondary mt-3 language disabled">CSS3</button>
-        <button class="btn btn-secondary mt-3 language disabled">SQL</button>
+        </div> --}}
       </div>
+      <div class="separator"></div>
+      <button class="btn btn-secondary mt-3 language disabled">JavaScript</button>
+      <button class="btn btn-secondary mt-3 language disabled">HTML5</button>
+      <button class="btn btn-secondary mt-3 language disabled">CSS3</button>
+      <button class="btn btn-secondary mt-3 language disabled">SQL</button>
+    </div>
 
-      <div class="tab bg-secondary gradient"
-           id="MyWall">
-        <h5>My Wall</h5>
-        <div class="separator"></div>
-        <div class="tab bg-secondary mt-3 mb-1 gradient"
-             id="postBox">
-          <textarea placeholder="What's on your mind?"
-                    rows="3"></textarea>
-        </div>
-        <button class="btn btn-sm btn-secondary mt-2"
-                id="postBtn">
-          Post
-        </button>
+    <div class="tab bg-secondary gradient" id="MyWall">
+      <h5>My Wall</h5>
+      <div class="separator"></div>
+      <div class="tab bg-secondary mt-3 mb-1 gradient" id="postBox">
+        <textarea placeholder="What's on your mind?" rows="3"></textarea>
       </div>
-      <div class="tab bg-secondary gradient feed"
-           id="feed">
-        <h5>Feed</h5>
-        <div class="separator mb-3"></div>
-        <div class="row align-items-center comment">
-          <div class="col float-right mb-3">
-            <h6>{{Profile.name}}</h6>
-            <p>Hey, I read this article about the top 7 full-stack projects you need to try in 2021 and I thought you
-              would enjoy it too.
-          </div>
+      <button class="btn btn-sm btn-secondary mt-2" id="postBtn">
+        Post
+      </button>
+    </div>
+    <div class="tab bg-secondary gradient feed" id="feed">
+      <h5>Feed</h5>
+      <div class="separator mb-3"></div>
+      <div class="row align-items-center comment">
+        <div class="col float-right mb-3">
+          <h6>{{Profile.name}}</h6>
+          <p>Hey, I read this article about the top 7 full-stack projects you need to try in 2021 and I thought you
+            would enjoy it too.
         </div>
-        <div class="separator mb-3"></div>
-        <div class="row align-items-center comment">
-          <div class="col float-right mb-3">
-            <h6>{{Profile.name}}</h6>
-            <p>Hey, I read this article about the top 7 full-stack projects you need to try in 2021 and I thought you
-              would enjoy it too. Here is a link to the full article:<br>https://www.google.com/</p>
-          </div>
+      </div>
+      <div class="separator mb-3"></div>
+      <div class="row align-items-center comment">
+        <div class="col float-right mb-3">
+          <h6>{{Profile.name}}</h6>
+          <p>Hey, I read this article about the top 7 full-stack projects you need to try in 2021 and I thought you
+            would enjoy it too. Here is a link to the full article:<br>https://www.google.com/</p>
         </div>
-        <div class="separator mb-3"></div>
-        <div class="row align-items-center comment">
-          <div class="col float-right mb-3">
-            <h6>{{Profile.name}}</h6>
-            <p>Hey, I read this article about the top 7 full-stack projects you need to try in 2021 and I thought you
-              would enjoy it too. Here is a link to the full article:<br>https://www.google.com/</p>
-          </div>
+      </div>
+      <div class="separator mb-3"></div>
+      <div class="row align-items-center comment">
+        <div class="col float-right mb-3">
+          <h6>{{Profile.name}}</h6>
+          <p>Hey, I read this article about the top 7 full-stack projects you need to try in 2021 and I thought you
+            would enjoy it too. Here is a link to the full article:<br>https://www.google.com/</p>
         </div>
       </div>
     </div>
+  </div>
 
-    <!--RIGHT Column-->
+  <!--RIGHT Column-->
 
     <div class="bg-secondary m-3"
          id="right-col">
@@ -296,49 +287,63 @@
           <p class="mb-2">This is where you can display your projects with data pulled from GitHub. Click on Edit Profile and add your GitHub username.</p>
         </div>
       </div>
-      <div class="tab bg-secondary gradient"
-           id="Featured">
-        <h5>Featured Devs</h5>
-        <div class="separator"></div>
-        <div class="dev row align-items-center">
-          <div class="circle mt-3"
-               id="devPic"></div>
-          <div class="ml-3 mt-3">
-            <h5 class="text-center">user.id</h5>
-            <h6 class="text-center">@user.name</h6>
-          </div>
+      <div class="separator"></div>
+      <div class="mt-2">
+        <input placeholder="Click to Edit"></input>
+        <textarea
+          placeholder="This is where you can write a blurb about your project or edit the data pulled from GitHub."
+          rows="4"></textarea>
+      </div>
+      <div class="separator"></div>
+      <div class="mt-2">
+        <input placeholder="Project Title"></input>
+        <textarea class="project"
+          placeholder="This is where you can write a blurb about your project or edit the data pulled from GitHub."
+          rows="4"></textarea>
+      </div>
+      <div class="separator"></div>
+      <div class="mt-2">
+        <input placeholder="Project Title"></input>
+        <textarea class="project"
+          placeholder="This is where you can write a blurb about your project, or try our autofill feature by linking your GitHub account."
+          rows="4"></textarea>
+      </div>
+    </div>
+    <div class="tab bg-secondary gradient" id="Featured">
+      <h5>Featured Devs</h5>
+      <div class="separator"></div>
+      <div class="dev row align-items-center">
+        <div class="circle mt-3" id="devPic"></div>
+        <div class="ml-3 mt-3">
+          <h5 class="text-center">user.id</h5>
+          <h6 class="text-center">@user.name</h6>
         </div>
-        <div class="separator mt-3"></div>
-        <div class="dev row align-items-center">
-          <div class="circle mt-3"
-               id="devPic"></div>
-          <div class="ml-3 mt-3">
-            <h5 class="text-center">user.id</h5>
-            <h6 class="text-center">@user.name</h6>
-          </div>
+      </div>
+      <div class="separator mt-3"></div>
+      <div class="dev row align-items-center">
+        <div class="circle mt-3" id="devPic"></div>
+        <div class="ml-3 mt-3">
+          <h5 class="text-center">user.id</h5>
+          <h6 class="text-center">@user.name</h6>
         </div>
-        <div class="separator mt-3"></div>
-        <div class="dev row align-items-center">
-          <div class="circle mt-3"
-               id="devPic"></div>
-          <div class="ml-3 mt-3">
-            <h5 class="text-center">user.id</h5>
-            <h6 class="text-center">@user.name</h6>
-          </div>
+      </div>
+      <div class="separator mt-3"></div>
+      <div class="dev row align-items-center">
+        <div class="circle mt-3" id="devPic"></div>
+        <div class="ml-3 mt-3">
+          <h5 class="text-center">user.id</h5>
+          <h6 class="text-center">@user.name</h6>
         </div>
       </div>
     </div>
+  </div>
   </div>
 </main>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
+  integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-<script type="text/javascript"
-        src="/js/home.js"></script>
-
+  integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/home.js"></script>
