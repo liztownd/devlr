@@ -10,4 +10,4 @@ cache:
 services:
   - mysql
 before_install:
-  - mysql -e 'CREATE DATABASE IF NOT EXISTS testdb;'
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS passport_demo;'
