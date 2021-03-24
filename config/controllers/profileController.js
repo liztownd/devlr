@@ -1,89 +1,117 @@
 
 const db = require('../../models');
 require('dotenv').config();
-const axios= require('axios');
+const axios = require('axios');
 
-module.exports= function(app){
+module.exports = function (app) {
     //route to get all profiles
-    app.get('/api/profiles', (req,res)=>{
-         db.Profile.findAll({
-             include: [db.Users]
-         })
-        .then(dbProfiles => res.status(200).json(dbProfiles))
-        .catch(err=> res.status(404).json({msg: "cannot find profiles!"} ))
-        });
+    app.get('/api/profiles', (req, res) => {
+        db.Profile.findAll({
+            include: [db.Users]
+        })
+            .then(dbProfiles => res.status(200).json(dbProfiles))
+            .catch(err => res.status(404).json({ msg: "cannot find profiles!" }))
+    });
 
-        //route to get a single post for a user 
+    //route to get a single post for a user 
     app.get('/api/profiles/:id', (req, res) => {
         // Here we add an "include" property to our options in our findOne query
         // We set the value to an array of the models we want to include in a left outer join
         // In this case, just db.Users
         db.Profile.findOne({
-          where: {
-            id: req.params.id,
-          },
-          include: [db.Users],
+            where: {
+                id: req.params.id,
+            },
+            include: [db.Users],
         }).then((dbProfile) => res.status(200).json(dbProfile))
-        .catch(err=> res.status(404).json({msg: "cannot find a post for this id!"}))
-      });
+            .catch(err => res.status(404).json({ msg: "cannot find a post for this id!" }))
+    });
 
     // route to post the profile
     app.post('/api/profiles', (req, res) => {
         const body = req.body;
-       db.Users.findOne(
-          {
-           where: {
-               id: body.UserId
-           }
-          })
-      .then(()=>db.Profile.create(body))
-      .then(dbProfile=>db.Profile.findOne({
-          where: {id: dbProfile.id},
-          include: [db.Users]
-      }))
-      .then(data=> {res.status(200).json(data);
-        
-    })
-      .catch(err=> res.status(404).json(err) )
+        db.Users.findOne(
+            {
+                where: {
+                    id: body.UserId
+                }
+            })
+            .then(() => db.Profile.create(body))
+            .then(dbProfile => db.Profile.findOne({
+                where: { id: dbProfile.id },
+                include: [db.Users]
+            }))
+            .then(data => {
+                res.status(200).json(data);
+
+            })
+            .catch(err => res.status(404).json(err))
     });
 
-    
-//  route for deleting the profile
-    app.delete('/api/profiles/:id', (req,res)=>{
+
+    //  route for deleting the profile
+    app.delete('/api/profiles/:id', (req, res) => {
         db.Profile.destroy({
             where: {
-             id: req.params.id
+                id: req.params.id
             }
-        }).then(dbProfile=> req.status(200).json(dbProfile))
-        .catch(err=> res.status(500).json(err))
+        }).then(dbProfile => req.status(200).json(dbProfile))
+            .catch(err => res.status(500).json(err))
     })
     //route for updating the profile
-    app.put('/api/profiles/:id',(req,res)=>{
-        db.Profile.update(req.body,{
-         where:{
-             id: req.params.id
-         },
-        }).then(dbProfile=> res.status(200).json(dbProfile))
-        .catch(err=> res.status(500).json(err))
+    app.put('/api/profiles/:id', (req, res) => {
+        db.Profile.update(req.body, {
+            where: {
+                id: req.params.id
+            },
+        }).then(dbProfile => res.status(200).json(dbProfile))
+            .catch(err => res.status(500).json(err))
     });
 
     //route for getting git repositories once we get gitusername from the profile
-    app.get('/github/:username',async (req,res)=>{
+    app.get('/github/:username', async (req, res) => {
         try {
-              
+
             const uri = encodeURI(
                 `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc`
-              );
-              const headers = {
+            );
+            const headers = {
                 'user-agent': 'node.js',
                 Authorization: process.env.GIT_TOKEN
-              }; 
-              const gitHubResponse = await axios.get(uri,{ headers });
-              return res.json(gitHubResponse.data);
+            };
+            const gitHubResponse = await axios.get(uri, { headers });
+            return res.json(gitHubResponse.data);
         } catch (error) {
             console.log(error);
-            return res.status(404).json({msg: "No github profile found"});
+            return res.status(404).json({ msg: "No github profile found" });
         }
+    });
+
+    // route for adding languages to profile
+    app.put('api/users/:UserId/languages', (req, res) => {
+        db.Profile.update({
+            languages: req.body.languages
+        },
+            {
+                where: {
+                    id: req.params.UserId,
+                },
+            }).then((dbProfile) => res.status(200).json(dbProfile))
+            .catch((err) => res.status(500).json(err))
     })
+
+    //route for adding theme to profile
+    app.put('api/users/:UserId/:color', (req, res) => {
+        db.Profile.update({
+            themePref: req.params.color,
+        },
+            {
+                where: {
+                    id: req.params.UserId,
+                },
+            }).then((dbProfile) => res.status(200).json(dbProfile))
+            .catch((err) => res.status(500).json(err))
+    })
+
 
 }

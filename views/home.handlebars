@@ -81,13 +81,14 @@
         <div class="circle" id="userPic"></div>
         <h5 class="text-center">{{Profile.name}}</h5>
         <h6 class="text-center">{{Profile.gitUserName}}</h6>
-                <!-- Button trigger modal -->
-        <button type="button" class="btn btn-lg btn-secondary mt-3" data-toggle="modal" data-target="#appearanceModal" id="appearanceBtn">
+        <!-- Button trigger appearance modal -->
+        <button type="button" class="btn btn-lg btn-secondary mt-3" data-toggle="modal" data-target="#appearanceModal"
+          id="appearanceBtn">
           <i class="material-icons">palette</i>Appearance
         </button>
-        <!-- Modal -->
-        <div class="modal fade gradient" id="appearanceModal" tabindex="-1" role="dialog" aria-labelledby="appearanceTitle"
-          aria-hidden="true">
+        <!-- Appearance Modal -->
+        <div class="modal fade gradient" id="appearanceModal" tabindex="-1" role="dialog"
+          aria-labelledby="appearanceTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -97,16 +98,17 @@
                 </button>
               </div>
               <div class="modal-body">
-                <button type="button" class="btn btn-dark cssTheme m-2" id="222222">Dark</button>
-                <button type="button" class="btn btn-light cssTheme m-2" id="linen">Light</button>
-                <button type="button" class="btn btn-keycap cssTheme m-2" id="90959A">Keycap</button>
-                <button type="button" class="btn btn-sand cssTheme m-2" id="BBB092">Sand</button>
-                <button type="button" class="btn btn-putty cssTheme m-2" id="D4ADA9">Putty</button>
-                <button type="button" class="btn btn-seaglass cssTheme m-2" id="8FBC8F">Seaglass</button>
-                <button type="button" class="btn btn-lagoon cssTheme m-2" id="7FAEB9">Lagoon</button>
-                <button type="button" class="btn btn-thistle cssTheme m-2" id="9F879F">Thistle</button>
+                <button type="button" class="btn btn-dark theme m-2" id="222222">Dark</button>
+                <button type="button" class="btn btn-light theme m-2" id="linen">Light</button>
+                <button type="button" class="btn btn-keycap theme m-2" id="90959A">Keycap</button>
+                <button type="button" class="btn btn-sand theme m-2" id="BBB092">Sand</button>
+                <button type="button" class="btn btn-putty theme m-2" id="D4ADA9">Putty</button>
+                <button type="button" class="btn btn-seaglass theme m-2" id="8FBC8F">Seaglass</button>
+                <button type="button" class="btn btn-lagoon theme m-2" id="7FAEB9">Lagoon</button>
+                <button type="button" class="btn btn-thistle theme m-2" id="9F879F">Thistle</button>
               </div>
               <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="saveTheme">Save changes</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
             </div>
@@ -136,12 +138,12 @@
     <div class="tab bg-secondary gradient" id="MyLanguages">
       <div class="d-flex flex-row align-items-center justify-content-between">
         <h5>My Languages</h5>
-        <!-- Button trigger modal -->
+        <!-- Button trigger languages modal -->
         <button type="button" class="btn btn-secondary mb-2" data-toggle="modal" data-target="#languagesModal">
           Choose Languages
         </button>
 
-        <!-- Modal -->
+        <!-- Languages Modal -->
         <div class="modal fade" id="languagesModal" tabindex="-1" role="dialog" aria-labelledby="languages"
           aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
@@ -190,23 +192,6 @@
             </div>
           </div>
         </div>
-        {{!-- <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle ml-3 mb-2" type="button" id="languageChoice"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Choose
-          </button>
-          <div class="dropdown-menu dropdown-content" aria-labelledby="languageChoice">
-            <a class="dropdown-item" href="#" id="html">HTML5</a>
-            <a class="dropdown-item" href="#" id="css">CSS3</a>
-            <a class="dropdown-item" href="#" id="sql">SQL</a>
-            <a class="dropdown-item" href="#" id="javascript">JavaScript</a>
-            <a class="dropdown-item" href="#" id="typescript">TypeScript</a>
-            <a class="dropdown-item" href="#" id="jquery">jQuery</a>
-            <a class="dropdown-item" href="#" id="python">Python</a>
-            <a class="dropdown-item" href="#" id="php">PHP</a>
-            <a class="dropdown-item" href="#" id="c-lang">C</a>
-          </div>
-        </div> --}}
       </div>
       <div class="separator"></div>
       <button class="btn btn-secondary mt-3 language disabled">JavaScript</button>
@@ -256,86 +241,90 @@
 
   <!--RIGHT Column-->
 
-    <div class="bg-secondary m-3"
-         id="right-col">
-      <div class="tab bg-secondary gradient pp-scroll"
-           id="PinnedProjects">
-        <h5>My Pinned Projects</h5>
-        <div class="separator"></div>
-        <div class="mt-2">
-          <h6>Project Title</h6>
-          <p class="mb-2">This is where you can display your projects with data pulled from GitHub. Click on Edit Profile and add your GitHub username.</p>
-        </div>
-        <div class="separator"></div>
-        <div class="mt-2">
-          <h6>Project Title</h6>
-          <p class="mb-2">This is where you can display your projects with data pulled from GitHub. Click on Edit Profile and add your GitHub username.</p>
-        </div>
-        <div class="separator"></div>
-        <div class="mt-2">
-          <h6>Project Title</h6>
-          <p class="mb-2">This is where you can display your projects with data pulled from GitHub. Click on Edit Profile and add your GitHub username.</p>
-        </div>
-        <div class="separator"></div>
-        <div class="mt-2">
-          <h6>Project Title</h6>
-          <p class="mb-2">This is where you can display your projects with data pulled from GitHub. Click on Edit Profile and add your GitHub username.</p>
-        </div>
-        <div class="separator"></div>
-        <div class="mt-2">
-          <h6>Project Title</h6>
-          <p class="mb-2">This is where you can display your projects with data pulled from GitHub. Click on Edit Profile and add your GitHub username.</p>
-        </div>
+  <div class="bg-secondary m-3" id="right-col">
+    <div class="tab bg-secondary gradient pp-scroll" id="PinnedProjects">
+      <h5>My Pinned Projects</h5>
+      <div class="separator"></div>
+      <div class="mt-2">
+        <h6>Project Title</h6>
+        <p class="mb-2">This is where you can display your projects with data pulled from GitHub. Click on Edit Profile
+          and add your GitHub username.</p>
       </div>
       <div class="separator"></div>
       <div class="mt-2">
-        <input placeholder="Click to Edit"></input>
-        <textarea
-          placeholder="This is where you can write a blurb about your project or edit the data pulled from GitHub."
-          rows="4"></textarea>
+        <h6>Project Title</h6>
+        <p class="mb-2">This is where you can display your projects with data pulled from GitHub. Click on Edit Profile
+          and add your GitHub username.</p>
       </div>
       <div class="separator"></div>
       <div class="mt-2">
-        <input placeholder="Project Title"></input>
-        <textarea class="project"
-          placeholder="This is where you can write a blurb about your project or edit the data pulled from GitHub."
-          rows="4"></textarea>
+        <h6>Project Title</h6>
+        <p class="mb-2">This is where you can display your projects with data pulled from GitHub. Click on Edit Profile
+          and add your GitHub username.</p>
       </div>
       <div class="separator"></div>
       <div class="mt-2">
-        <input placeholder="Project Title"></input>
-        <textarea class="project"
-          placeholder="This is where you can write a blurb about your project, or try our autofill feature by linking your GitHub account."
-          rows="4"></textarea>
+        <h6>Project Title</h6>
+        <p class="mb-2">This is where you can display your projects with data pulled from GitHub. Click on Edit Profile
+          and add your GitHub username.</p>
+      </div>
+      <div class="separator"></div>
+      <div class="mt-2">
+        <h6>Project Title</h6>
+        <p class="mb-2">This is where you can display your projects with data pulled from GitHub. Click on Edit Profile
+          and add your GitHub username.</p>
       </div>
     </div>
-    <div class="tab bg-secondary gradient" id="Featured">
-      <h5>Featured Devs</h5>
-      <div class="separator"></div>
-      <div class="dev row align-items-center">
-        <div class="circle mt-3" id="devPic"></div>
-        <div class="ml-3 mt-3">
-          <h5 class="text-center">user.id</h5>
-          <h6 class="text-center">@user.name</h6>
-        </div>
-      </div>
-      <div class="separator mt-3"></div>
-      <div class="dev row align-items-center">
-        <div class="circle mt-3" id="devPic"></div>
-        <div class="ml-3 mt-3">
-          <h5 class="text-center">user.id</h5>
-          <h6 class="text-center">@user.name</h6>
-        </div>
-      </div>
-      <div class="separator mt-3"></div>
-      <div class="dev row align-items-center">
-        <div class="circle mt-3" id="devPic"></div>
-        <div class="ml-3 mt-3">
-          <h5 class="text-center">user.id</h5>
-          <h6 class="text-center">@user.name</h6>
-        </div>
+    <!-- this was showing up funny so I commented it out - the featured devs still won't align right, but this def needs to go I think-->
+    {{!-- <div class="separator"></div>
+    <div class="mt-2">
+      <input placeholder="Click to Edit"></input>
+      <textarea
+        placeholder="This is where you can write a blurb about your project or edit the data pulled from GitHub."
+        rows="4"></textarea>
+    </div>
+    <div class="separator"></div>
+    <div class="mt-2">
+      <input placeholder="Project Title"></input>
+      <textarea class="project"
+        placeholder="This is where you can write a blurb about your project or edit the data pulled from GitHub."
+        rows="4"></textarea>
+    </div>
+    <div class="separator"></div>
+    <div class="mt-2">
+      <input placeholder="Project Title"></input>
+      <textarea class="project"
+        placeholder="This is where you can write a blurb about your project, or try our autofill feature by linking your GitHub account."
+        rows="4"></textarea>
+    </div> --}}
+  {{!-- </div> --}}
+  <div class="tab bg-secondary gradient" id="Featured">
+    <h5>Featured Devs</h5>
+    <div class="separator"></div>
+    <div class="dev row align-items-center">
+      <div class="circle mt-3" id="devPic"></div>
+      <div class="ml-3 mt-3">
+        <h5 class="text-center">user.id</h5>
+        <h6 class="text-center">@user.name</h6>
       </div>
     </div>
+    <div class="separator mt-3"></div>
+    <div class="dev row align-items-center">
+      <div class="circle mt-3" id="devPic"></div>
+      <div class="ml-3 mt-3">
+        <h5 class="text-center">user.id</h5>
+        <h6 class="text-center">@user.name</h6>
+      </div>
+    </div>
+    <div class="separator mt-3"></div>
+    <div class="dev row align-items-center">
+      <div class="circle mt-3" id="devPic"></div>
+      <div class="ml-3 mt-3">
+        <h5 class="text-center">user.id</h5>
+        <h6 class="text-center">@user.name</h6>
+      </div>
+    </div>
+  </div>
   </div>
   </div>
 </main>
