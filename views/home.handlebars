@@ -143,7 +143,7 @@
       <h5>My Wall</h5>
       <div class="separator"></div>
       <div class="tab bg-secondary mt-3 mb-1 gradient" id="postBox">
-        <textarea placeholder="Title" id="title" rows="1"></textarea>
+        <textarea placeholder="Title" id="postTitle" rows="1"></textarea>
         <textarea id="wallPost" placeholder="What's on your mind?" rows="3"></textarea>
       </div>
       <button class="btn btn-sm btn-secondary mt-2" type="submit" id="postBtn">
@@ -296,18 +296,20 @@
       </div>
       <div class="modal-body">
       <div class="tab bg-secondary mt-3 mb-1 gradient" id="modalPostBox">
+        <textarea id="modalPostTitle" placeholder="Title" style="font-size: 22px;" rows="1"></textarea>
       <textarea id="modalWallPost" placeholder="What's on your mind?" style="font-size: 22px;" rows="5"></textarea>
       </div>
       </div>
       <div class="modal-footer">
         <button class="btn btn-small btn-secondary gradient" data-dismiss="modal">Close</button>
-        <button class="btn btn-small btn-secondary gradient">Submit</button>
+        <button class="btn btn-small btn-secondary gradient">Post</button>
       </div>
     </div>
   </div>
 </div>
 
 <!--Toasts-->
+
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
