@@ -88,30 +88,43 @@ module.exports = function (app) {
     });
 
     // route for adding languages to profile
-    app.put('api/users/:UserId/languages', (req, res) => {
+    app.put('/api/users/languages/:UserId', (req, res) => {
+        console.log(req.body.lang);
+        console.log(req.params.UserId);
+
         db.Profile.update({
-            languages: req.body.languages
+            languages: req.body.lang
         },
             {
                 where: {
-                    id: req.params.UserId,
+                    UserId: req.params.UserId,
                 },
             }).then((dbProfile) => res.status(200).json(dbProfile))
             .catch((err) => res.status(500).json(err))
     })
 
     //route for adding theme to profile
-    app.put('api/users/:UserId/:color', (req, res) => {
+    app.put('/api/users/:UserId/color', (req, res) => {
+        console.log(req.body);
         db.Profile.update({
-            themePref: req.params.color,
+            themePref: req.body.color,
         },
             {
                 where: {
-                    id: req.params.UserId,
+                    UserId: req.params.UserId,
                 },
             }).then((dbProfile) => res.status(200).json(dbProfile))
             .catch((err) => res.status(500).json(err))
-    })
+    });
+
+    app.get('/api/users/:UserId', (req, res) => {
+        db.Profile.findOne({
+            where: {
+                UserId: req.params.UserId,
+            },
+        }).then((dbProfile) => res.status(200).json(dbProfile))
+        .catch((err) => res.status(500).json(err));
+    });
 
 
 }
