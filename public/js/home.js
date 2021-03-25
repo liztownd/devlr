@@ -196,5 +196,80 @@ $(document).ready(() => {
     })
   }
 
+// Post to Feed
+const submitPostBtn = document.getElementById('postBtn');
+submitPostBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  const newPost = {
+    title: document.getElementById('title').value.trim(),
+    body: document.getElementById('wallPost').value.trim(),
+    createdAt: new Date(),
+  };
+
+  fetch('/api/posts', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(newPost),
+  }).then((data) => {
+      console.log('Success!', data);
+      const row = document.createElement('div');
+      const feed = document.getElementById('feed');
+      row.classList.add('post');
+      
+
+      const postTitle = document.createElement('h6');
+      const postBody = document.createElement('p');
+      const postDate = document.createElement('small');
+
+      postTitle.textContent = `${data.title}`;
+      postBody.textContent = `${data.body}`;
+      postDate.textContent = `${new Date(
+        data.createdAt
+      ).toLocaleDateString()}`;
+
+      row.appendChild(postTitle);
+      row.appendChild(postBody);
+      row.appendChild(postDate);
+
+      feed.prepend(row);
+    });
+
+  // Empty the input box
+  document.getElementById('wallPost').value = '';
+  document.getElementById('title').value = '';
+});
+
+fetch('/api/posts', {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+})
+  .then((response) => response.json())
+  .then((data) => {
+    console.log('Successful GET all posts:', data);
+    data.map(({ title, body, createdAt }) => {
+      const row = document.createElement('div');
+      const feed = document.getElementById('feed');
+      row.classList.add('post');
+
+      const postTitle = document.createElement('h6');
+      const postBody = document.createElement('p');
+      const postDate = document.createElement('p');
+      postTitle.textContent = `${title}`;
+      postBody.textContent = `${body}`;
+      postDate.textContent = `at ${new Date(createdAt).toLocaleDateString()}`;
+
+      row.appendChild(postTitle);
+      row.appendChild(postBody);
+      row.appendChild(postDate);
+
+      feed.append(row);
+    });
+  })
+  .catch((err) => console.error(err));
 
 });
