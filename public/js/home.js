@@ -70,7 +70,7 @@ $(document).ready(() => {
         startDate = startDate.split('T')[0];
         $(".highestGraduation").text(`Highest Graduation: ${data.highestGraduation}`);
         $(".school").text(`School: ${data.school}`);
-        $(".name").text(`Name: ${data.name}`);
+        $(".name").text(data.name);
         $(".skills").text(`Skills: ${data.skills}`);
         $(".experience").text(`Years of Experience: ${data.TotalYearsOfexp}`);
         $(".position").text(`Position: ${data.currentPosition}`);
