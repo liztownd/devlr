@@ -69,7 +69,7 @@ $(document).ready(() => {
     $(".company").text(`Company: ${data[0].companyName}`);
     $(".startDate").text(`Started: ${fromDate}`);
     $(".endDate").text(`Ended: ${startDate}`);
-    $(".gitUserName").text(`Git User Name: ${data[0].gitUserName}`);
+    $(".gitUserName").text(`GitHub User Name: ${data[0].gitUserName}`);
   });
 
   // to change appearance
