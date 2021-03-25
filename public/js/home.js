@@ -202,7 +202,7 @@ submitPostBtn.addEventListener('click', (e) => {
   e.preventDefault();
 
   const newPost = {
-    title: document.getElementById('title').value.trim(),
+    title: document.getElementById('postTitle').value.trim(),
     body: document.getElementById('wallPost').value.trim(),
     createdAt: new Date(),
   };
@@ -239,7 +239,7 @@ submitPostBtn.addEventListener('click', (e) => {
 
   // Empty the input box
   document.getElementById('wallPost').value = '';
-  document.getElementById('title').value = '';
+  document.getElementById('postTitle').value = '';
 });
 
 fetch('/api/posts', {
