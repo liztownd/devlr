@@ -9,20 +9,21 @@ module.exports= function(app){
         db.Post.findAll({
             include:[db.Users]
         })
-        .then(dbPosts=> res.status(200).json(dbPosts));
+        .then(dbPosts=> res.status(200).json(dbPosts))
+        .catch(err=>console.log(err))
     })
     //route to get a single post for a user 
     app.get('/api/posts/:id', (req, res) => {
         // Here we add an "include" property to our options in our findOne query
         // We set the value to an array of the models we want to include in a left outer join
-        // In this case, just db.Author
-        db.Post.findOne({
+        // In this case, just db.Users
+        db.Post.findAll({
           where: {
-            id: req.params.id,
+         id: req.params.id,
           },
           include: [db.Users],
         }).then((dbPost) => res.status(200).json(dbPost))
-        .catch(err=> res.status(404).json({msg: "cannot find a post for this id!"}))
+        .catch(err=> res.status(404).json(err))
       });
 
     //post route for adding a new post
