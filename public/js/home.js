@@ -11,6 +11,12 @@ $(document).ready(() => {
     setPreferences(UserId);
   });
 
+    var element= localStorage.getItem('status');
+    if (element == null || element == '') {
+        localStorage.setItem('status', 1);
+        $('#editProfileToast').toast('show');
+    };
+
   function editProfile(UserId) {
     $('form').on("submit", (e) => {
       e.preventDefault();
@@ -52,6 +58,7 @@ $(document).ready(() => {
           console.log(JSON.stringify(data));
         }
       });
+      $('#pullProjectsToast').toast('show');
     });
   };
 
@@ -188,8 +195,9 @@ submitPostBtn.addEventListener('click', (e) => {
       console.log('Success!', data);
       const row = document.createElement('div');
       const feed = document.getElementById('feed');
+      const deleteBtn = document.createElement('button');
       row.classList.add('post');
-      
+      deleteBtn.classList.add('btn');
 
       const postTitle = document.createElement('h6');
       const postBody = document.createElement('p');
@@ -204,6 +212,7 @@ submitPostBtn.addEventListener('click', (e) => {
       row.appendChild(postTitle);
       row.appendChild(postBody);
       row.appendChild(postDate);
+      row.appendChild(deleteBtn);
 
       feed.prepend(row);
     });
