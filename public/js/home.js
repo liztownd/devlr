@@ -77,7 +77,7 @@ $(document).ready(() => {
         $(".company").text(`Company: ${data.companyName}`);
         $(".startDate").text(`Started: ${fromDate}`);
         $(".endDate").text(`Ended: ${startDate}`);
-        $(".gitUserName").text(`Git User Name: ${data.gitUserName}`);
+        $(".gitUserName").text(`GitHub User Name: ${data.gitUserName}`);
       }
     });
   };

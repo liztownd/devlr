@@ -47,8 +47,7 @@
             <label for="gitUserName">GitHub Username</label>
             <input type="text" class="form-control" id="userGitHub" placeholder="@username">
           </div>
-          <button type="submit" class="btn btn-secondary gradient">Update
-            Profile</button>
+          <button type="submit" class="btn btn-secondary gradient">Update Profile</button>
         </form>
       </div>
       <div class="modal-footer">
@@ -62,22 +61,16 @@
   <div class="d-flex flex-row align-items-center justify-content-around">
     <!--LEFT column-->
     <div class="bg-secondary mr-4" id="left-col">
-      <img src="img/devlr-logo.png" class="img-fluid logo mb-4 mx-auto" alt="devlr logo">
       <h1>devlr</h1>
       <div id="side-nav">
         <ul class="list-group">
-          <li class="m-3"><a href="/home"><i class="material-icons">home</i>
-              Home</li></a>
+          <li class="m-3"><a href="/home"><i class="material-icons">home</i> Home</li></a>
           <li class="m-3"><a href="#" data-toggle="modal" data-target="#editProfileModal"><i
                 class="material-icons">dashboard</i> Edit Profile</li></a>
-          <li class="m-3"><a href="#"><i class="material-icons">find_in_page</i>
-              Browse</li></a>
-          <li class="m-3"><a href="#"><i class="material-icons">star_border</i>
-              Starred</li></a>
-          <li class="m-3"><a href="#"><i class="material-icons">person_outline</i>
-              Account</li></a>
-          <li class="m-3"><a href="/logout"><i class="material-icons">keyboard_return</i>
-              Logout</li></a>
+          <li class="m-3"><a href="#"><i class="material-icons">find_in_page</i> Browse</li></a>
+          <li class="m-3"><a href="#"><i class="material-icons">star_border</i> Starred</li></a>
+          <li class="m-3"><a href="#"><i class="material-icons">person_outline</i> Account</li></a>
+          <li class="m-3"><a href="/logout"><i class="material-icons">keyboard_return</i> Logout</li></a>
         </ul>
       </div>
       <div class="d-flex flex-column align-items-center">
@@ -115,8 +108,7 @@
                 <button type="button" class="btn btn-thistle theme m-2" id="9F879F">Thistle</button>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="saveTheme">Save
-                  changes</button>
+                <button type="button" class="btn btn-secondary" id="saveTheme">Save changes</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
             </div>
@@ -195,8 +187,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-secondary" id="saveLang">Save
-                  changes</button>
+                <button type="button" class="btn btn-secondary" id="saveLang">Save changes</button>
               </div>
             </div>
           </div>
@@ -222,26 +213,23 @@
       <div class="row align-items-center comment">
         <div class="col float-right mb-3">
           <h6 class="name">name</h6>
-          <p>Hey, I read this article about the top 7 full-stack projects you
-            need to try in 2021 and I thought you
+          <p>Hey, I read this article about the top 7 full-stack projects you need to try in 2021 and I thought you
             would enjoy it too.
         </div>
       </div>
       <div class="separator mb-3"></div>
       <div class="row align-items-center comment">
         <div class="col float-right mb-3">
-          <h6 class="name">name</h6>
-          <p>Hey, I read this article about the top 7 full-stack projects you
-            need to try in 2021 and I thought you
+          <h6>{{Profile.name}}</h6>
+          <p>Hey, I read this article about the top 7 full-stack projects you need to try in 2021 and I thought you
             would enjoy it too. Here is a link to the full article:<br>https://www.google.com/</p>
         </div>
       </div>
       <div class="separator mb-3"></div>
       <div class="row align-items-center comment">
         <div class="col float-right mb-3">
-          <h6 class="name">name</h6>
-          <p>Hey, I read this article about the top 7 full-stack projects you
-            need to try in 2021 and I thought you
+          <h6>{{Profile.name}}</h6>
+          <p>Hey, I read this article about the top 7 full-stack projects you need to try in 2021 and I thought you
             would enjoy it too. Here is a link to the full article:<br>https://www.google.com/</p>
         </div>
       </div>
@@ -256,42 +244,36 @@
       <div class="mt-2">
         <h6>Project Title</h6>
         {{!-- <div class="mt-2">
-            <input placeholder="Click to Edit"></input>
-          <textarea
-            placeholder="This is where you can write a blurb about your project
-            or edit the data pulled from GitHub."
-            rows="4"></textarea>
-        </div> --}}
-        <p class="mb-2">This is where you can display your projects with data
-          pulled from GitHub. Click on Edit Profile
+      <input placeholder="Click to Edit"></input>
+      <textarea
+        placeholder="This is where you can write a blurb about your project or edit the data pulled from GitHub."
+        rows="4"></textarea>
+    </div> --}}
+        <p class="mb-2">This is where you can display your projects with data pulled from GitHub. Click on Edit Profile
           and add your GitHub username.</p>
       </div>
       <div class="separator"></div>
       <div class="mt-2">
         <h6>Project Title</h6>
-        <p class="mb-2">This is where you can display your projects with data
-          pulled from GitHub. Click on Edit Profile
+        <p class="mb-2">This is where you can display your projects with data pulled from GitHub. Click on Edit Profile
           and add your GitHub username.</p>
       </div>
       <div class="separator"></div>
       <div class="mt-2">
         <h6>Project Title</h6>
-        <p class="mb-2">This is where you can display your projects with data
-          pulled from GitHub. Click on Edit Profile
+        <p class="mb-2">This is where you can display your projects with data pulled from GitHub. Click on Edit Profile
           and add your GitHub username.</p>
       </div>
       <div class="separator"></div>
       <div class="mt-2">
         <h6>Project Title</h6>
-        <p class="mb-2">This is where you can display your projects with data
-          pulled from GitHub. Click on Edit Profile
+        <p class="mb-2">This is where you can display your projects with data pulled from GitHub. Click on Edit Profile
           and add your GitHub username.</p>
       </div>
       <div class="separator"></div>
       <div class="mt-2">
         <h6>Project Title</h6>
-        <p class="mb-2">This is where you can display your projects with data
-          pulled from GitHub. Click on Edit Profile
+        <p class="mb-2">This is where you can display your projects with data pulled from GitHub. Click on Edit Profile
           and add your GitHub username.</p>
       </div>
     </div>
