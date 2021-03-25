@@ -40,12 +40,9 @@ module.exports= function(app){
             include: [db.Users]
         }))
         .then(dbPost=> res.status(200).json(dbPost))
-        .catch(err=> res.status(404).json({msg: "user does'nt exist with this userId"}) )
+        .catch(err=> res.status(404).json(err) )
       });
-// app.post('/api/posts', (req, res) => {
-//     db.Post.create(req.body)
-//     .then((dbPost) => res.json(dbPost));
-//   });
+
 
 // DELETE route for deleting posts
 app.delete('/api/posts/:id', (req, res) => {
