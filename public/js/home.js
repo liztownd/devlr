@@ -8,6 +8,8 @@ $(document).ready(() => {
     setTheme(UserId);
     saveLanguage(UserId);
     getUserProfile(UserId);
+     setPreferences(UserId);
+
   });
 
   function editProfile(UserId) {
@@ -55,6 +57,7 @@ $(document).ready(() => {
   }
 
   // My Background section on Home Page - Handlebars
+
   // $.get("/api/profiles").then(data => {
   //   let fromDate = data[0].from;
   //   fromDate = fromDate.split('T')[0];
@@ -94,6 +97,7 @@ $(document).ready(() => {
       $(".endDate").text(`Ended: ${startDate}`);
       $(".gitUserName").text(`Git User Name: ${data.gitUserName}`);
     }
+
   });
 
 
@@ -102,7 +106,6 @@ $(document).ready(() => {
 
 
   // to change appearance
-
   function setTheme(UserId) {
 
     $('.theme').on('click', function (event) {
@@ -110,8 +113,6 @@ $(document).ready(() => {
 
       let color = $(this).attr('id')
       let r = document.querySelector(':root');
-
-      //console.log(color);
 
       if (color === 'linen') {
         r.style.setProperty('--main-bg-color', `#${color}`);
@@ -127,17 +128,14 @@ $(document).ready(() => {
       $('#saveTheme').on('click', function (e) {
         e.preventDefault();
 
-        //where are we getting the id of the user profile?
-
-        fetch(`api/users/${UserId}/${color}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: languages,
-        }).then((response) => console.log(response));
-
-
+        // send it to the db
+        $.ajax(
+          {
+            type: 'PUT',
+            dataType: 'text',
+            data: { color: color },
+            url: `/api/users/${UserId}/color`,
+          }).then((response) => console.log(response));
 
       });
 
@@ -147,34 +145,56 @@ $(document).ready(() => {
   // add languages
 
   function saveLanguage(UserId) {
-
     $('#saveLang').on('click', function () {
-
       let languages = [];
-
       $.each($("input[name='langOpt']:checked"), function () {
         languages.push($(this).val());
-
       });
 
-      console.log(languages);
+      let postData = {
+        "lang": languages
+      }
 
-      // fetch to send to db
-
-      // where do we get the id of the user profile?
-
-      fetch(`api/users/${UserId}/languages`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(languages),
-      }).then((response) => console.log(response));
-
-
-
+      // send to db
+      $.ajax(
+        {
+          type: 'PUT',
+          contentType: 'application/json',
+          data: JSON.stringify(postData),
+          url: `/api/users/languages/${UserId}`,
+        }).then((response) => console.log(response));
     });
   };
+
+  function setPreferences(UserId) {
+    $.get(`/api/users/${UserId}`).then((data) => {
+      console.log(data);
+      let r = document.querySelector(':root');
+      let color = data.themePref;
+      let languages = data.languages;
+
+      if (color === 'linen') {
+        r.style.setProperty('--main-bg-color', `#${color}`);
+        r.style.setProperty('--main-text-color', '#222222');
+        // r.style.setProperty('--secondary-bg-color', '#979797')
+      }
+      else {
+        r.style.setProperty('--main-bg-color', `#${color}`);
+        r.style.setProperty('--main-text-color', 'linen');
+        r.style.setProperty('--secondary-bg-color', 'transparent');
+      };
+
+      console.log(languages)
+
+      for (let i=0; i<languages.length; i++){
+        let langItems = $(
+          ` <button class="btn btn-secondary mx-2 my-3 language disabled">${languages[i]}</button>`
+        )
+        $('#langDisplay').append(langItems);
+      };
+
+    })
+  }
 
 
 });

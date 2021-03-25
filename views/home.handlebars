@@ -62,6 +62,7 @@
   <div class="d-flex flex-row align-items-center justify-content-around">
     <!--LEFT column-->
     <div class="bg-secondary mr-4" id="left-col">
+      <img src="img/devlr-logo.png" class="img-fluid logo mb-4 mx-auto" alt="devlr logo">
       <h1>devlr</h1>
       <div id="side-nav">
         <ul class="list-group">
@@ -79,8 +80,8 @@
           New
         </button>
         <div class="circle" id="userPic"></div>
-        <h5 class="text-center">{{Profile.name}}</h5>
-        <h6 class="text-center">{{Profile.gitUserName}}</h6>
+        <h5 class="text-center name"></h5>
+        <h6 class="text-center gitUserName"></h6>
         <!-- Button trigger appearance modal -->
         <button type="button" class="btn btn-lg btn-secondary mt-3" data-toggle="modal" data-target="#appearanceModal"
           id="appearanceBtn">
@@ -194,10 +195,7 @@
         </div>
       </div>
       <div class="separator"></div>
-      <button class="btn btn-secondary mt-3 language disabled">JavaScript</button>
-      <button class="btn btn-secondary mt-3 language disabled">HTML5</button>
-      <button class="btn btn-secondary mt-3 language disabled">CSS3</button>
-      <button class="btn btn-secondary mt-3 language disabled">SQL</button>
+      <div id="langDisplay"></div>
     </div>
 
     <div class="tab bg-secondary gradient" id="MyWall">
@@ -206,7 +204,7 @@
       <div class="tab bg-secondary mt-3 mb-1 gradient" id="postBox">
         <textarea placeholder="What's on your mind?" rows="3"></textarea>
       </div>
-      <button class="btn btn-sm btn-secondary mt-2" id="postBtn">
+      <button class="btn btn-sm btn-secondary mt-2" type="submit" id="postBtn">
         Post
       </button>
     </div>
@@ -275,29 +273,7 @@
           and add your GitHub username.</p>
       </div>
     </div>
-    <!-- this was showing up funny so I commented it out - the featured devs still won't align right, but this def needs to go I think-->
-    {{!-- <div class="separator"></div>
-    <div class="mt-2">
-      <input placeholder="Click to Edit"></input>
-      <textarea
-        placeholder="This is where you can write a blurb about your project or edit the data pulled from GitHub."
-        rows="4"></textarea>
-    </div>
-    <div class="separator"></div>
-    <div class="mt-2">
-      <input placeholder="Project Title"></input>
-      <textarea class="project"
-        placeholder="This is where you can write a blurb about your project or edit the data pulled from GitHub."
-        rows="4"></textarea>
-    </div>
-    <div class="separator"></div>
-    <div class="mt-2">
-      <input placeholder="Project Title"></input>
-      <textarea class="project"
-        placeholder="This is where you can write a blurb about your project, or try our autofill feature by linking your GitHub account."
-        rows="4"></textarea>
-    </div> --}}
-    {{!-- </div> --}}
+
     <div class="tab bg-secondary gradient" id="Featured">
       <h5>Featured Devs</h5>
       <div class="separator"></div>
@@ -326,9 +302,10 @@
       </div>
     </div>
   </div>
-  </div>
-</main>
 
+ 
+
+</main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"

@@ -34,9 +34,7 @@ app.get('/', (req, res) => {
   res.render(path.join(__dirname, '/views/index.handlebars'))
 });
 
-// Requiring our routes
-// require("./public/delete/routes/html-routes.js")(app);
-// require("./public/delete/routes/api-routes.js")(app);
+// Requiring our controllers
 require("./config/controllers/signupController")(app);
 require("./config/controllers/loginController")(app);
 require("./config/controllers/homeController")(app);

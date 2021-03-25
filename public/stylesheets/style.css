@@ -229,6 +229,10 @@ a:hover, a:active, a:focus {
   text-decoration: none;
 }
 
+.logo {
+  max-width: 100px;
+}
+
 /* Color Utilities*/
 
 .gradient {
