@@ -62,6 +62,7 @@
   <div class="d-flex flex-row align-items-center justify-content-around">
     <!--LEFT column-->
     <div class="bg-secondary mr-4" id="left-col">
+      <img src="img/devlr-logo.png" class="img-fluid logo mb-4 mx-auto" alt="devlr logo">
       <h1>devlr</h1>
       <div id="side-nav">
         <ul class="list-group">
@@ -194,10 +195,7 @@
         </div>
       </div>
       <div class="separator"></div>
-      <button class="btn btn-secondary mt-3 language disabled">JavaScript</button>
-      <button class="btn btn-secondary mt-3 language disabled">HTML5</button>
-      <button class="btn btn-secondary mt-3 language disabled">CSS3</button>
-      <button class="btn btn-secondary mt-3 language disabled">SQL</button>
+      <div id="langDisplay"></div>
     </div>
 
     <div class="tab bg-secondary gradient" id="MyWall">
@@ -275,7 +273,7 @@
           and add your GitHub username.</p>
       </div>
     </div>
-  </div>
+  {{!-- </div> --}}
   <!-- this was showing up funny so I commented it out - the featured devs still won't align right, but this def needs to go I think-->
   {{!-- <div class="separator"></div>
     <div class="mt-2">
