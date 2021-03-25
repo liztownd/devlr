@@ -55,32 +55,32 @@ $(document).ready(() => {
     });
   };
 
-  // My Background section on Home Page - Handlebars
-  // getting the user profile to show it on my background section
-  function getUserProfile(UserId) {
-    $.ajax({
-      type: 'GET',
-      url: `/api/users/${UserId}`,
-      success: function (data) {
-        console.log('success');
-        console.log(JSON.stringify(data));
-        let fromDate = data.from;
-        fromDate = fromDate.split('T')[0];
-        let startDate = data.from;
-        startDate = startDate.split('T')[0];
-        $(".highestGraduation").text(`Highest Graduation: ${data.highestGraduation}`);
-        $(".school").text(`School: ${data.school}`);
-        $(".name").text(data.name);
-        $(".skills").text(`Skills: ${data.skills}`);
-        $(".experience").text(`Years of Experience: ${data.TotalYearsOfexp}`);
-        $(".position").text(`Position: ${data.currentPosition}`);
-        $(".company").text(`Company: ${data.companyName}`);
-        $(".startDate").text(`Started: ${fromDate}`);
-        $(".endDate").text(`Ended: ${startDate}`);
-        $(".gitUserName").text(`Git User Name: ${data.gitUserName}`);
-      }
-    });
-  };
+// getting the user profile to show it on my background section
+ function getUserProfile(UserId){
+  $.ajax({
+    type: 'GET',
+    url: `/api/users/${UserId}`,
+    success: function (data) {
+      console.log('success');
+     const profile= data.Profiles[0];
+      // console.log(profile);
+      let fromDate = profile.from;
+      fromDate = fromDate.split('T')[0];
+      let startDate = profile.from;
+      startDate = startDate.split('T')[0];
+      $(".highestGraduation").text(`Highest Graduation: ${profile.highestGraduation}`);
+      $(".school").text(`School: ${profile.school}`);
+      $(".name").text(`Name: ${profile.name}`);
+      $(".skills").text(`Skills: ${profile.skills}`);
+      $(".experience").text(`Years of Experience: ${profile.TotalYearsOfexp}`);
+      $(".position").text(`Position: ${profile.currentPosition}`);
+      $(".company").text(`Company: ${profile.companyName}`);
+      $(".startDate").text(`Started: ${fromDate}`);
+      $(".endDate").text(`Ended: ${startDate}`);
+      $(".gitUserName").text(`Git User Name: ${profile.gitUserName}`);
+    }
+  });
+ }
 
   // to change appearance
   function setTheme(UserId) {
