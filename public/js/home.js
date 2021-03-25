@@ -8,8 +8,7 @@ $(document).ready(() => {
     setTheme(UserId);
     saveLanguage(UserId);
     getUserProfile(UserId);
-     setPreferences(UserId);
-
+    setPreferences(UserId);
   });
 
   function editProfile(UserId) {
@@ -53,8 +52,8 @@ $(document).ready(() => {
           console.log(JSON.stringify(data));
         }
       });
-    })
-  }
+    });
+  };
 
 // getting the user profile to show it on my background section
  function getUserProfile(UserId){
@@ -80,17 +79,11 @@ $(document).ready(() => {
       $(".endDate").text(`Ended: ${startDate}`);
       $(".gitUserName").text(`Git User Name: ${profile.gitUserName}`);
     }
-
   });
-
-
  }
-
-
 
   // to change appearance
   function setTheme(UserId) {
-
     $('.theme').on('click', function (event) {
       event.preventDefault();
 
@@ -119,25 +112,20 @@ $(document).ready(() => {
             data: { color: color },
             url: `/api/users/${UserId}/color`,
           }).then((response) => console.log(response));
-
       });
-
     });
   };
 
   // add languages
-
   function saveLanguage(UserId) {
     $('#saveLang').on('click', function () {
       let languages = [];
       $.each($("input[name='langOpt']:checked"), function () {
         languages.push($(this).val());
       });
-
       let postData = {
         "lang": languages
       }
-
       // send to db
       $.ajax(
         {
@@ -169,15 +157,12 @@ $(document).ready(() => {
 
       console.log(languages)
 
-      for (let i=0; i<languages.length; i++){
+      for (let i = 0; i < languages.length; i++) {
         let langItems = $(
           ` <button class="btn btn-secondary mx-2 my-3 language disabled">${languages[i]}</button>`
         )
         $('#langDisplay').append(langItems);
       };
-
-    })
-  }
-
-
+    });
+  };
 });
