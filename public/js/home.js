@@ -8,8 +8,7 @@ $(document).ready(() => {
     setTheme(UserId);
     saveLanguage(UserId);
     getUserProfile(UserId);
-     setPreferences(UserId);
-
+    setPreferences(UserId);
   });
 
   function editProfile(UserId) {
@@ -53,61 +52,38 @@ $(document).ready(() => {
           console.log(JSON.stringify(data));
         }
       });
-    })
-  }
+    });
+  };
 
   // My Background section on Home Page - Handlebars
-
-  // $.get("/api/profiles").then(data => {
-  //   let fromDate = data[0].from;
-  //   fromDate = fromDate.split('T')[0];
-  //   let startDate = data[0].from;
-  //   startDate = startDate.split('T')[0];
-  //   $(".highestGraduation").text(`Highest Graduation: ${data[0].highestGraduation}`);
-  //   $(".school").text(`School: ${data[0].school}`);
-  //   $(".name").text(`Name: ${data[0].name}`);
-  //   $(".skills").text(`Skills: ${data[0].skills}`);
-  //   $(".experience").text(`Years of Experience: ${data[0].TotalYearsOfexp}`);
-  //   $(".position").text(`Position: ${data[0].currentPosition}`);
-  //   $(".company").text(`Company: ${data[0].companyName}`);
-  //   $(".startDate").text(`Started: ${fromDate}`);
-  //   $(".endDate").text(`Ended: ${startDate}`);
-  //   $(".gitUserName").text(`Git User Name: ${data[0].gitUserName}`);
-  // });
-// getting the user profile to show it on my background section
- function getUserProfile(UserId){
-  $.ajax({
-    type: 'GET',
-    url: `/api/users/${UserId}`,
-    success: function (data) {
-      console.log('success');
-      console.log(JSON.stringify(data));
-      let fromDate = data.from;
-      fromDate = fromDate.split('T')[0];
-      let startDate = data.from;
-      startDate = startDate.split('T')[0];
-      $(".highestGraduation").text(`Highest Graduation: ${data.highestGraduation}`);
-      $(".school").text(`School: ${data.school}`);
-      $(".name").text(`Name: ${data.name}`);
-      $(".skills").text(`Skills: ${data.skills}`);
-      $(".experience").text(`Years of Experience: ${data.TotalYearsOfexp}`);
-      $(".position").text(`Position: ${data.currentPosition}`);
-      $(".company").text(`Company: ${data.companyName}`);
-      $(".startDate").text(`Started: ${fromDate}`);
-      $(".endDate").text(`Ended: ${startDate}`);
-      $(".gitUserName").text(`Git User Name: ${data.gitUserName}`);
-    }
-
-  });
-
-
- }
-
-
+  // getting the user profile to show it on my background section
+  function getUserProfile(UserId) {
+    $.ajax({
+      type: 'GET',
+      url: `/api/users/${UserId}`,
+      success: function (data) {
+        console.log('success');
+        console.log(JSON.stringify(data));
+        let fromDate = data.from;
+        fromDate = fromDate.split('T')[0];
+        let startDate = data.from;
+        startDate = startDate.split('T')[0];
+        $(".highestGraduation").text(`Highest Graduation: ${data.highestGraduation}`);
+        $(".school").text(`School: ${data.school}`);
+        $(".name").text(data.name);
+        $(".skills").text(`Skills: ${data.skills}`);
+        $(".experience").text(`Years of Experience: ${data.TotalYearsOfexp}`);
+        $(".position").text(`Position: ${data.currentPosition}`);
+        $(".company").text(`Company: ${data.companyName}`);
+        $(".startDate").text(`Started: ${fromDate}`);
+        $(".endDate").text(`Ended: ${startDate}`);
+        $(".gitUserName").text(`Git User Name: ${data.gitUserName}`);
+      }
+    });
+  };
 
   // to change appearance
   function setTheme(UserId) {
-
     $('.theme').on('click', function (event) {
       event.preventDefault();
 
@@ -136,25 +112,20 @@ $(document).ready(() => {
             data: { color: color },
             url: `/api/users/${UserId}/color`,
           }).then((response) => console.log(response));
-
       });
-
     });
   };
 
   // add languages
-
   function saveLanguage(UserId) {
     $('#saveLang').on('click', function () {
       let languages = [];
       $.each($("input[name='langOpt']:checked"), function () {
         languages.push($(this).val());
       });
-
       let postData = {
         "lang": languages
       }
-
       // send to db
       $.ajax(
         {
@@ -186,15 +157,12 @@ $(document).ready(() => {
 
       console.log(languages)
 
-      for (let i=0; i<languages.length; i++){
+      for (let i = 0; i < languages.length; i++) {
         let langItems = $(
           ` <button class="btn btn-secondary mx-2 my-3 language disabled">${languages[i]}</button>`
         )
         $('#langDisplay').append(langItems);
       };
-
-    })
-  }
-
-
+    });
+  };
 });
