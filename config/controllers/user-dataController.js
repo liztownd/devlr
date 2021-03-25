@@ -33,7 +33,7 @@ app.get('/api/users/:id', (req,res)=>{
       where:{
         id: req.params.id 
       },
-      include:[db.Profile,db.Post]
+      include:[db.Profile, db.Post]
       
   }).then((data)=>res.status(200).json(data))
   .catch(err=>res.status(500).json(err))
