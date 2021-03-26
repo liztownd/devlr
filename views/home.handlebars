@@ -1,5 +1,4 @@
 <!--<h2>Welcome <span class="member-name"></span></h2>-->
-
 <div class="modal fade gradient" id="editProfileModal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -62,7 +61,6 @@
   <div class="d-flex flex-row align-items-center justify-content-around">
     <!--LEFT column-->
     <div class="bg-secondary mr-4" id="left-col">
-      <img src="img/devlr-logo.png" class="img-fluid logo mb-4 mx-auto" alt="devlr logo">
       <h1>devlr</h1>
       <div id="side-nav">
         <ul class="list-group">
@@ -82,6 +80,7 @@
         <div class="circle" id="userPic"></div>
         <h5 class="text-center name"></h5>
         <h6 class="text-center gitUserName"></h6>
+
         <!-- Button trigger appearance modal -->
         <button type="button" class="btn btn-lg btn-secondary mt-3" data-toggle="modal" data-target="#appearanceModal"
           id="appearanceBtn">
@@ -213,9 +212,16 @@
       <h5>Feed</h5>
       <div class="separator mb-3"></div>
       <div class="row align-items-center comment">
+<<<<<<< HEAD
         <div class="col float-right mb-3" id= "post-div">
           <h6 id = "post-title">{{Profile.name}}</h6>
           <p id="post-body">
+=======
+        <div class="col float-right mb-3">
+          <h6 class="name">name</h6>
+          <p>Hey, I read this article about the top 7 full-stack projects you need to try in 2021 and I thought you
+            would enjoy it too.
+>>>>>>> d4e717c9bcc6147e7453595b68a5c2934670a885
         </div>
       </div>
       <div class="separator mb-3"></div>
@@ -238,13 +244,18 @@
   </div>
 
   <!--RIGHT Column-->
-
   <div class="bg-secondary m-3" id="right-col">
     <div class="tab bg-secondary gradient pp-scroll" id="PinnedProjects">
       <h5>My Pinned Projects</h5>
       <div class="separator"></div>
       <div class="mt-2">
         <h6>Project Title</h6>
+        {{!-- <div class="mt-2">
+      <input placeholder="Click to Edit"></input>
+      <textarea
+        placeholder="This is where you can write a blurb about your project or edit the data pulled from GitHub."
+        rows="4"></textarea>
+    </div> --}}
         <p class="mb-2">This is where you can display your projects with data pulled from GitHub. Click on Edit Profile
           and add your GitHub username.</p>
       </div>
@@ -273,7 +284,6 @@
           and add your GitHub username.</p>
       </div>
     </div>
-
     <div class="tab bg-secondary gradient" id="Featured">
       <h5>Featured Devs</h5>
       <div class="separator"></div>
@@ -302,9 +312,6 @@
       </div>
     </div>
   </div>
-
- 
-
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

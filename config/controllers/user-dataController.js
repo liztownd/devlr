@@ -1,5 +1,6 @@
 // Requiring our models and passport as we've configured it
 const passport = require("../passport");
+const isAuthenticated = require("../middleware/isAuthenticated");
 // Import the model (user.js) to use its database functions.
 const db = require('../../models');
 
@@ -31,6 +32,7 @@ module.exports = function(app) {
 app.get('/api/users/:id', (req,res)=>{
   db.Users.findOne({
       where:{
+
         id: req.params.id 
       },
       include:[db.Profile, db.Post]

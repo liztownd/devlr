@@ -9,9 +9,7 @@ $(document).ready(() => {
     setTheme(UserId);
     saveLanguage(UserId);
     getUserProfile(UserId);
-    // setPreferences(UserId);
-    addPost(UserId);
-  });
+
 
   function editProfile(UserId) {
     $('form').on("submit", (e) => {
@@ -57,8 +55,8 @@ $(document).ready(() => {
           console.log(err)
         }
       });
-    })
-  }
+    });
+  };
 
 // getting the user profile to show it on my background section
  function getUserProfile(UserId){
@@ -88,9 +86,11 @@ $(document).ready(() => {
       getAllPosts(posts);
       setPreferences(profile);
     }
+
      
   });
   
+
  }
    function getAllPosts(posts){
      console.log(posts);
@@ -99,7 +99,7 @@ $(document).ready(() => {
      let postDiv = $('#post-div');
     
      for(let i=0;i<posts.length; i++){
-       title = posts[i].title;
+       title = posts[i].title
        console.log(title);
        body = posts[i].body;
        var titletag = $('<h6></h6>').text(title);
@@ -112,6 +112,7 @@ $(document).ready(() => {
        ;
      
 }
+
 
 
    //add a new post
@@ -143,9 +144,9 @@ $(document).ready(() => {
    }
 
 
+
   // to change appearance
   function setTheme(UserId) {
-
     $('.theme').on('click', function (event) {
       event.preventDefault();
 
@@ -174,25 +175,20 @@ $(document).ready(() => {
             data: { color: color },
             url: `/api/users/${UserId}/color`,
           }).then((response) => console.log(response));
-
       });
-
     });
   };
 
   // add languages
-
   function saveLanguage(UserId) {
     $('#saveLang').on('click', function () {
       let languages = [];
       $.each($("input[name='langOpt']:checked"), function () {
         languages.push($(this).val());
       });
-
       let postData = {
         "lang": languages
       }
-
       // send to db
       $.ajax(
         {
@@ -224,6 +220,7 @@ $(document).ready(() => {
   //     };
 
   //     console.log(languages)
+
 
   //     for (let i=0; i<languages.length; i++){
   //       let langItems = $(
@@ -265,6 +262,12 @@ $(document).ready(() => {
   
     
       }
+  for (let i = 0; i < languages.length; i++) {
+        let langItems = $(
+          ` <button class="btn btn-secondary mx-2 my-3 language disabled">${languages[i]}</button>`
+        )
+        $('#langDisplay').append(langItems);
+      };
+    });
   
-
 });

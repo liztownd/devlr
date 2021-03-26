@@ -1,11 +1,13 @@
 
 const db = require('../../models');
+const passport = require("../passport");
+const isAuthenticated = require("../middleware/isAuthenticated");
 require('dotenv').config();
 const axios = require('axios');
 
 module.exports = function (app) {
     //route to get all profiles
-    app.get('/api/profiles', (req, res) => {
+    app.get('/api/profiles', isAuthenticated, (req, res) => {
         db.Profile.findAll({
             include: [db.Users]
         })
@@ -14,7 +16,7 @@ module.exports = function (app) {
     });
 
     //route to get a single post for a user
-    app.get('/api/profiles/:id', (req, res) => {
+    app.get('/api/profiles/:id', isAuthenticated, (req, res) => {
         // Here we add an "include" property to our options in our findOne query
         // We set the value to an array of the models we want to include in a left outer join
         // In this case, just db.Users
@@ -28,7 +30,7 @@ module.exports = function (app) {
     });
 
     // route to post the profile
-    app.post('/api/profiles', (req, res) => {
+    app.post('/api/profiles', isAuthenticated, (req, res) => {
         const body = req.body;
         db.Users.findOne(
             {
@@ -50,7 +52,7 @@ module.exports = function (app) {
 
 
     //  route for deleting the profile
-    app.delete('/api/profiles/:id', (req, res) => {
+    app.delete('/api/profiles/:id', isAuthenticated, (req, res) => {
         db.Profile.destroy({
             where: {
                 id: req.params.id
@@ -59,7 +61,7 @@ module.exports = function (app) {
             .catch(err => res.status(500).json(err))
     })
     //route for updating the profile
-    app.put('/api/profiles/:id', (req, res) => {
+    app.put('/api/profiles/:id', isAuthenticated, (req, res) => {
         db.Profile.update(req.body, {
             where: {
                 id: req.params.id
@@ -69,7 +71,7 @@ module.exports = function (app) {
     });
 
     //route for getting git repositories once we get gitusername from the profile
-    app.get('/github/:username', async (req, res) => {
+    app.get('/github/:username', isAuthenticated, async (req, res) => {
         try {
 
             const uri = encodeURI(
@@ -88,7 +90,7 @@ module.exports = function (app) {
     });
 
     // route for adding languages to profile
-    app.put('/api/users/languages/:UserId', (req, res) => {
+    app.put('/api/users/languages/:UserId', isAuthenticated, (req, res) => {
         console.log(req.body.lang);
         console.log(req.params.UserId);
 
@@ -104,7 +106,7 @@ module.exports = function (app) {
     })
 
     //route for adding theme to profile
-    app.put('/api/users/:UserId/color', (req, res) => {
+    app.put('/api/users/:UserId/color', isAuthenticated, (req, res) => {
         console.log(req.body);
         db.Profile.update({
             themePref: req.body.color,
@@ -117,7 +119,7 @@ module.exports = function (app) {
             .catch((err) => res.status(500).json(err))
     });
 
-    app.get('/api/users/:UserId', (req, res) => {
+    app.get('/api/users/:UserId', isAuthenticated, (req, res) => {
         db.Profile.findOne({
             where: {
                 UserId: req.params.UserId,
@@ -125,6 +127,5 @@ module.exports = function (app) {
         }).then((dbProfile) => res.status(200).json(dbProfile))
         .catch((err) => res.status(500).json(err));
     });
-
 
 }
