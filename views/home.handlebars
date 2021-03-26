@@ -106,7 +106,7 @@
               </div>
               <div class="modal-body">
                 <button type="button" class="btn btn-dark theme m-2" id="222222">Dark</button>
-                <button type="button" class="btn btn-light theme m-2" id="linen">Light</button>
+                {{!-- <button type="button" class="btn btn-light theme m-2" id="linen">Light</button> --}}
                 <button type="button" class="btn btn-keycap theme m-2" id="90959A">Keycap</button>
                 <button type="button" class="btn btn-sand theme m-2" id="BBB092">Sand</button>
                 <button type="button" class="btn btn-putty theme m-2" id="D4ADA9">Putty</button>
@@ -152,7 +152,7 @@
         </button>
 
         <!-- Languages Modal -->
-        <div class="modal fade" id="languagesModal" tabindex="-1" role="dialog" aria-labelledby="languages"
+        <div class="modal fade gradient" id="languagesModal" tabindex="-1" role="dialog" aria-labelledby="languages"
           aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -220,18 +220,18 @@
     <div class="tab bg-secondary gradient feed" id="feed">
       <h5>Feed</h5>
       <div class="separator mb-3"></div>
-      <div class="row align-items-center comment">
-<<<<<<< HEAD
+      <div class="row align-items-center comment"></div>
+
         <div class="col float-right mb-3" id= "post-div">
           <h6 id = "post-title">{{Profile.name}}</h6>
           <p id="post-body">
-=======
+
         <div class="col float-right mb-3">
           <h6 class="name">name</h6>
           <p>Hey, I read this article about the top 7 full-stack projects you
             need to try in 2021 and I thought you
             would enjoy it too.
->>>>>>> d4e717c9bcc6147e7453595b68a5c2934670a885
+            </p>
         </div>
       </div>
       <div class="separator mb-3"></div>
@@ -260,12 +260,14 @@
       <div class="separator"></div>
       <div class="mt-2">
         <h6>Project Title</h6>
+
         {{!-- <div class="mt-2">
           <input placeholder="Click to Edit"></input>
           <textarea
             placeholder="This is where you can write a blurb about your project or edit the data pulled from GitHub."
             rows="4"></textarea>
         </div> --}}
+
         <p class="mb-2">This is where you can display your projects with data pulled from GitHub. Click on Edit Profile
           and add your GitHub username.</p>
       </div>
@@ -290,9 +292,13 @@
         <p class="mb-2">This is where you can display your projects with data pulled from GitHub. Click on Edit Profile and add your GitHub username.</p>
       </div>
     </div>
-    <div class="tab bg-secondary gradient" id="Featured">
+
+
+    <div class="tab bg-secondary gradient" >
+
       <h5>Featured Devs</h5>
-      <div class="separator"></div>
+      <div id="Featured"></div>
+      {{!-- <div class="separator"></div>
       <div class="dev row align-items-center">
         <div class="circle mt-3" id="devPic"></div>
         <div class="ml-3 mt-3">
@@ -315,7 +321,7 @@
           <h5 class="text-center">user.id</h5>
           <h6 class="text-center">@user.name</h6>
         </div>
-      </div>
+      </div> --}}
     </div>
   </div>
 </main>
