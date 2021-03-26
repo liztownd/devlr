@@ -1,3 +1,4 @@
+
 $(document).ready(() => {
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
@@ -8,8 +9,7 @@ $(document).ready(() => {
     setTheme(UserId);
     saveLanguage(UserId);
     getUserProfile(UserId);
-    setPreferences(UserId);
-  });
+
 
   function editProfile(UserId) {
     $('form').on("submit", (e) => {
@@ -49,7 +49,10 @@ $(document).ready(() => {
         url: '/api/profiles',
         success: function (data) {
           console.log('success');
-          console.log(JSON.stringify(data));
+          console.log(JSON.stringify(data))
+        },
+        error: function(err){
+          console.log(err)
         }
       });
     });
@@ -62,7 +65,9 @@ $(document).ready(() => {
     url: `/api/users/${UserId}`,
     success: function (data) {
       console.log('success');
-     const profile= data.Profiles[0];
+      
+     const profile= data.Profile;
+     const posts = data.Posts
       // console.log(profile);
       let fromDate = profile.from;
       fromDate = fromDate.split('T')[0];
@@ -78,9 +83,67 @@ $(document).ready(() => {
       $(".startDate").text(`Started: ${fromDate}`);
       $(".endDate").text(`Ended: ${startDate}`);
       $(".gitUserName").text(`Git User Name: ${profile.gitUserName}`);
+      getAllPosts(posts);
+      setPreferences(profile);
     }
+
+     
   });
+  
+
  }
+   function getAllPosts(posts){
+     console.log(posts);
+     let title = $('#post-title');
+     let body = $('#post-body');
+     let postDiv = $('#post-div');
+    
+     for(let i=0;i<posts.length; i++){
+       title = posts[i].title
+       console.log(title);
+       body = posts[i].body;
+       var titletag = $('<h6></h6>').text(title);
+        var  bodytag = $('<p></p>').text(body);
+        let date = $('<p></p>').text(posts[i].createdAt);
+        $(bodytag).append(date);
+        $(titletag).append(bodytag);
+        $(postDiv).prepend(titletag);
+       }
+       ;
+     
+}
+
+
+
+   //add a new post
+   function addPost(UserId){
+    $('#postBtn').on('click', (e)=>{
+      console.log('clicked');
+     e.preventDefault();
+     const title = $('#postTitle').val().trim();
+     const body = $('#wallPost').val().trim();
+     const postObj= {
+       "title": title,
+       "body": body,
+       "UserId":UserId
+     } 
+     console.log(postObj);
+     $.ajax({
+      type: 'POST',
+      data: JSON.stringify(postObj),
+      contentType: 'application/json',
+      url: '/api/posts',
+      success: function (data) {
+        console.log('Posted successfully');
+        console.log(JSON.stringify(data));
+      }
+    });
+         $('#postTitle').val("");
+         $('#wallPost').val("");
+    })
+   }
+
+
 
   // to change appearance
   function setTheme(UserId) {
@@ -137,32 +200,74 @@ $(document).ready(() => {
     });
   };
 
-  function setPreferences(UserId) {
-    $.get(`/api/users/${UserId}`).then((data) => {
-      console.log(data);
+  // function setPreferences(UserId) {
+  //   $.get(`/api/users/${UserId}`).then((data) => {
+  //     // console.log(data.Profiles[0]);
+  //     let profile = data.Profile
+  //     let r = document.querySelector(':root');
+  //     let color = profile.themePref;
+  //     let languages = profile.languages;
+
+  //     if (color === 'linen') {
+  //       r.style.setProperty('--main-bg-color', `#${color}`);
+  //       r.style.setProperty('--main-text-color', '#222222');
+  //       // r.style.setProperty('--secondary-bg-color', '#979797')
+  //     }
+  //     else {
+  //       r.style.setProperty('--main-bg-color', `#${color}`);
+  //       r.style.setProperty('--main-text-color', 'linen');
+  //       r.style.setProperty('--secondary-bg-color', 'transparent');
+  //     };
+
+  //     console.log(languages)
+
+
+  //     for (let i=0; i<languages.length; i++){
+  //       let langItems = $(
+  //         ` <button class="btn btn-secondary mx-2 my-3 language disabled">${languages[i]}</button>`
+  //       )
+  //       $('#langDisplay').append(langItems);
+  //     };
+
+  //   })
+  // }
+    
+  
+  // dont have to make two api calls now we can get profile from getProfile function
+  function setPreferences(profile) {
+      console.log(profile)
       let r = document.querySelector(':root');
-      let color = data.themePref;
-      let languages = data.languages;
-
-      if (color === 'linen') {
-        r.style.setProperty('--main-bg-color', `#${color}`);
-        r.style.setProperty('--main-text-color', '#222222');
-        // r.style.setProperty('--secondary-bg-color', '#979797')
+        let color = profile.themePref;
+        let languages = profile.languages;
+  
+        if (color === 'linen') {
+          r.style.setProperty('--main-bg-color', `#${color}`);
+          r.style.setProperty('--main-text-color', '#222222');
+          // r.style.setProperty('--secondary-bg-color', '#979797')
+        }
+        else {
+          r.style.setProperty('--main-bg-color', `#${color}`);
+          r.style.setProperty('--main-text-color', 'linen');
+          r.style.setProperty('--secondary-bg-color', 'transparent');
+        };
+  
+        console.log(languages)
+  
+        for (let i=0; i<languages.length; i++){
+          let langItems = $(
+            ` <button class="btn btn-secondary mx-2 my-3 language disabled">${languages[i]}</button>`
+          )
+          $('#langDisplay').append(langItems);
+        };
+  
+    
       }
-      else {
-        r.style.setProperty('--main-bg-color', `#${color}`);
-        r.style.setProperty('--main-text-color', 'linen');
-        r.style.setProperty('--secondary-bg-color', 'transparent');
-      };
-
-      console.log(languages)
-
-      for (let i = 0; i < languages.length; i++) {
+  for (let i = 0; i < languages.length; i++) {
         let langItems = $(
           ` <button class="btn btn-secondary mx-2 my-3 language disabled">${languages[i]}</button>`
         )
         $('#langDisplay').append(langItems);
       };
     });
-  };
+  
 });
