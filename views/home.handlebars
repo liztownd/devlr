@@ -3,7 +3,7 @@
   <div class="d-flex flex-row align-items-center justify-content-around">
     <!--LEFT column-->
     <div class="bg-secondary mr-4" id="left-col">
-      <img src="img/devlr-logo-light.png" class="img-fluid logo mb-4 mx-auto" alt="devlr logo">
+      <img src="img/devlr-logo-light.png" class="img-fluid logo mb-4 mx-auto circle" alt="devlr logo">
       <h1>devlr</h1>
       <div id="side-nav">
         <ul class="list-group">
@@ -70,17 +70,6 @@
       <h5>My Background</h5>
       <div class="separator mb-3"></div>
       <div id="backgroundInfo"></div>
-      {{!-- <ul class="mb-2" id="backgroundWrapper">
-        <li class="my-1 gitUserName">"gitUserName"</li>
-        <li class="my-1 highestGraduation">"highestGraduation"</li>
-        <li class="my-1 school">"school"</li>
-        <li class="my-1 skills">"skills"</li>
-        <li class="my-1 experience">"experience"</li>
-        <li class="my-1 position">"position"</li>
-        <li class="my-1 company">company</li>
-        <li class="my-1 startDate">"startDate"</li>
-        <li class="my-1 endDate">"endDate"</li>
-      </ul> --}}
     </div>
     <div class="tab bg-secondary gradient" id="MyLanguages">
       <div class="d-flex flex-row align-items-center justify-content-between">
@@ -159,8 +148,9 @@
     <div class="tab bg-secondary gradient feed">
       <h5>Feed</h5>
       <div class="separator mb-3"></div>
-        <div class="col mb-3" id= "post-div">
-          <h6 id="post-title">{{Profile.name}}</h6>
+      <div class="row align-items-center comment"></div>
+        <div class="col float-right mb-3" id= "post-div">
+          <h6 id = "post-title">{{Profile.name}}</h6>
           <p id="post-body">
         </div>
       </div>
@@ -170,18 +160,10 @@
   <!--RIGHT Column-->
   <div class="bg-secondary m-3" id="right-col">
     <div class="tab bg-secondary gradient pp-scroll" id="PinnedProjects">
-      <h5>My Pinned Projects</h5>
+      <h5 >My Pinned Projects</h5>
       <div class="separator"></div>
       <div class="mt-2">
         <h6>Project Title</h6>
-
-        {{!-- <div class="mt-2">
-          <input placeholder="Click to Edit"></input>
-          <textarea
-            placeholder="This is where you can write a blurb about your project or edit the data pulled from GitHub."
-            rows="4"></textarea>
-        </div> --}}
-
         <p class="mb-2">This is where you can display your projects with data pulled from GitHub. Click on Edit Profile
           and add your GitHub username.</p>
       </div>

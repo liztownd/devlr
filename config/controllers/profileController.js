@@ -136,9 +136,9 @@ module.exports = function (app) {
 
 
     // to get ids for featured dev for loop
-    app.get('/api/count/profiles', isAuthenticated, (req, res) => {
+    app.get('/api/devs/profiles', isAuthenticated, (req, res) => {
         db.Profile.findAll({
-            attributes: ['id'],
+            attributes: ['id', 'name', 'gitUserName', 'profilePic'],
         })
             .then(count => res.status(200).json(count))
             .catch(err => res.status(404).json({ msg: "cannot find profiles!" }))

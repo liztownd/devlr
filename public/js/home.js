@@ -13,6 +13,12 @@ $(document).ready(() => {
     deleteAccount(UserId);
   }); //initial get call end tag
 
+  var element= localStorage.getItem('status');
+  if (element == null || element == '') {
+      localStorage.setItem('status', 1);
+      $('#editProfileToast').toast('show');
+  }; //localstorage check end tag
+
     function editProfile(UserId) {
       $('form').on("submit", (e) => {
         e.preventDefault();
@@ -57,6 +63,7 @@ $(document).ready(() => {
             console.log(err)
           }
         }); //post ajax end tag
+        $('#pullProjectsToast').toast('show');
       }); //submit onclick end tag
     }; //editProfile fn end tag
 
@@ -103,9 +110,9 @@ $(document).ready(() => {
 
           $('#backgroundInfo').append(backgroundInfo);
           
-          
+          const gitUserName = profile.gitUserName
           getAllPosts(posts);
-
+          githubRepo(gitUserName)
           const themePref = profile.themePref;
           const savedLang = profile.languages;
           setThemePref(themePref);
@@ -287,24 +294,24 @@ $(document).ready(() => {
       $.ajax({
         type: 'GET',
         contentType: 'application/json',
-        url: '/api/count/profiles',
+        url: '/api/devs/profiles',
       }).then((response) => {
 
         for (let i = 0; i < 3; i++) {
           let len = response.length
           let devIndex = Math.floor(Math.random() * Math.floor(len))
           let profId = response[devIndex].id;
-
-          $.get(`api/profiles/${profId}`).then((data) => {
-            // console.log(data);
+          let devName = response[devIndex].name;
+          let devGit = response[devIndex].gitUserName;
+          let devPic = response[devIndex].profilePic;
 
             let featDevDiv = $(
               `<div class="separator mt-3"></div>
           <div class="dev row align-items-center">
-          <div class="circle mt-3 devPic" data-value="${data.id}"></div>
+          <div class="circle mt-3 devPic" data-value="${profId}"></div>
           <div class="ml-3 mt-3">
-          <h5 class="text-center">${data.name}</h5>
-          <h6 class="text-center">@${data.gitUserName}</h6>
+          <h5 class="text-center">${devName}</h5>
+          <h6 class="text-center">@${devGit}</h6>
           </div>
           </div>`
             )
@@ -312,7 +319,7 @@ $(document).ready(() => {
 
             $('#Featured').append(featDevDiv);
 
-          })//2nd get end tag
+         
         };//for loop end tag
       });//then end tag
     }; //fn end tag
@@ -330,9 +337,38 @@ $(document).ready(() => {
         );
       });
     };
+        //getting github repos and avatar
+        function githubRepo(gitUserName){
+          $.ajax({
+            type:'GET',
+            url:`/github/${gitUserName}`
+          }).then(data=>{
+            console.log(data)
+            console.log(data[0].html_url);
+            console.log(data[0].full_name);
+            const avatar= data[0].owner.avatar_url;
+            for(let i=0; i<data.length; i++){
+         
+            let repoDiv = $(
+          `<div class="separator "></div>
+          <div class="mt-2">
+           <h6 class="text-center">${data[i].full_name}</h6>
+         <a class="text-primary text-center m-4" href= "${data[i].html_url}" target="_blank">checkout my project repo</a>
+         </div>`)
+           
+           $('#PinnedProjects').append(repoDiv)
+         };
+        let avatarUrl = $(
+     `<img src = ${avatar} class="img-fluid circle rounded" height="250" width= "250"></img>`
+            )
+            $('#userPic').append(avatarUrl);
+         });
+        
   
-  
- 
+      
+
+
+
       $(document).on('click', '.devPic', function(){
        
         let profileId = $(this).data('value');
@@ -341,5 +377,5 @@ $(document).ready(() => {
 
       })
     
-
+    }
   }); //document ready end tag
