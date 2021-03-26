@@ -71,7 +71,7 @@ module.exports = function (sequelize, DataTypes) {
         // We're saying that a Profile should belong to an User
         // A Profile can't be created without a User due to the foreign key constraint
         Profile.belongsTo(models.Users, {
-
+        onDelete:'cascade'
         });
     };
     return Profile;

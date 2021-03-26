@@ -89,9 +89,6 @@ module.exports = function (app) {
 
     // route for adding languages to profile
     app.put('/api/users/languages/:UserId', (req, res) => {
-        console.log(req.body.lang);
-        console.log(req.params.UserId);
-
         db.Profile.update({
             languages: req.body.lang
         },
@@ -105,7 +102,6 @@ module.exports = function (app) {
 
     //route for adding theme to profile
     app.put('/api/users/:UserId/color', (req, res) => {
-        console.log(req.body);
         db.Profile.update({
             themePref: req.body.color,
         },
@@ -125,6 +121,18 @@ module.exports = function (app) {
         }).then((dbProfile) => res.status(200).json(dbProfile))
         .catch((err) => res.status(500).json(err));
     });
+
+
+    // to get ids for featured dev for loop
+    app.get('/api/count/profiles', (req, res) => {
+        db.Profile.findAll({
+            attributes: ['id'],
+        })
+            .then(count => res.status(200).json(count))
+            .catch(err => res.status(404).json({ msg: "cannot find profiles!" }))
+    });
+
+
 
 
 }

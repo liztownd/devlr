@@ -27,5 +27,14 @@ module.exports = function(app) {
     }).then(dbUser=> res.status(200).json({msg: "user deleted"}))
     .catch(err=> res.status(500).json(err));
   })
-
+//route to get profile and posts for the current loggedin user
+app.get('/api/users/:UserId', (req,res)=>{
+  db.Profile.findOne({
+      where:{
+        UserId: req.params.UserId 
+      },
+      
+  }).then((data)=>res.status(200).json(data))
+  .catch(err=>res.status(500).json(err))
+})
 };
