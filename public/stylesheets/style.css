@@ -472,6 +472,10 @@ margin-block-end: 0;
   vertical-align: middle;
 }
 
+#PinnedProjects {
+  min-width: 275px;
+}
+
 .devPic {
   background-color: var(--main-text-color);
   width: 50px;

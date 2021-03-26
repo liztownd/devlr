@@ -145,7 +145,18 @@ module.exports = function (app) {
     });
 
 
-
+    // send profile pic urls to db
+    app.put(`/api/users/pic/:gitUserName`, isAuthenticated, (req, res) => {
+        db.Profile.update({
+            profilePic: req.body.profilePic
+        },
+            {
+                where: {
+                    gitUserName: req.params.gitUserName,
+                },
+            }).then((dbProfile) => res.status(200).json(dbProfile))
+            .catch((err) => res.status(500).json(err))
+    })
 
 
 }

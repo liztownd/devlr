@@ -101,9 +101,13 @@ $(document).ready(() => {
             `
           )
 
-          $('#backgroundInfo').append(backgroundInfo);
-          
           const gitUserName = profile.gitUserName
+
+          $('#backgroundInfo').append(backgroundInfo);
+          $(".name").text(profile.name);
+          $(".gitUserName").text(`GitHub User Name: ${profile.gitUserName}`)
+          
+          
           getAllPosts(posts);
           githubRepo(gitUserName)
           const themePref = profile.themePref;
@@ -298,16 +302,20 @@ $(document).ready(() => {
           let devGit = response[devIndex].gitUserName;
           let devPic = response[devIndex].profilePic;
 
+          console.log(devPic);
+
             let featDevDiv = $(
               `<div class="separator mt-3"></div>
           <div class="dev row align-items-center">
-          <div class="circle mt-3 devPic" data-value="${profId}"></div>
+          <div class="circle mt-3 devPic" data-value="${profId}"><img src = ${devPic} class="img-fluid circle" height="250" width= "250"></img>
+          </div>
           <div class="ml-3 mt-3">
           <h5 class="text-center">${devName}</h5>
           <h6 class="text-center">@${devGit}</h6>
           </div>
           </div>`
             )
+            
 
 
             $('#Featured').append(featDevDiv);
@@ -340,21 +348,35 @@ $(document).ready(() => {
             console.log(data[0].html_url);
             console.log(data[0].full_name);
             const avatar= data[0].owner.avatar_url;
-            for(let i=0; i<data.length; i++){
-         
+
+            for(let i=0; i<5; i++){
             let repoDiv = $(
-          `<div class="separator "></div>
+          `
           <div class="mt-2">
-           <h6 class="text-center">${data[i].full_name}</h6>
-         <a class="text-primary text-center m-4" href= "${data[i].html_url}" target="_blank">checkout my project repo</a>
-         </div>`)
+           <h5 class="text-center">${data[i].name}</h5>
+         <a class="text-primary text-center m-4" href= "${data[i].html_url}" target="_blank">Project Repo</a>
+         </div>
+         <hr class="75">`)
            
            $('#PinnedProjects').append(repoDiv)
          };
         let avatarUrl = $(
-     `<img src = ${avatar} class="img-fluid circle rounded" height="250" width= "250"></img>`
+     `<img src = ${avatar} class="img-fluid circle" height="250" width= "250"></img>`
             )
             $('#userPic').append(avatarUrl);
+
+            let postData = {profilePic: avatar};
+
+          $.ajax(
+            {
+              type: 'PUT',
+              contentType: 'application/json',
+              data: JSON.stringify(postData),
+              url: `/api/users/pic/${gitUserName}`,
+            }).then((response) => console.log(response));
+  
+          
+
          });
         
   
