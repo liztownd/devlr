@@ -438,13 +438,13 @@ margin-block-end: 0;
 
 #appearanceBtn {
   border-radius: 20px;
-  background: rgb(245, 245, 245);
+  background-color: var(--main-text-color);
   background: linear-gradient(
     180deg,
     rgba(245, 245, 245, 0.1) 0%,
     rgba(250, 240, 230, 0.1) 49.48%
   );
-  border: none;
+  /* border: none; */
 }
 
 #userPic {
@@ -456,7 +456,7 @@ margin-block-end: 0;
   vertical-align: middle;
 }
 
-#devPic {
+.devPic {
   background-color: var(--main-text-color);
   width: 50px;
   height: 50px;

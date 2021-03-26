@@ -11,6 +11,8 @@ $(document).ready(() => {
     getUserProfile(UserId);
 
 
+  getFeaturedDevs();
+
   function editProfile(UserId) {
     $('form').on("submit", (e) => {
       e.preventDefault();
@@ -57,6 +59,7 @@ $(document).ready(() => {
       });
     });
   };
+
 
 // getting the user profile to show it on my background section
  function getUserProfile(UserId){
@@ -175,6 +178,10 @@ $(document).ready(() => {
             data: { color: color },
             url: `/api/users/${UserId}/color`,
           }).then((response) => console.log(response));
+
+
+        // close modal automatically
+
       });
     });
   };
@@ -197,49 +204,24 @@ $(document).ready(() => {
           data: JSON.stringify(postData),
           url: `/api/users/languages/${UserId}`,
         }).then((response) => console.log(response));
+      // we need a location reload here and to close the modal
+
     });
   };
 
-  // function setPreferences(UserId) {
-  //   $.get(`/api/users/${UserId}`).then((data) => {
-  //     // console.log(data.Profiles[0]);
-  //     let profile = data.Profile
-  //     let r = document.querySelector(':root');
-  //     let color = profile.themePref;
-  //     let languages = profile.languages;
 
-  //     if (color === 'linen') {
-  //       r.style.setProperty('--main-bg-color', `#${color}`);
-  //       r.style.setProperty('--main-text-color', '#222222');
-  //       // r.style.setProperty('--secondary-bg-color', '#979797')
-  //     }
-  //     else {
-  //       r.style.setProperty('--main-bg-color', `#${color}`);
-  //       r.style.setProperty('--main-text-color', 'linen');
-  //       r.style.setProperty('--secondary-bg-color', 'transparent');
-  //     };
-
-  //     console.log(languages)
-
-
-  //     for (let i=0; i<languages.length; i++){
-  //       let langItems = $(
-  //         ` <button class="btn btn-secondary mx-2 my-3 language disabled">${languages[i]}</button>`
-  //       )
-  //       $('#langDisplay').append(langItems);
-  //     };
-
-  //   })
-  // }
-    
   
-  // dont have to make two api calls now we can get profile from getProfile function
-  function setPreferences(profile) {
-      console.log(profile)
-      let r = document.querySelector(':root');
-        let color = profile.themePref;
-        let languages = profile.languages;
-  
+
+  // set theme stored in db
+  function setThemePref(themePref) {
+    console.log(themePref);
+      if (!themePref) {
+        return
+      }
+      else {
+        let r = document.querySelector(':root');
+        let color = themePref;
+
         if (color === 'linen') {
           r.style.setProperty('--main-bg-color', `#${color}`);
           r.style.setProperty('--main-text-color', '#222222');
@@ -250,24 +232,65 @@ $(document).ready(() => {
           r.style.setProperty('--main-text-color', 'linen');
           r.style.setProperty('--secondary-bg-color', 'transparent');
         };
-  
-        console.log(languages)
-  
-        for (let i=0; i<languages.length; i++){
+      }
+  };
+
+// load languages stored in db
+  function getLang(savedLang) {
+    console.log(savedLang);
+
+      if (!savedLang) {
+
+        return
+      }
+      else {
+
+        for (let i = 0; i < savedLang.length; i++) {
           let langItems = $(
-            ` <button class="btn btn-secondary mx-2 my-3 language disabled">${languages[i]}</button>`
+            ` <button class="btn btn-secondary mx-2 my-3 language disabled">${savedLang[i]}</button>`
           )
           $('#langDisplay').append(langItems);
         };
-  
-    
-      }
-  for (let i = 0; i < languages.length; i++) {
-        let langItems = $(
-          ` <button class="btn btn-secondary mx-2 my-3 language disabled">${languages[i]}</button>`
-        )
-        $('#langDisplay').append(langItems);
       };
-    });
-  
+    
+  };
+
+  //get featured devs info and append
+  function getFeaturedDevs() {
+
+    $.ajax({
+      type: 'GET',
+      contentType: 'application/json',
+      url: '/api/count/profiles',
+    }).then((response) => {
+
+      for (let i = 0; i < 3; i++) {
+        let len = response.length
+        let devIndex = Math.floor(Math.random() * Math.floor(len))
+        let profId = response[devIndex].id;
+
+        $.get(`api/profiles/${profId}`).then((data) => {
+          // console.log(data);
+
+          let featDevDiv = $(
+          `<div class="separator mt-3"></div>
+          <div class="dev row align-items-center">
+          <div class="circle mt-3 devPic" id="${data.id}"></div>
+          <div class="ml-3 mt-3">
+          <h5 class="text-center">${data.name}</h5>
+          <h6 class="text-center">@${data.gitUserName}</h6>
+          </div>
+          </div>`
+          )
+
+
+          $('#Featured').append(featDevDiv);
+
+        })//2nd get end tag
+      };//for loop end tag
+    });//then end tag
+  }; //fn end tag
+
+
+
 });
