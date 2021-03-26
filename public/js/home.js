@@ -8,8 +8,6 @@ $(document).ready(() => {
     setTheme(UserId);
     saveLanguage(UserId);
     getUserProfile(UserId);
-    setThemePref(UserId);
-    getLang(UserId);
 
   });
 
@@ -61,22 +59,6 @@ $(document).ready(() => {
 
   // My Background section on Home Page - Handlebars
 
-  // $.get("/api/profiles").then(data => {
-  //   let fromDate = data[0].from;
-  //   fromDate = fromDate.split('T')[0];
-  //   let startDate = data[0].from;
-  //   startDate = startDate.split('T')[0];
-  //   $(".highestGraduation").text(`Highest Graduation: ${data[0].highestGraduation}`);
-  //   $(".school").text(`School: ${data[0].school}`);
-  //   $(".name").text(`Name: ${data[0].name}`);
-  //   $(".skills").text(`Skills: ${data[0].skills}`);
-  //   $(".experience").text(`Years of Experience: ${data[0].TotalYearsOfexp}`);
-  //   $(".position").text(`Position: ${data[0].currentPosition}`);
-  //   $(".company").text(`Company: ${data[0].companyName}`);
-  //   $(".startDate").text(`Started: ${fromDate}`);
-  //   $(".endDate").text(`Ended: ${startDate}`);
-  //   $(".gitUserName").text(`Git User Name: ${data[0].gitUserName}`);
-  // });
   // getting the user profile to show it on my background section
   function getUserProfile(UserId) {
     $.ajax({
@@ -99,13 +81,19 @@ $(document).ready(() => {
         $(".startDate").text(`Started: ${fromDate}`);
         $(".endDate").text(`Ended: ${startDate}`);
         $(".gitUserName").text(`Git User Name: ${data.gitUserName}`);
+
+        const themePref = data.themePref
+        const savedLang = data.languages
+    
+        setThemePref(themePref);
+        getLang(savedLang);
       }
+      
 
     });
 
 
   }
-
 
 
   // to change appearance
@@ -148,7 +136,6 @@ $(document).ready(() => {
   };
 
   // add languages
-
   function saveLanguage(UserId) {
     $('#saveLang').on('click', function () {
       let languages = [];
@@ -173,16 +160,15 @@ $(document).ready(() => {
     });
   };
 
-  function setThemePref(UserId) {
-    $.get(`/api/users/${UserId}`).then((data) => {
-
-
-      if (!data.themePref) {
+  // set theme stored in db
+  function setThemePref(themePref) {
+    console.log(themePref);
+      if (!themePref) {
         return
       }
       else {
         let r = document.querySelector(':root');
-        let color = data.themePref;
+        let color = themePref;
 
         if (color === 'linen') {
           r.style.setProperty('--main-bg-color', `#${color}`);
@@ -195,33 +181,28 @@ $(document).ready(() => {
           r.style.setProperty('--secondary-bg-color', 'transparent');
         };
       }
-    });
   };
 
+// load languages stored in db
+  function getLang(savedLang) {
+    console.log(savedLang);
 
-  function getLang(UserId) {
-
-    $.get(`/api/users/${UserId}`).then((data) => {
-
-
-      if (!data.languages) {
+      if (!savedLang) {
         return
       }
       else {
-        let languages = data.languages;
 
-        for (let i = 0; i < languages.length; i++) {
+        for (let i = 0; i < savedLang.length; i++) {
           let langItems = $(
-            ` <button class="btn btn-secondary mx-2 my-3 language disabled">${languages[i]}</button>`
+            ` <button class="btn btn-secondary mx-2 my-3 language disabled">${savedLang[i]}</button>`
           )
           $('#langDisplay').append(langItems);
         };
       };
-    });
+    
   };
 
-
-
+  //get featured devs info and append
   function getFeaturedDevs() {
 
     $.ajax({
@@ -241,7 +222,7 @@ $(document).ready(() => {
           let featDevDiv = $(
           `<div class="separator mt-3"></div>
           <div class="dev row align-items-center">
-          <div class="circle mt-3" id="${data.id}"></div>
+          <div class="circle mt-3 devPic" id="${data.id}"></div>
           <div class="ml-3 mt-3">
           <h5 class="text-center">${data.name}</h5>
           <h6 class="text-center">@${data.gitUserName}</h6>
