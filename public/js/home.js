@@ -9,8 +9,6 @@ $(document).ready(() => {
     saveLanguage(UserId);
     getUserProfile(UserId);
 
-    setThemePref(UserId);
-    getLang(UserId);
 
 
   });
@@ -89,7 +87,6 @@ $(document).ready(() => {
   });
  }
 
-
   // to change appearance
   function setTheme(UserId) {
     $('.theme').on('click', function (event) {
@@ -151,16 +148,15 @@ $(document).ready(() => {
     });
   };
 
-  function setThemePref(UserId) {
-    $.get(`/api/users/${UserId}`).then((data) => {
-
-
-      if (!data.themePref) {
+  // set theme stored in db
+  function setThemePref(themePref) {
+    console.log(themePref);
+      if (!themePref) {
         return
       }
       else {
         let r = document.querySelector(':root');
-        let color = data.themePref;
+        let color = themePref;
 
         if (color === 'linen') {
           r.style.setProperty('--main-bg-color', `#${color}`);
@@ -173,34 +169,29 @@ $(document).ready(() => {
           r.style.setProperty('--secondary-bg-color', 'transparent');
         };
       }
-    });
   };
 
+// load languages stored in db
+  function getLang(savedLang) {
+    console.log(savedLang);
 
+      if (!savedLang) {
 
-  function getLang(UserId) {
-
-    $.get(`/api/users/${UserId}`).then((data) => {
-
-
-      if (!data.languages) {
         return
       }
       else {
-        let languages = data.languages;
 
-        for (let i = 0; i < languages.length; i++) {
+        for (let i = 0; i < savedLang.length; i++) {
           let langItems = $(
-            ` <button class="btn btn-secondary mx-2 my-3 language disabled">${languages[i]}</button>`
+            ` <button class="btn btn-secondary mx-2 my-3 language disabled">${savedLang[i]}</button>`
           )
           $('#langDisplay').append(langItems);
         };
       };
-    });
+    
   };
 
-
-
+  //get featured devs info and append
   function getFeaturedDevs() {
 
     $.ajax({
@@ -220,7 +211,7 @@ $(document).ready(() => {
           let featDevDiv = $(
           `<div class="separator mt-3"></div>
           <div class="dev row align-items-center">
-          <div class="circle mt-3" id="${data.id}"></div>
+          <div class="circle mt-3 devPic" id="${data.id}"></div>
           <div class="ml-3 mt-3">
           <h5 class="text-center">${data.name}</h5>
           <h6 class="text-center">@${data.gitUserName}</h6>
