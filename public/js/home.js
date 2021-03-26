@@ -8,7 +8,8 @@ $(document).ready(() => {
     setTheme(UserId);
     saveLanguage(UserId);
     getUserProfile(UserId);
-    addPost(UserId)
+    addPost(UserId);
+    addModalPost(UserId);
     getFeaturedDevs();
     deleteAccount(UserId);
   }); //initial get call end tag
@@ -183,6 +184,35 @@ $(document).ready(() => {
         window.location.reload();
       }) //post button onclick end tag
     }; //add post fn end tag
+
+        //add a new post
+        function addModalPost(UserId) {
+          $('#modalPostBtn').on('click', (e) => {
+            console.log('clicked');
+            e.preventDefault();
+            const title = $('#modalPostTitle').val().trim();
+            const body = $('#modalWallPost').val().trim();
+            const postObj = {
+              "title": title,
+              "body": body,
+              "UserId": UserId
+            }
+            console.log(postObj);
+            $.ajax({
+              type: 'POST',
+              data: JSON.stringify(postObj),
+              contentType: 'application/json',
+              url: '/api/posts',
+              success: function (data) {
+                console.log('Posted successfully');
+                console.log(JSON.stringify(data));
+              }
+            }); //ajax call end tag
+            $('#modalPostTitle').val("");
+            $('#modalWallPost').val("");
+            window.location.reload();
+          }) //post button onclick end tag
+        }; //add post fn end tag
 
 
 
