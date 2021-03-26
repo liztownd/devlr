@@ -65,7 +65,6 @@ $(document).ready(() => {
           }
         }); //post ajax end tag
         window.location.reload();
-        $('#pullProjectsToast').toast('show');
       }); //submit onclick end tag
     }; //editProfile fn end tag
 
