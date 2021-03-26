@@ -452,6 +452,7 @@ margin-block-end: 0;
 }
 
 #appearanceBtn {
+  display: inline-flex;
   border-radius: 20px;
   background-color: var(--main-text-color);
   background: linear-gradient(
