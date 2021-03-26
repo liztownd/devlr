@@ -136,7 +136,7 @@ module.exports = function (app) {
 
 
     // to get ids for featured dev for loop
-    app.get('/api/count/profiles', (req, res) => {
+    app.get('/api/count/profiles', isAuthenticated, (req, res) => {
         db.Profile.findAll({
             attributes: ['id'],
         })
