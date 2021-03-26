@@ -11,6 +11,7 @@ $(document).ready(() => {
     getUserProfile(UserId);
     addPost(UserId)
     getFeaturedDevs();
+    deleteAccount(UserId);
   }); //initial get call end tag
 
     function editProfile(UserId) {
@@ -141,7 +142,7 @@ $(document).ready(() => {
 
     }; //getPost fn end tag
 
-
+   
 
     //add a new post
     function addPost(UserId) {
@@ -279,6 +280,7 @@ $(document).ready(() => {
       }; //else end tag
 
     }; //getLang fn end tag
+    
 
     //get featured devs info and append
     function getFeaturedDevs() {
@@ -316,7 +318,22 @@ $(document).ready(() => {
       });//then end tag
     }; //fn end tag
 
-   
+
+    function deleteAccount(UserId){
+      $("#account").on("click", function(){
+        console.log("clicked");
+        $.ajax({
+          type: "DELETE",
+          url:`api/users/${UserId}`
+        }).then(response=> {console.log(response)
+          window.location.replace("/");
+        }
+        );
+      });
+    };
+  
+  
+ 
       $(document).on('click', '.devPic', function(){
        
         let profileId = $(this).data('value');
@@ -325,7 +342,5 @@ $(document).ready(() => {
 
       })
     
-
-
 
   }); //document ready end tag
