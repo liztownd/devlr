@@ -351,11 +351,22 @@ $(document).ready(() => {
             const avatar= data[0].owner.avatar_url;
 
             for(let i=0; i<5; i++){
+
+              var projDesc;
+
+              if(data[i].description === null) {
+                projDesc = 'This project does not have a description yet.'
+              }
+              else{
+                projDesc = data[i].description
+              }
+
             let repoDiv = $(
           `
           <div class="mt-2">
            <h5 class="text-center">${data[i].name}</h5>
-         <a class="text-primary text-center m-4" href= "${data[i].html_url}" target="_blank">Project Repo</a>
+           <p class="small my-2">${projDesc}</p>
+         <a class="text-center m-4" href= "${data[i].html_url}" target="_blank">Project Repo</a>
          </div>
          <hr class="75">`)
            
