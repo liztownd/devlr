@@ -104,9 +104,9 @@ $(document).ready(() => {
 
           $('#backgroundInfo').append(backgroundInfo);
           
-          
+          const gitUserName = profile.gitUserName
           getAllPosts(posts);
-
+          githubRepo(gitUserName)
           const themePref = profile.themePref;
           const savedLang = profile.languages;
           setThemePref(themePref);
@@ -331,9 +331,38 @@ $(document).ready(() => {
         );
       });
     };
+        //getting github repos and avatar
+        function githubRepo(gitUserName){
+          $.ajax({
+            type:'GET',
+            url:`/github/${gitUserName}`
+          }).then(data=>{
+            console.log(data)
+            console.log(data[0].html_url);
+            console.log(data[0].full_name);
+            const avatar= data[0].owner.avatar_url;
+            for(let i=0; i<data.length; i++){
+         
+            let repoDiv = $(
+          `<div class="separator "></div>
+          <div class="mt-2">
+           <h6 class="text-center">${data[i].full_name}</h6>
+         <a class="text-primary text-center m-4" href= "${data[i].html_url}" target="_blank">checkout my project repo</a>
+         </div>`)
+           
+           $('#PinnedProjects').append(repoDiv)
+         };
+        let avatarUrl = $(
+     `<img src = ${avatar} class="img-fluid circle rounded" height="250" width= "250"></img>`
+            )
+            $('#userPic').append(avatarUrl);
+         });
+        
   
-  
- 
+      
+
+
+
       $(document).on('click', '.devPic', function(){
        
         let profileId = $(this).data('value');
@@ -342,5 +371,5 @@ $(document).ready(() => {
 
       })
     
-
+    }
   }); //document ready end tag
