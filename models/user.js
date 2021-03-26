@@ -33,13 +33,13 @@ module.exports = function(sequelize, DataTypes) {
   Users.associate = (models) => {
     // Associating Users with Posts
     // When an User is deleted, also delete any associated Posts
-    Users.hasOne(models.Post, {
+    Users.hasMany(models.Post, {
       onDelete: 'cascade',
       
     });
     // associating with profile
     //when a user is deleted, also deletes the associated profile
-    Users.hasMany(models.Profile, {
+    Users.hasOne(models.Profile, {
       
       onDelete: 'cascade',
     

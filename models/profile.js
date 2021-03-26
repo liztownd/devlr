@@ -65,6 +65,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: true,
         },
+        profilePic:{
+            type:DataTypes.BLOB,
+            allowNull:true
+        }
 
     });
     Profile.associate = (models) => {

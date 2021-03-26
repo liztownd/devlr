@@ -210,7 +210,8 @@
       <h5>My Wall</h5>
       <div class="separator"></div>
       <div class="tab bg-secondary mt-3 mb-1 gradient" id="postBox">
-        <textarea placeholder="What's on your mind?" rows="3"></textarea>
+        <textarea placeholder="Title" id="postTitle" rows="1"></textarea>
+        <textarea id="wallPost" placeholder="What's on your mind?" rows="3"></textarea>
       </div>
       <button class="btn btn-sm btn-secondary mt-2" type="submit" id="postBtn">
         Post
@@ -219,12 +220,18 @@
     <div class="tab bg-secondary gradient feed" id="feed">
       <h5>Feed</h5>
       <div class="separator mb-3"></div>
-      <div class="row align-items-center comment">
+      <div class="row align-items-center comment"></div>
+
+        <div class="col float-right mb-3" id= "post-div">
+          <h6 id = "post-title">{{Profile.name}}</h6>
+          <p id="post-body">
+
         <div class="col float-right mb-3">
           <h6 class="name">name</h6>
           <p>Hey, I read this article about the top 7 full-stack projects you
             need to try in 2021 and I thought you
             would enjoy it too.
+            </p>
         </div>
       </div>
       <div class="separator mb-3"></div>
@@ -253,12 +260,14 @@
       <div class="separator"></div>
       <div class="mt-2">
         <h6>Project Title</h6>
+
         {{!-- <div class="mt-2">
           <input placeholder="Click to Edit"></input>
           <textarea
             placeholder="This is where you can write a blurb about your project or edit the data pulled from GitHub."
             rows="4"></textarea>
         </div> --}}
+
         <p class="mb-2">This is where you can display your projects with data pulled from GitHub. Click on Edit Profile
           and add your GitHub username.</p>
       </div>
