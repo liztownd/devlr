@@ -103,11 +103,6 @@ body {
   width: 100%;
 }
 
-hr {
-  border: linen!important;
-}
-
-
 #left-col, #middle-col, #right-col {
   flex-direction: column;
 }
