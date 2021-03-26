@@ -55,8 +55,8 @@
                 <button type="button" class="btn btn-thistle theme m-2" id="9F879F">Thistle</button>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="saveTheme">Save
-                  changes</button>
+                <button type="button" class="btn btn-secondary gradient" id="saveTheme">Save
+                  Changes</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
             </div>
@@ -125,8 +125,8 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-secondary" id="saveLang">Save
-                  changes</button>
+                <button type="button" class="btn btn-secondary gradient" id="saveLang">Save
+                  Changes</button>
               </div>
             </div>
           </div>
@@ -183,6 +183,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4>Edit Profile</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
       </div>
       <div class="modal-body">
         <form>
@@ -226,11 +228,11 @@
             <label for="gitUserName">GitHub Username</label>
             <input type="text" class="form-control" id="userGitHub" placeholder="@username">
           </div>
-          <button type="submit" class="btn btn-secondary gradient">Update Profile</button>
-        </form>
-      </div>
+        </div>
       <div class="modal-footer">
-        <button class="btn btn-small btn-secondary" data-dismiss="modal">Exit</button>
+        <button type="submit" class="btn btn-secondary gradient">Update Profile</button>
+        </form>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -250,7 +252,7 @@
       </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-small btn-secondary gradient" data-dismiss="modal">Close</button>
+        <button class="btn btn-small btn-secondary" data-dismiss="modal">Cancel</button>
         <button class="btn btn-small btn-secondary gradient">Post</button>
       </div>
     </div>
@@ -263,6 +265,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4>Delete Account</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
       </div>
       <div class="modal-body">
       <div class="tab bg-secondary gradient mt-3 mb-1" style="border: none!important;">
@@ -276,8 +280,8 @@
       </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-small btn-secondary gradient" data-dismiss="modal">Cancel</button>
         <button class="btn btn-small btn-secondary gradient" id="account">Delete</button>
+        <button class="btn btn-small btn-secondary" data-dismiss="modal">Cancel</button>
       </div>
     </div>
   </div>
