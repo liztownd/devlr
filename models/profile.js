@@ -66,7 +66,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true,
         },
         profilePic:{
-            type:DataTypes.BLOB,
+            type:DataTypes.STRING,
             allowNull:true
         }
 
