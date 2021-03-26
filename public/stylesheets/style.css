@@ -438,7 +438,7 @@ margin-block-end: 0;
 
 #appearanceBtn {
   border-radius: 20px;
-  background: rgb(245, 245, 245);
+  background: var(--main-text-color);
   background: linear-gradient(
     180deg,
     rgba(245, 245, 245, 0.1) 0%,
