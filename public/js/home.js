@@ -288,24 +288,24 @@ $(document).ready(() => {
       $.ajax({
         type: 'GET',
         contentType: 'application/json',
-        url: '/api/count/profiles',
+        url: '/api/devs/profiles',
       }).then((response) => {
 
         for (let i = 0; i < 3; i++) {
           let len = response.length
           let devIndex = Math.floor(Math.random() * Math.floor(len))
           let profId = response[devIndex].id;
-
-          $.get(`api/profiles/${profId}`).then((data) => {
-            // console.log(data);
+          let devName = response[devIndex].name;
+          let devGit = response[devIndex].gitUserName;
+          let devPic = response[devIndex].profilePic;
 
             let featDevDiv = $(
               `<div class="separator mt-3"></div>
           <div class="dev row align-items-center">
-          <div class="circle mt-3 devPic" data-value="${data.id}"></div>
+          <div class="circle mt-3 devPic" data-value="${profId}"></div>
           <div class="ml-3 mt-3">
-          <h5 class="text-center">${data.name}</h5>
-          <h6 class="text-center">@${data.gitUserName}</h6>
+          <h5 class="text-center">${devName}</h5>
+          <h6 class="text-center">@${devGit}</h6>
           </div>
           </div>`
             )
@@ -313,7 +313,7 @@ $(document).ready(() => {
 
             $('#Featured').append(featDevDiv);
 
-          })//2nd get end tag
+         
         };//for loop end tag
       });//then end tag
     }; //fn end tag
