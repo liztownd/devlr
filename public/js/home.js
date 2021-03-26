@@ -77,7 +77,7 @@ $(document).ready(() => {
           fromDate = fromDate.split('T')[0];
           let endDate = profile.to;
           endDate = endDate.split('T')[0];
-          
+
           let backgroundInfo = $(
             `<div>
             <h5>GitHub</h5>
@@ -103,8 +103,8 @@ $(document).ready(() => {
           )
 
           $('#backgroundInfo').append(backgroundInfo);
-          
-          
+
+
           getAllPosts(posts);
 
           const themePref = profile.themePref;
@@ -142,7 +142,7 @@ $(document).ready(() => {
 
     }; //getPost fn end tag
 
-   
+
 
     //add a new post
     function addPost(UserId) {
@@ -280,7 +280,7 @@ $(document).ready(() => {
       }; //else end tag
 
     }; //getLang fn end tag
-    
+
 
     //get featured devs info and append
     function getFeaturedDevs() {
@@ -331,16 +331,16 @@ $(document).ready(() => {
         );
       });
     };
-  
-  
- 
+
+
+
       $(document).on('click', '.devPic', function(){
-       
+
         let profileId = $(this).data('value');
         console.log(profileId);
         // this needs a route to view another users profile
 
       })
-    
+
 
   }); //document ready end tag
