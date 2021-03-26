@@ -8,14 +8,20 @@ $(document).ready(() => {
     setTheme(UserId);
     saveLanguage(UserId);
     getUserProfile(UserId);
-    setPreferences(UserId);
+
+    setThemePref(UserId);
+    getLang(UserId);
+
+
   });
 
-    var element= localStorage.getItem('status');
+  var element= localStorage.getItem('status');
     if (element == null || element == '') {
         localStorage.setItem('status', 1);
         $('#editProfileToast').toast('show');
-    };
+  };
+
+  getFeaturedDevs();
 
   function editProfile(UserId) {
     $('form').on("submit", (e) => {
@@ -62,6 +68,7 @@ $(document).ready(() => {
     });
   };
 
+
 // getting the user profile to show it on my background section
  function getUserProfile(UserId){
   $.ajax({
@@ -88,6 +95,7 @@ $(document).ready(() => {
     }
   });
  }
+
 
   // to change appearance
   function setTheme(UserId) {
@@ -119,6 +127,10 @@ $(document).ready(() => {
             data: { color: color },
             url: `/api/users/${UserId}/color`,
           }).then((response) => console.log(response));
+
+
+        // close modal automatically
+
       });
     });
   };
@@ -141,34 +153,55 @@ $(document).ready(() => {
           data: JSON.stringify(postData),
           url: `/api/users/languages/${UserId}`,
         }).then((response) => console.log(response));
+      // we need a location reload here and to close the modal
+
     });
   };
 
-  function setPreferences(UserId) {
+  function setThemePref(UserId) {
     $.get(`/api/users/${UserId}`).then((data) => {
-      console.log(data);
-      let r = document.querySelector(':root');
-      let color = data.themePref;
-      let languages = data.languages;
 
-      if (color === 'linen') {
-        r.style.setProperty('--main-bg-color', `#${color}`);
-        r.style.setProperty('--main-text-color', '#222222');
-        // r.style.setProperty('--secondary-bg-color', '#979797')
+
+      if (!data.themePref) {
+        return
       }
       else {
-        r.style.setProperty('--main-bg-color', `#${color}`);
-        r.style.setProperty('--main-text-color', 'linen');
-        r.style.setProperty('--secondary-bg-color', 'transparent');
-      };
+        let r = document.querySelector(':root');
+        let color = data.themePref;
 
-      console.log(languages)
+        if (color === 'linen') {
+          r.style.setProperty('--main-bg-color', `#${color}`);
+          r.style.setProperty('--main-text-color', '#222222');
+          // r.style.setProperty('--secondary-bg-color', '#979797')
+        }
+        else {
+          r.style.setProperty('--main-bg-color', `#${color}`);
+          r.style.setProperty('--main-text-color', 'linen');
+          r.style.setProperty('--secondary-bg-color', 'transparent');
+        };
+      }
+    });
+  };
 
-      for (let i = 0; i < languages.length; i++) {
-        let langItems = $(
-          ` <button class="btn btn-secondary mx-2 my-3 language disabled">${languages[i]}</button>`
-        )
-        $('#langDisplay').append(langItems);
+
+
+  function getLang(UserId) {
+
+    $.get(`/api/users/${UserId}`).then((data) => {
+
+
+      if (!data.languages) {
+        return
+      }
+      else {
+        let languages = data.languages;
+
+        for (let i = 0; i < languages.length; i++) {
+          let langItems = $(
+            ` <button class="btn btn-secondary mx-2 my-3 language disabled">${languages[i]}</button>`
+          )
+          $('#langDisplay').append(langItems);
+        };
       };
 
     })
@@ -251,5 +284,42 @@ fetch('/api/posts', {
     });
   })
   .catch((err) => console.error(err));
+
+
+  function getFeaturedDevs() {
+
+    $.ajax({
+      type: 'GET',
+      contentType: 'application/json',
+      url: '/api/count/profiles',
+    }).then((response) => {
+
+      for (let i = 0; i < 3; i++) {
+        let len = response.length
+        let devIndex = Math.floor(Math.random() * Math.floor(len))
+        let profId = response[devIndex].id;
+
+        $.get(`api/profiles/${profId}`).then((data) => {
+          // console.log(data);
+
+          let featDevDiv = $(
+          `<div class="separator mt-3"></div>
+          <div class="dev row align-items-center">
+          <div class="circle mt-3" id="${data.id}"></div>
+          <div class="ml-3 mt-3">
+          <h5 class="text-center">${data.name}</h5>
+          <h6 class="text-center">@${data.gitUserName}</h6>
+          </div>
+          </div>`
+          )
+
+
+          $('#Featured').append(featDevDiv);
+
+        })//2nd get end tag
+      };//for loop end tag
+    });//then end tag
+  }; //fn end tag
+
 
 });
