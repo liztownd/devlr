@@ -1,3 +1,4 @@
+
 $(document).ready(() => {
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
@@ -61,7 +62,10 @@ $(document).ready(() => {
         url: '/api/profiles',
         success: function (data) {
           console.log('success');
-          console.log(JSON.stringify(data));
+          console.log(JSON.stringify(data))
+        },
+        error: function(err){
+          console.log(err)
         }
       });
       $('#pullProjectsToast').toast('show');
@@ -76,7 +80,9 @@ $(document).ready(() => {
     url: `/api/users/${UserId}`,
     success: function (data) {
       console.log('success');
-     const profile= data.Profiles[0];
+      
+     const profile= data.Profile;
+     const posts = data.Posts
       // console.log(profile);
       let fromDate = profile.from;
       fromDate = fromDate.split('T')[0];
@@ -92,9 +98,67 @@ $(document).ready(() => {
       $(".startDate").text(`Started: ${fromDate}`);
       $(".endDate").text(`Ended: ${startDate}`);
       $(".gitUserName").text(`Git User Name: ${profile.gitUserName}`);
+      getAllPosts(posts);
+      setPreferences(profile);
     }
+
+     
   });
+  
+
  }
+   function getAllPosts(posts){
+     console.log(posts);
+     let title = $('#post-title');
+     let body = $('#post-body');
+     let postDiv = $('#post-div');
+    
+     for(let i=0;i<posts.length; i++){
+       title = posts[i].title
+       console.log(title);
+       body = posts[i].body;
+       var titletag = $('<h6></h6>').text(title);
+        var  bodytag = $('<p></p>').text(body);
+        let date = $('<p></p>').text(posts[i].createdAt);
+        $(bodytag).append(date);
+        $(titletag).append(bodytag);
+        $(postDiv).prepend(titletag);
+       }
+       ;
+     
+}
+
+
+
+   //add a new post
+   function addPost(UserId){
+    $('#postBtn').on('click', (e)=>{
+      console.log('clicked');
+     e.preventDefault();
+     const title = $('#postTitle').val().trim();
+     const body = $('#wallPost').val().trim();
+     const postObj= {
+       "title": title,
+       "body": body,
+       "UserId":UserId
+     } 
+     console.log(postObj);
+     $.ajax({
+      type: 'POST',
+      data: JSON.stringify(postObj),
+      contentType: 'application/json',
+      url: '/api/posts',
+      success: function (data) {
+        console.log('Posted successfully');
+        console.log(JSON.stringify(data));
+      }
+    });
+         $('#postTitle').val("");
+         $('#wallPost').val("");
+    })
+   }
+
+
 
 
   // to change appearance
@@ -158,11 +222,13 @@ $(document).ready(() => {
     });
   };
 
-  function setThemePref(UserId) {
-    $.get(`/api/users/${UserId}`).then((data) => {
 
+  
 
-      if (!data.themePref) {
+  // set theme stored in db
+  function setThemePref(themePref) {
+    console.log(themePref);
+      if (!themePref) {
         return
       }
       else {
@@ -180,8 +246,8 @@ $(document).ready(() => {
           r.style.setProperty('--secondary-bg-color', 'transparent');
         };
       }
-    });
-  };
+    };
+  
 
 
 
@@ -320,6 +386,7 @@ fetch('/api/posts', {
       };//for loop end tag
     });//then end tag
   }; //fn end tag
+
 
 
 });
