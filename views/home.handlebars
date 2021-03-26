@@ -1,133 +1,41 @@
-<!--<h2>Welcome <span class="member-name"></span></h2>-->
-
-<div class="modal fade gradient"
-     id="editProfileModal"
-     tabindex="-1"
-     role="dialog"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4>Edit Profile</h4>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text"
-                   class="form-control"
-                   id="userName"
-                   placeholder="Dev Doe">
-          </div>
-          <div class="form-group">
-            <label for="highestGraduation">Highest Graduation</label>
-            <input type="text"
-                   class="form-control"
-                   id="userGraduation"
-                   placeholder="Masters">
-          </div>
-          <div class="form-group">
-            <label for="school">School</label>
-            <input type="text"
-                   class="form-control"
-                   id="userSchool"
-                   placeholder="Dev University">
-          </div>
-          <div class="form-group">
-            <label for="skills">Skills</label>
-            <input type="text"
-                   class="form-control"
-                   id="userSkills"
-                   placeholder="Relevant Skills">
-          </div>
-          <div class="form-group">
-            <label for="experience">Experience</label>
-            <input type="number"
-                   class="form-control"
-                   id="userExperience"
-                   placeholder="Years of Experience">
-          </div>
-          <div class="form-group">
-            <label for="position">Position</label>
-            <input type="text"
-                   class="form-control"
-                   id="userPosition"
-                   placeholder="Current Position">
-          </div>
-          <div class="form-group">
-            <label for="company">Company</label>
-            <input type="text"
-                   class="form-control"
-                   id="userCompany"
-                   placeholder="Company">
-          </div>
-          <div class="form-group">
-            <label for="startDate">Start Date</label>
-            <input type="date"
-                   class="form-control"
-                   id="userStartDate"
-                   placeholder="MM/DD/YYYY">
-          </div>
-          <div class="form-group">
-            <label for="startDate">End Date</label>
-            <input type="date"
-                   class="form-control"
-                   id="userEndDate"
-                   placeholder="MM/DD/YYYY">
-          </div>
-          <div class="form-group">
-            <label for="gitUserName">GitHub Username</label>
-            <input type="text"
-                   class="form-control"
-                   id="userGitHub"
-                   placeholder="@username">
-          </div>
-          <button type="submit"
-                  class="btn btn-secondary gradient">Update Profile</button>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-small btn-secondary"
-                data-dismiss="modal">Exit</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <main class="container position-relative">
   <div class="d-flex flex-row align-items-center justify-content-around">
     <!--LEFT column-->
-    <div class="bg-secondary mr-4"
-         id="left-col">
+    <div class="bg-secondary mr-4" id="left-col">
+      <img src="img/devlr-logo-light.png" class="img-fluid logo mb-4 mx-auto circle" alt="devlr logo">
       <h1>devlr</h1>
       <div id="side-nav">
         <ul class="list-group">
-          <li class="m-3"><a href="/home"><i class="material-icons">home</i> Home</li></a>
-          <li class="m-3"><a href="#"
-               data-toggle="modal"
-               data-target="#editProfileModal"><i class="material-icons">dashboard</i> Edit Profile</li></a>
-          <li class="m-3"><a href="#"><i class="material-icons">find_in_page</i> Browse</li></a>
-          <li class="m-3"><a href="#"><i class="material-icons">star_border</i> Starred</li></a>
-          <li class="m-3"><a href="#"><i class="material-icons">person_outline</i> Account</li></a>
-          <li class="m-3"><a href="/logout"><i class="material-icons">keyboard_return</i> Logout</li></a>
+          <li class="m-3"><a href="/home"><i class="material-icons">home</i>
+              Home</li></a>
+          <li class="m-3"><a href="#" data-toggle="modal" data-target="#editProfileModal"><i
+              class="material-icons">dashboard</i> Edit Profile</li></a>
+          <li class="m-3"><a href="#" data-toggle="modal" data-target="#deleteAccountModal"><i 
+              class="material-icons">person_outline</i>
+              Account</li></a>
+          <li class="m-3"><a href="/logout"><i class="material-icons">keyboard_return</i>
+              Logout</li></a>
         </ul>
       </div>
       <div class="d-flex flex-column align-items-center">
-        <button class="btn btn-lg btn-secondary mt-3"
-                id="newBtn">
+        <button class="btn btn-lg btn-secondary mt-3" id="newBtn" data-toggle="modal" data-target="#newPostModal">
           New
         </button>
-        <div class="circle"
-             id="userPic"></div>
-        <h5 class="text-center">{{Profile.name}}</h5>
-        <h6 class="text-center">{{Profile.gitUserName}}</h6>
-                <!-- Button trigger modal -->
-        <button type="button" class="btn btn-lg btn-secondary mt-3" data-toggle="modal" data-target="#appearanceModal">
-          <i class="material-icons">palette</i>Appearance
+        <div class="circle" id="userPic"></div>
+        <div>
+        <h5 class="text-center name"></h5>
+        <h6 class="text-center gitUserName"></h6>
+        </div>
+
+        <!-- Button trigger appearance modal -->
+        <button type="button" class="btn btn-lg btn-secondary mt-3" data-toggle="modal" data-target="#appearanceModal"
+          id="appearanceBtn">
+          <i class="material-icons" style="font-size: 24px;">palette</i>Appearance
         </button>
-        <!-- Modal -->
-        <div class="modal fade" id="appearanceModal" tabindex="-1" role="dialog" aria-labelledby="appearanceTitle"
-          aria-hidden="true">
+        <!-- Appearance Modal -->
+        <div class="modal fade gradient" id="appearanceModal" tabindex="-1" role="dialog"
+          aria-labelledby="appearanceTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -137,17 +45,18 @@
                 </button>
               </div>
               <div class="modal-body">
-                <button type="button" class="btn btn-dark cssTheme m-2" id="222222">Dark</button>
-                <button type="button" class="btn btn-light cssTheme m-2" id="linen">Light</button>
-                <button type="button" class="btn btn-secondary cssTheme m-2" id="transparent">Muted</button>
-                <button type="button" class="btn btn-keycap cssTheme m-2" id="90959A">Keycap</button>
-                <button type="button" class="btn btn-sand cssTheme m-2" id="BBB092">Sand</button>
-                <button type="button" class="btn btn-putty cssTheme m-2" id="D4ADA9">Putty</button>
-                <button type="button" class="btn btn-seaglass cssTheme m-2" id="8FBC8F">Seaglass</button>
-                <button type="button" class="btn btn-lagoon cssTheme m-2" id="7FAEB9">Lagoon</button>
-                <button type="button" class="btn btn-thistle cssTheme m-2" id="9F879F">Thistle</button>
+                <button type="button" class="btn btn-dark theme m-2" id="222222">Dark</button>
+                {{!-- <button type="button" class="btn btn-light theme m-2" id="linen">Light</button> --}}
+                <button type="button" class="btn btn-keycap theme m-2" id="90959A">Keycap</button>
+                <button type="button" class="btn btn-sand theme m-2" id="BBB092">Sand</button>
+                <button type="button" class="btn btn-putty theme m-2" id="D4ADA9">Putty</button>
+                <button type="button" class="btn btn-seaglass theme m-2" id="8FBC8F">Seaglass</button>
+                <button type="button" class="btn btn-lagoon theme m-2" id="7FAEB9">Lagoon</button>
+                <button type="button" class="btn btn-thistle theme m-2" id="9F879F">Thistle</button>
               </div>
               <div class="modal-footer">
+                <button type="button" class="btn btn-secondary gradient" id="saveTheme">Save
+                  Changes</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
             </div>
@@ -155,194 +64,267 @@
         </div>
       </div>
     </div>
-      </div>
-    </div>
+  </div>
 
-    <!--MIDDLE Column-->
-    <div class="bg-secondary m-3"
-         id="middle-col">
-      <div class="tab bg-secondary gradient bg-scroll"
-           id="MyBackground">
-        <h5>My Background</h5>
-        <div class="separator mb-3"></div>
-        <ul class="mb-2"
-            id="backgroundWrapper">
-          <li class="mb-1">GitHub Profile: {{gitUserName}}</li>
-          <li class="mb-1">Highest Graduation: {{highestGraduation}}</li>
-          <li class="mb-1">School: {{school}}</li>
-          <li class="mb-1">Skills: {{skills}}</li>
-          <li class="mb-1">Years of Experience: {{TotalYearsOfexp}}</li>
-          <li class="mb-1">Position: {{currentPosition}}</li>
-          <li class="mb-1">Company: {{companyName}}</li>
-          <li class="mb-1">Started: {{from}}</li>
-          <li class="mb-1">Ended: {{to}}</li>
-        </ul>
-      </div>
-      <div class="tab bg-secondary gradient"
-           id="MyLanguages">
-           <div class="d-flex flex-row align-items-center justify-content-between">
+  <!--MIDDLE Column-->
+  <div class="bg-secondary m-3" id="middle-col">
+    <div class="tab bg-secondary gradient bg-scroll" id="MyBackground">
+      <h5>My Background</h5>
+      <div class="separator mb-3"></div>
+      <div id="backgroundInfo"></div>
+    </div>
+    <div class="tab bg-secondary gradient" id="MyLanguages">
+      <div class="d-flex flex-row align-items-center justify-content-between">
         <h5>My Languages</h5>
-                <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle ml-3 mb-2"
-                  type="button"
-                  id="languageChoice"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false">
-            Choose
-          </button>
-          <div class="dropdown-menu dropdown-content"
-               aria-labelledby="languageChoice">
-            <a class="dropdown-item"
-               href="#">HTML5</a>
-            <a class="dropdown-item"
-               href="#">CSS3</a>
-            <a class="dropdown-item"
-               href="#">SQL</a>
-            <a class="dropdown-item"
-               href="#">JavaScript</a>
-            <a class="dropdown-item"
-               href="#">TypeScript</a>
-            <a class="dropdown-item"
-               href="#">jQuery</a>
-            <a class="dropdown-item"
-               href="#">Python</a>
-            <a class="dropdown-item"
-               href="#">PHP</a>
-            <a class="dropdown-item"
-               href="#">C</a>
-          </div>
-        </div>
-        </div>
-        <div class="separator"></div>
-        <button class="btn btn-secondary mt-3 language disabled">JavaScript</button>
-        <button class="btn btn-secondary mt-3 language disabled">HTML5</button>
-        <button class="btn btn-secondary mt-3 language disabled">CSS3</button>
-        <button class="btn btn-secondary mt-3 language disabled">SQL</button>
-      </div>
-
-      <div class="tab bg-secondary gradient"
-           id="MyWall">
-        <h5>My Wall</h5>
-        <div class="separator"></div>
-        <div class="tab bg-secondary mt-3 mb-1 gradient"
-             id="postBox">
-          <textarea placeholder="What's on your mind?"
-                    rows="3"></textarea>
-        </div>
-        <button class="btn btn-sm btn-secondary mt-2"
-                id="postBtn">
-          Post
+        <!-- Button trigger languages modal -->
+        <button type="button" class="btn btn-secondary gradient mb-3" data-toggle="modal" data-target="#languagesModal">
+          Choose Languages
         </button>
+
+        <!-- Languages Modal -->
+        <div class="modal fade gradient" id="languagesModal" tabindex="-1" role="dialog" aria-labelledby="languages"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="languages">Choose your languages:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-secondary langBtn m-2">
+                    <input type="checkbox" name="langOpt" autocomplete="off" value="HTML5">HTML5
+                  </label>
+                  <label class="btn btn-secondary langBtn m-2">
+                    <input type="checkbox" name="langOpt" autocomplete="off" value="CSS3"> CSS3
+                  </label>
+                  <label class="btn btn-secondary langBtn m-2">
+                    <input type="checkbox" name="langOpt" autocomplete="off" value="SQL"> SQL
+                  </label>
+                  <label class="btn btn-secondary langBtn m-2">
+                    <input type="checkbox" name="langOpt" autocomplete="off" value="JavaScript"> JavaScript
+                  </label>
+                  <label class="btn btn-secondary langBtn m-2">
+                    <input type="checkbox" name="langOpt" autocomplete="off" value="TypeScript"> TypeScript
+                  </label>
+                  <label class="btn btn-secondary langBtn m-2">
+                    <input type="checkbox" name="langOpt" autocomplete="off" value="jQuery"> jQuery
+                  </label>
+                  <label class="btn btn-secondary langBtn m-2">
+                    <input type="checkbox" name="langOpt" autocomplete="off" value="Python"> Python
+                  </label>
+                  <label class="btn btn-secondary langBtn m-2">
+                    <input type="checkbox" name="langOpt" autocomplete="off" value="PHP"> PHP
+                  </label>
+                  <label class="btn btn-secondary langBtn m-2">
+                    <input type="checkbox" name="langOpt" autocomplete="off" value="C"> C
+                  </label>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary gradient" id="saveLang">Save
+                  Changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="tab bg-secondary gradient feed"
-           id="feed">
-        <h5>Feed</h5>
-        <div class="separator mb-3"></div>
-        <div class="row align-items-center comment">
-          <div class="col float-right mb-3">
-            <h6>{{Profile.name}}</h6>
-            <p>Hey, I read this article about the top 7 full-stack projects you need to try in 2021 and I thought you
-              would enjoy it too.
-          </div>
-        </div>
-        <div class="separator mb-3"></div>
-        <div class="row align-items-center comment">
-          <div class="col float-right mb-3">
-            <h6>{{Profile.name}}</h6>
-            <p>Hey, I read this article about the top 7 full-stack projects you need to try in 2021 and I thought you
-              would enjoy it too. Here is a link to the full article:<br>https://www.google.com/</p>
-          </div>
-        </div>
-        <div class="separator mb-3"></div>
-        <div class="row align-items-center comment">
-          <div class="col float-right mb-3">
-            <h6>{{Profile.name}}</h6>
-            <p>Hey, I read this article about the top 7 full-stack projects you need to try in 2021 and I thought you
-              would enjoy it too. Here is a link to the full article:<br>https://www.google.com/</p>
-          </div>
-        </div>
-      </div>
+      <div class="separator"></div>
+      <div id="langDisplay"></div>
     </div>
 
-    <!--RIGHT Column-->
-
-    <div class="bg-secondary m-3"
-         id="right-col">
-      <div class="tab bg-secondary gradient pp-scroll"
-           id="PinnedProjects">
-        <h5>My Pinned Projects</h5>
-        <div class="separator"></div>
-        <div class="mt-2">
-          <input placeholder="Click to Edit"></input>
-          <textarea placeholder="This is where you can write a blurb about your project or edit the data pulled from GitHub."
-                    rows="4"></textarea>
-        </div>
-        <div class="separator"></div>
-        <div class="mt-2">
-          <input placeholder="Click to Edit"></input>
-          <textarea placeholder="This is where you can write a blurb about your project or edit the data pulled from GitHub."
-                    rows="4"></textarea>
-        </div>
-        <div class="separator"></div>
-        <div class="mt-2">
-          <input placeholder="Project Title"></input>
-          <textarea class="project" placeholder="This is where you can write a blurb about your project or edit the data pulled from GitHub."
-                    rows="4"></textarea>
-        </div>
-        <div class="separator"></div>
-        <div class="mt-2">
-          <input placeholder="Project Title"></input>
-          <textarea class="project" placeholder="This is where you can write a blurb about your project, or try our autofill feature by linking your GitHub account."
-                    rows="4"></textarea>
-        </div>
+    <div class="tab bg-secondary gradient" id="MyWall">
+      <h5>My Wall</h5>
+      <div class="separator"></div>
+      <div class="tab bg-secondary mt-3 mb-1 gradient" id="postBox">
+        <textarea placeholder="Title" id="postTitle" rows="1"></textarea>
+        <textarea id="wallPost" placeholder="What's on your mind?" rows="3"></textarea>
       </div>
-      <div class="tab bg-secondary gradient"
-           id="Featured">
-        <h5>Featured Devs</h5>
-        <div class="separator"></div>
-        <div class="dev row align-items-center">
-          <div class="circle mt-3"
-               id="devPic"></div>
-          <div class="ml-3 mt-3">
-            <h5 class="text-center">user.id</h5>
-            <h6 class="text-center">@user.name</h6>
-          </div>
-        </div>
-        <div class="separator mt-3"></div>
-        <div class="dev row align-items-center">
-          <div class="circle mt-3"
-               id="devPic"></div>
-          <div class="ml-3 mt-3">
-            <h5 class="text-center">user.id</h5>
-            <h6 class="text-center">@user.name</h6>
-          </div>
-        </div>
-        <div class="separator mt-3"></div>
-        <div class="dev row align-items-center">
-          <div class="circle mt-3"
-               id="devPic"></div>
-          <div class="ml-3 mt-3">
-            <h5 class="text-center">user.id</h5>
-            <h6 class="text-center">@user.name</h6>
-          </div>
+      <button class="btn btn-sm btn-secondary mt-2" type="submit" id="postBtn">
+        Post
+      </button>
+    </div>
+    <div class="tab bg-secondary gradient feed">
+      <h5>Feed</h5>
+      <div class="separator mb-3"></div>
+      <div class="row align-items-center comment"></div>
+        <div class="col float-right mb-3" id= "post-div">
+          <h6 id = "post-title">{{Profile.name}}</h6>
+          <p id="post-body">
         </div>
       </div>
     </div>
   </div>
+
+  <!--RIGHT Column-->
+  <div class="bg-secondary m-3" id="right-col">
+    <div class="tab bg-secondary gradient pp-scroll" id="PinnedProjects">
+      <h5>My Pinned Projects</h5>
+      <div class="separator"></div>
+    </div>
+
+
+    <div class="tab bg-secondary gradient" >
+
+      <h5>Featured Devs</h5>
+      <div id="Featured"></div>
+    </div>
+  </div>
 </main>
+
+<!-- DYNAMIC COMPONENTS: modals, toasts -->
+
+<!--Edit Profile Modal-->
+<div class="modal fade gradient" id="editProfileModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>Edit Profile</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="userName" placeholder="Dev Doe">
+          </div>
+          <div class="form-group">
+            <label for="highestGraduation">Highest Graduation</label>
+            <input type="text" class="form-control" id="userGraduation" placeholder="Masters">
+          </div>
+          <div class="form-group">
+            <label for="school">School</label>
+            <input type="text" class="form-control" id="userSchool" placeholder="Dev University">
+          </div>
+          <div class="form-group">
+            <label for="skills">Skills</label>
+            <input type="text" class="form-control" id="userSkills" placeholder="Relevant Skills">
+          </div>
+          <div class="form-group">
+            <label for="experience">Experience</label>
+            <input type="number" class="form-control" id="userExperience" placeholder="Years of Experience">
+          </div>
+          <div class="form-group">
+            <label for="position">Position</label>
+            <input type="text" class="form-control" id="userPosition" placeholder="Current Position">
+          </div>
+          <div class="form-group">
+            <label for="company">Company</label>
+            <input type="text" class="form-control" id="userCompany" placeholder="Company">
+          </div>
+          <div class="form-group">
+            <label for="startDate">Start Date</label>
+            <input type="date" class="form-control" id="userStartDate" placeholder="MM/DD/YYYY">
+          </div>
+          <div class="form-group">
+            <label for="startDate">End Date</label>
+            <input type="date" class="form-control" id="userEndDate" placeholder="MM/DD/YYYY">
+          </div>
+          <div class="form-group">
+            <label for="gitUserName">GitHub Username</label>
+            <input type="text" class="form-control" id="userGitHub" placeholder="@username">
+          </div>
+        </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-secondary gradient">Update Profile</button>
+        </form>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--New Post Modal-->
+<div class="modal fade gradient" id="newPostModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>New Post</h4>
+      </div>
+      <div class="modal-body">
+      <div class="tab bg-secondary mt-3 mb-1 gradient" id="modalPostBox">
+        <textarea id="modalPostTitle" placeholder="Title" style="font-size: 22px;" rows="1"></textarea>
+      <textarea id="modalWallPost" placeholder="What's on your mind?" style="font-size: 22px;" rows="5"></textarea>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-small btn-secondary" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-small btn-secondary gradient" type="submit" id="modalPostBtn">Post</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Delete Account Modal-->
+<div class="modal fade gradient" id="deleteAccountModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>Delete Account</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </div>
+      <div class="modal-body">
+      <div class="tab bg-secondary gradient mt-3 mb-1" style="border: none!important;">
+        <div class="tab">
+        <span><i class="material-icons" style="font-size: 36px;">person_remove</i></span>
+        <hr>
+        <p class="lead">Are you sure you'd like to delete this devlr account?</p>
+        <br>
+        <p>This change is irreversible, but you can always create a new account.</p>
+        </div>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-small btn-secondary gradient" id="account">Delete</button>
+        <button class="btn btn-small btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Toasts-->
+
+  <div class="toast" aria-live="polite" role="status" aria-atomic="true" 
+  style="position: absolute; top: 360px; left: 1.75rem; max-width: 200px;" data-autohide="false" id="editProfileToast">
+    <div class="toast-header">
+      <img src="/img/d-favicon.ico" style="height: 20px; width: 20px;" class="rounded mr-2" alt="devlr logo">
+      <strong class="mr-auto">devlr</strong>
+      <small>1 min ago</small>
+      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="toast-body">
+      <h6>Welcome, Dev! <span><i class="material-icons" style="font-size: 18px;">arrow_forward</i></span></h6>
+      Click Edit Profile to begin.
+    </div>
+  </div>
+
+  <div class="toast" aria-live="polite" role="status" aria-atomic="true" 
+  style="position: absolute; top: 80px; right: 1.75rem; max-width: 200px;" data-autohide="false" id="pullProjectsToast">
+    <div class="toast-header">
+      <img src="/img/d-favicon.ico" style="height: 20px; width: 20pxr;" class="rounded mr-2" alt="devlr logo">
+      <strong class="mr-auto">devlr</strong>
+      <small>1 min ago</small>
+      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="toast-body">
+      <h6><span><i class="material-icons" style="font-size: 18px;">arrow_back</i></span>Pull Projects</h6>
+      With a GitHub username, you can click Pull to fill this section.
+    </div>
+  </div>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-<script type="text/javascript"
-        src="/js/home.js"></script>
-
+  integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/home.js"></script>
