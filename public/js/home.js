@@ -74,18 +74,36 @@ $(document).ready(() => {
           // console.log(profile);
           let fromDate = profile.from;
           fromDate = fromDate.split('T')[0];
-          let startDate = profile.from;
-          startDate = startDate.split('T')[0];
-          $(".highestGraduation").text(`Highest Graduation: ${profile.highestGraduation}`);
-          $(".school").text(`School: ${profile.school}`);
-          $(".name").text(`Name: ${profile.name}`);
-          $(".skills").text(`Skills: ${profile.skills}`);
-          $(".experience").text(`Years of Experience: ${profile.TotalYearsOfexp}`);
-          $(".position").text(`Position: ${profile.currentPosition}`);
-          $(".company").text(`Company: ${profile.companyName}`);
-          $(".startDate").text(`Started: ${fromDate}`);
-          $(".endDate").text(`Ended: ${startDate}`);
-          $(".gitUserName").text(`Git User Name: ${profile.gitUserName}`);
+          let endDate = profile.to;
+          endDate = endDate.split('T')[0];
+          
+          let backgroundInfo = $(
+            `<div>
+            <h5>GitHub</h5>
+            <p>${profile.gitUserName}</p>
+            <hr class="75">
+            <h5>Highest Level of Education</h5>
+            <p>${profile.highestGraduation}</p>
+            <h5 class="mt-2">School</h5>
+            <p>${profile.school}</p>
+            <hr class="75">
+            <h5>Skills</h5>
+            <p>${profile.skills}</p>
+            <h5 class="mt-2">Years of Experience</h5>
+            <p>${profile.TotalYearsOfexp}</p>
+            <hr class="75">
+            <h5>Company</h5>
+            <p>${profile.companyName}</p>
+            <h5 class="my-2">Position</h5>
+            <p>${profile.currentPosition}</p>
+            <p>From: ${fromDate} to ${endDate}</p>
+            </div>
+            `
+          )
+
+          $('#backgroundInfo').append(backgroundInfo);
+          
+          
           getAllPosts(posts);
 
           const themePref = profile.themePref;
@@ -108,12 +126,17 @@ $(document).ready(() => {
         title = posts[i].title
         console.log(title);
         body = posts[i].body;
-        var titletag = $('<h6></h6>').text(title);
-        var bodytag = $('<p></p>').text(body);
-        let date = $('<p></p>').text(posts[i].createdAt);
-        $(bodytag).append(date);
-        $(titletag).append(bodytag);
-        $(postDiv).prepend(titletag);
+
+        let postText = $(
+          `<div class="mt-3"> <h5>${title}</h5>
+          <p>${body}<p>
+          <p class="small">${posts[i].createdAt.split('T')[0]}<p>
+          <hr class="75">
+          </div>`
+        )
+
+          $(postDiv).prepend(postText);
+
       };//for loop end tag
 
     }; //getPost fn end tag
@@ -277,7 +300,7 @@ $(document).ready(() => {
             let featDevDiv = $(
               `<div class="separator mt-3"></div>
           <div class="dev row align-items-center">
-          <div class="circle mt-3 devPic" id="${data.id}"></div>
+          <div class="circle mt-3 devPic" data-value="${data.id}"></div>
           <div class="ml-3 mt-3">
           <h5 class="text-center">${data.name}</h5>
           <h6 class="text-center">@${data.gitUserName}</h6>
@@ -292,6 +315,16 @@ $(document).ready(() => {
         };//for loop end tag
       });//then end tag
     }; //fn end tag
+
+   
+      $(document).on('click', '.devPic', function(){
+       
+        let profileId = $(this).data('value');
+        console.log(profileId);
+        // this needs a route to view another users profile
+
+      })
+    
 
 
 
