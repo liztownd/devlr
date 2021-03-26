@@ -46,10 +46,6 @@ WHEN I type a Wall status
     THEN I can see it posted to the top of my feed
 WHEN I click the New button
     THEN a modal opens with a larger post box to submit a status post
-WHEN I click Browse on the side menu
-    THEN a modal opens where I can browse my followed users on GitHub
-WHEN I click Starred on the side menu
-    THEN a modal opens where I can browse my starred GitHub repos
 WHEN I click Account on the side menu
     THEN a modal opens where I can delete my devlr account
 WHEN I click on Logout

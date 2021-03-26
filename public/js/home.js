@@ -1,4 +1,3 @@
-
 $(document).ready(() => {
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
@@ -13,6 +12,12 @@ $(document).ready(() => {
     getFeaturedDevs();
     deleteAccount(UserId);
   }); //initial get call end tag
+
+  var element= localStorage.getItem('status');
+  if (element == null || element == '') {
+      localStorage.setItem('status', 1);
+      $('#editProfileToast').toast('show');
+  }; //localstorage check end tag
 
     function editProfile(UserId) {
       $('form').on("submit", (e) => {
@@ -58,6 +63,8 @@ $(document).ready(() => {
             console.log(err)
           }
         }); //post ajax end tag
+        window.location.reload();
+        $('#pullProjectsToast').toast('show');
       }); //submit onclick end tag
     }; //editProfile fn end tag
 
@@ -173,6 +180,7 @@ $(document).ready(() => {
         }); //ajax call end tag
         $('#postTitle').val("");
         $('#wallPost').val("");
+        window.location.reload();
       }) //post button onclick end tag
     }; //add post fn end tag
 
@@ -234,7 +242,7 @@ $(document).ready(() => {
             url: `/api/users/languages/${UserId}`,
           }).then((response) => console.log(response));
         // we need a location reload here and to close the modal
-
+        window.location.reload();
       });//onclick end tag
     }; // saveLang fn end tag
 

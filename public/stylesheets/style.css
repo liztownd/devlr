@@ -99,10 +99,9 @@ body {
   margin: 0;
 }
 
-.comment {
+.post {
   width: 100%;
 }
-
 
 #left-col, #middle-col, #right-col {
   flex-direction: column;
@@ -185,9 +184,17 @@ background-color: var(--main-bg-color)!important;
   border-radius: 20px;
 }
 
+.toast-header, .toast-body {
+  background-color: var(--main-bg-color)!important;
+}
+
+.toast {
+  border: 1px solid linen!important;
+}
+
 div.pp-scroll {
   width: 100%;
-  max-height: 700px;
+  max-height: 600px;
   overflow: auto;
   text-align: justify;
 }
@@ -429,6 +436,10 @@ margin-block-end: 0;
   border: none;
 }
 
+#modalPostBox {
+  border: none;
+}
+
 #postBtn {
   width: 100px;
   border-radius: 20px;
@@ -441,6 +452,7 @@ margin-block-end: 0;
 }
 
 #appearanceBtn {
+  display: inline-flex;
   border-radius: 20px;
   background-color: var(--main-text-color);
   background: linear-gradient(
