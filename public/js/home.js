@@ -1,4 +1,3 @@
-
 $(document).ready(() => {
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
@@ -13,16 +12,12 @@ $(document).ready(() => {
     getFeaturedDevs();
   }); //initial get call end tag
 
-    setThemePref(UserId);
-    getLang(UserId);
-
-
   var element= localStorage.getItem('status');
-    if (element == null || element == '') {
-        localStorage.setItem('status', 1);
-        $('#editProfileToast').toast('show');
+  if (element == null || element == '') {
+      localStorage.setItem('status', 1);
+      $('#editProfileToast').toast('show');
   };
-  
+
     function editProfile(UserId) {
       $('form').on("submit", (e) => {
         e.preventDefault();
@@ -72,36 +67,42 @@ $(document).ready(() => {
     }; //editProfile fn end tag
 
 
-// getting the user profile to show it on my background section
- function getUserProfile(UserId){
-  $.ajax({
-    type: 'GET',
-    url: `/api/users/${UserId}`,
-    success: function (data) {
-      console.log('success');
-      
-     const profile= data.Profile;
-     const posts = data.Posts
-      // console.log(profile);
-      let fromDate = profile.from;
-      fromDate = fromDate.split('T')[0];
-      let startDate = profile.from;
-      startDate = startDate.split('T')[0];
-      $(".highestGraduation").text(`Highest Graduation: ${profile.highestGraduation}`);
-      $(".school").text(`School: ${profile.school}`);
-      $(".name").text(`Name: ${profile.name}`);
-      $(".skills").text(`Skills: ${profile.skills}`);
-      $(".experience").text(`Years of Experience: ${profile.TotalYearsOfexp}`);
-      $(".position").text(`Position: ${profile.currentPosition}`);
-      $(".company").text(`Company: ${profile.companyName}`);
-      $(".startDate").text(`Started: ${fromDate}`);
-      $(".endDate").text(`Ended: ${startDate}`);
-      $(".gitUserName").text(`Git User Name: ${profile.gitUserName}`);
-      getAllPosts(posts);
-      setPreferences(profile);
-    } //success end tag
-  }); //ajax call end tag
-}//get profilie end tag
+    // getting the user profile to show it on my background section
+    function getUserProfile(UserId) {
+      $.ajax({
+        type: 'GET',
+        url: `/api/users/${UserId}`,
+        success: function (data) {
+          console.log('success');
+
+          const profile = data.Profile;
+          const posts = data.Posts
+          // console.log(profile);
+          let fromDate = profile.from;
+          fromDate = fromDate.split('T')[0];
+          let startDate = profile.from;
+          startDate = startDate.split('T')[0];
+          $(".highestGraduation").text(`Highest Graduation: ${profile.highestGraduation}`);
+          $(".school").text(`School: ${profile.school}`);
+          $(".name").text(`Name: ${profile.name}`);
+          $(".skills").text(`Skills: ${profile.skills}`);
+          $(".experience").text(`Years of Experience: ${profile.TotalYearsOfexp}`);
+          $(".position").text(`Position: ${profile.currentPosition}`);
+          $(".company").text(`Company: ${profile.companyName}`);
+          $(".startDate").text(`Started: ${fromDate}`);
+          $(".endDate").text(`Ended: ${startDate}`);
+          $(".gitUserName").text(`Git User Name: ${profile.gitUserName}`);
+          getAllPosts(posts);
+
+          const themePref = profile.themePref;
+          const savedLang = profile.languages;
+          setThemePref(themePref);
+          getLang(savedLang);
+        } //success end tag
+
+
+      }); //ajax call end tag
+    }//get profilie end tag
 
     function getAllPosts(posts) {
       console.log(posts);
@@ -122,6 +123,7 @@ $(document).ready(() => {
       };//for loop end tag
 
     }; //getPost fn end tag
+
 
 
     //add a new post
@@ -215,6 +217,8 @@ $(document).ready(() => {
     }; // saveLang fn end tag
 
 
+
+
     // set theme stored in db
     function setThemePref(themePref) {
       console.log(themePref);
@@ -223,7 +227,7 @@ $(document).ready(() => {
       }
       else {
         let r = document.querySelector(':root');
-        let color = data.themePref;
+        let color = themePref;
 
         if (color === 'linen') {
           r.style.setProperty('--main-bg-color', `#${color}`);
@@ -242,24 +246,22 @@ $(document).ready(() => {
     // load languages stored in db
     function getLang(savedLang) {
       console.log(savedLang);
-    $.get(`/api/users/${UserId}`).then((data) => {
 
+      if (!savedLang) {
 
-      if (!data.languages) {
         return
       }
       else {
-        let languages = data.languages;
 
-        for (let i = 0; i < languages.length; i++) {
+        for (let i = 0; i < savedLang.length; i++) {
           let langItems = $(
-            ` <button class="btn btn-secondary mx-2 my-3 language disabled">${languages[i]}</button>`
+            ` <button class="btn btn-secondary mx-2 my-3 language disabled">${savedLang[i]}</button>`
           )
           $('#langDisplay').append(langItems);
         }; //for loop end tag
       }; //else end tag
 
-    })}; //getLang fn end tag
+    }; //getLang fn end tag
 
     //get featured devs info and append
     function getFeaturedDevs() {
@@ -281,7 +283,7 @@ $(document).ready(() => {
             let featDevDiv = $(
               `<div class="separator mt-3"></div>
           <div class="dev row align-items-center">
-          <div class="circle mt-3" id="${data.id}"></div>
+          <div class="circle mt-3 devPic" id="${data.id}"></div>
           <div class="ml-3 mt-3">
           <h5 class="text-center">${data.name}</h5>
           <h6 class="text-center">@${data.gitUserName}</h6>
