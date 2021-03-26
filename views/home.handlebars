@@ -11,10 +11,6 @@
               Home</li></a>
           <li class="m-3"><a href="#" data-toggle="modal" data-target="#editProfileModal"><i
                 class="material-icons">dashboard</i> Edit Profile</li></a>
-          <li class="m-3"><a href="#"><i class="material-icons">find_in_page</i>
-              Browse</li></a>
-          <li class="m-3"><a href="#"><i class="material-icons">star_border</i>
-              Starred</li></a>
           <li class="m-3"><a href="#"><i class="material-icons">person_outline</i>
               Account</li></a>
           <li class="m-3"><a href="/logout"><i class="material-icons">keyboard_return</i>
@@ -161,7 +157,9 @@
     <div class="tab bg-secondary gradient feed">
       <h5>Feed</h5>
       <div class="separator mb-3"></div>
-      <div class="col post" id="feed">
+        <div class="col mb-3" id= "post-div">
+          <h6 id="post-title">{{Profile.name}}</h6>
+          <p id="post-body">
         </div>
       </div>
     </div>
