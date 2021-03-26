@@ -10,8 +10,9 @@
           <li class="m-3"><a href="/home"><i class="material-icons">home</i>
               Home</li></a>
           <li class="m-3"><a href="#" data-toggle="modal" data-target="#editProfileModal"><i
-                class="material-icons">dashboard</i> Edit Profile</li></a>
-          <li class="m-3"><a href="#"><i class="material-icons">person_outline</i>
+              class="material-icons">dashboard</i> Edit Profile</li></a>
+          <li class="m-3"><a href="#" data-toggle="modal" data-target="#deleteAccountModal"><i 
+              class="material-icons">person_outline</i>
               Account</li></a>
           <li class="m-3"><a href="/logout"><i class="material-icons">keyboard_return</i>
               Logout</li></a>
@@ -315,6 +316,32 @@
       <div class="modal-footer">
         <button class="btn btn-small btn-secondary gradient" data-dismiss="modal">Close</button>
         <button class="btn btn-small btn-secondary gradient">Post</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Delete Account Modal-->
+<div class="modal fade gradient" id="deleteAccountModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>Delete Account</h4>
+      </div>
+      <div class="modal-body">
+      <div class="tab bg-secondary gradient mt-3 mb-1" style="border: none!important;">
+        <div class="tab">
+        <span><i class="material-icons" style="font-size: 36px;">person_remove</i></span>
+        <hr>
+        <p class="lead">Are you sure you'd like to delete this devlr account?</p>
+        <br>
+        <p>This change is irreversible, but you can always create a new account.</p>
+        </div>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-small btn-secondary gradient" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-small btn-secondary gradient">Delete</button>
       </div>
     </div>
   </div>
