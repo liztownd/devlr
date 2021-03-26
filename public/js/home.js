@@ -13,6 +13,12 @@ $(document).ready(() => {
     deleteAccount(UserId);
   }); //initial get call end tag
 
+  var element= localStorage.getItem('status');
+  if (element == null || element == '') {
+      localStorage.setItem('status', 1);
+      $('#editProfileToast').toast('show');
+  }; //localstorage check end tag
+
     function editProfile(UserId) {
       $('form').on("submit", (e) => {
         e.preventDefault();
@@ -57,6 +63,7 @@ $(document).ready(() => {
             console.log(err)
           }
         }); //post ajax end tag
+        $('#pullProjectsToast').toast('show');
       }); //submit onclick end tag
     }; //editProfile fn end tag
 
