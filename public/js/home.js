@@ -63,6 +63,7 @@ $(document).ready(() => {
             console.log(err)
           }
         }); //post ajax end tag
+        window.location.reload();
         $('#pullProjectsToast').toast('show');
       }); //submit onclick end tag
     }; //editProfile fn end tag
@@ -179,6 +180,7 @@ $(document).ready(() => {
         }); //ajax call end tag
         $('#postTitle').val("");
         $('#wallPost').val("");
+        window.location.reload();
       }) //post button onclick end tag
     }; //add post fn end tag
 
@@ -240,7 +242,7 @@ $(document).ready(() => {
             url: `/api/users/languages/${UserId}`,
           }).then((response) => console.log(response));
         // we need a location reload here and to close the modal
-
+        window.location.reload();
       });//onclick end tag
     }; // saveLang fn end tag
 
