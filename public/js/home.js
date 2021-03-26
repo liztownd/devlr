@@ -402,14 +402,15 @@ $(document).ready(() => {
             let repoDiv = $(
           `
           <div class="mt-2">
-           <h5 class="text-center">${data[i].name}</h5>
+           <h5 class="">${data[i].name}</h5>
            <p class="small my-2">${projDesc}</p>
-         <a class="text-center m-4" href= "${data[i].html_url}" target="_blank">Project Repo</a>
+         <p><a class=" m-4" href= "${data[i].html_url}" target="_blank">Project Repo</a></p>
          </div>
          <hr class="75">`)
            
            $('#PinnedProjects').append(repoDiv)
          };
+
         let avatarUrl = $(
      `<img src = ${avatar} class="img-fluid circle" height="250" width= "250"></img>`
             )
@@ -425,7 +426,7 @@ $(document).ready(() => {
               url: `/api/users/pic/${gitUserName}`,
             }).then((response) => console.log(response));
   
-          
+          //  window.location.reload();
 
          });
         
