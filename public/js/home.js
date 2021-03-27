@@ -218,29 +218,7 @@ $(document).ready(() => {
           }) //post button onclick end tag
         }; //add post fn end tag
 
-
-        // Delete post
         
-          $(document).on('click', '.deletePost', (e) => {
-            let id = $(this).data('value');
-            console.log(this);
-            console.log(id);
-            e.preventDefault();
-
-
-            // $.ajax({
-            //   type: 'DELETE',
-            //   contentType: 'application/json',
-            //   url: `/api/posts/${id}`,
-            //   success: function () {
-            //     console.log(res);
-            //     console.log(`Deleted post: ${id}`);
-            //     window.location.reload();
-            //   }
-            // }); //ajax call end tag
-          }); //delete post button onclick end tag
-         //delete post fn end tag
-    
 
     // to change appearance
     function setTheme(UserId) {
@@ -469,5 +447,25 @@ $(document).ready(() => {
 
       })
     
-    }
-  }); //document ready end tag
+    } //getrepo end tag
+
+
+    // DELETE post
+    $("#post-div").on("click", "button", function(event){
+      console.log($(this));
+      let id = $(this).data('value');
+
+      $.ajax({
+        type: 'DELETE',
+        contentType: 'application/json',
+        url: `/api/posts/${id}`,
+        success: function () {
+          console.log(`Deleted post: ${id}`);
+        }
+      }); //ajax call end tag
+      window.location.reload();
+   }); //delete post button onclick end tag
+  //delete post fn end tag
+
+  
+}); //document ready end tag
