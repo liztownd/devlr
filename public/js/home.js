@@ -140,18 +140,13 @@ $(document).ready(() => {
       console.log(title);
       body = posts[i].body;
 
-        let id = posts[i].id;
-
-        let postText = $(
-          `<div class="mt-3"> <h5>${title}</h5>
-          <button class="btn btn-secondary float-right deletePost" style="border: none" data-value="${id}" type="submit">
-          <i class="material-icons" style="font-size:20px;">delete_outline</i></button>
+      let postText = $(
+        `<div class="mt-3"> <h5>${title}</h5>
           <p>${body}<p>
           <p class="small">${posts[i].createdAt.split('T')[0]}<p>
           <hr class="75">
-          </div>
-          `
-        )
+          </div>`
+      )
 
       $(postDiv).prepend(postText);
 
@@ -160,63 +155,64 @@ $(document).ready(() => {
   }; //getPost fn end tag
 
 
-    //add a new post
-    function addPost(UserId) {
-      $('#postBtn').on('click', (e) => {
-        console.log('clicked');
-        e.preventDefault();
-        const title = $('#postTitle').val().trim();
-        const body = $('#wallPost').val().trim();
-        const postObj = {
-          "title": title,
-          "body": body,
-          "UserId": UserId
-        }
-        console.log(postObj);
-        $.ajax({
-          type: 'POST',
-          data: JSON.stringify(postObj),
-          contentType: 'application/json',
-          url: '/api/posts',
-          success: function (data) {
-            console.log('Posted successfully');
-            console.log(JSON.stringify(data));
-          }
-        }); //ajax call end tag
-        $('#postTitle').val("");
-        $('#wallPost').val("");
-        window.location.reload();
-      }) //post button onclick end tag
-    }; //add post fn end tag
 
-        //add a new post, modal version
-        function addModalPost(UserId) {
-          $('#modalPostBtn').on('click', (e) => {
-            console.log('clicked');
-            e.preventDefault();
-            const title = $('#modalPostTitle').val().trim();
-            const body = $('#modalWallPost').val().trim();
-            const postObj = {
-              "title": title,
-              "body": body,
-              "UserId": UserId
-            }
-            console.log(postObj);
-            $.ajax({
-              type: 'POST',
-              data: JSON.stringify(postObj),
-              contentType: 'application/json',
-              url: '/api/posts',
-              success: function (data) {
-                console.log('Posted successfully');
-                console.log(JSON.stringify(data));
-              }
-            }); //ajax call end tag
-            $('#modalPostTitle').val("");
-            $('#modalWallPost').val("");
-            window.location.reload();
-          }) //post button onclick end tag
-        }; //add post fn end tag
+  //add a new post
+  function addPost(UserId) {
+    $('#postBtn').on('click', (e) => {
+      console.log('clicked');
+      e.preventDefault();
+      const title = $('#postTitle').val().trim();
+      const body = $('#wallPost').val().trim();
+      const postObj = {
+        "title": title,
+        "body": body,
+        "UserId": UserId
+      }
+      console.log(postObj);
+      $.ajax({
+        type: 'POST',
+        data: JSON.stringify(postObj),
+        contentType: 'application/json',
+        url: '/api/posts',
+        success: function (data) {
+          console.log('Posted successfully');
+          console.log(JSON.stringify(data));
+        }
+      }); //ajax call end tag
+      $('#postTitle').val("");
+      $('#wallPost').val("");
+      window.location.reload();
+    }) //post button onclick end tag
+  }; //add post fn end tag
+
+  //add a new post
+  function addModalPost(UserId) {
+    $('#modalPostBtn').on('click', (e) => {
+      console.log('clicked');
+      e.preventDefault();
+      const title = $('#modalPostTitle').val().trim();
+      const body = $('#modalWallPost').val().trim();
+      const postObj = {
+        "title": title,
+        "body": body,
+        "UserId": UserId
+      }
+      console.log(postObj);
+      $.ajax({
+        type: 'POST',
+        data: JSON.stringify(postObj),
+        contentType: 'application/json',
+        url: '/api/posts',
+        success: function (data) {
+          console.log('Posted successfully');
+          console.log(JSON.stringify(data));
+        }
+      }); //ajax call end tag
+      $('#modalPostTitle').val("");
+      $('#modalWallPost').val("");
+      window.location.reload();
+    }) //post button onclick end tag
+  }; //add post fn end tag
 
 
 
@@ -453,41 +449,39 @@ $(document).ready(() => {
          <p><a class=" m-4" href= "${data[i].html_url}" target="_blank">Project Repo</a></p>
          </div>
          <hr class="75">`)
-           
-           $('#PinnedProjects').append(repoDiv)
-         };
 
-        let avatarUrl = $(
-     `<img src = ${avatar} class="img-fluid circle" height="250" width= "250"></img>`
-            )
-            $('#userPic').append(avatarUrl);
+        $('#PinnedProjects').append(repoDiv)
+      };
 
-            let postData = {profilePic: avatar};
+      let avatarUrl = $(
+        `<img src = ${avatar} class="img-fluid circle" height="250" width= "250"></img>`
+      )
+      $('#userPic').append(avatarUrl);
 
-          $.ajax(
-            {
-              type: 'PUT',
-              contentType: 'application/json',
-              data: JSON.stringify(postData),
-              url: `/api/users/pic/${gitUserName}`,
-            }).then((response) => console.log(response));
-  
-          //  window.location.reload();
+      let postData = { profilePic: avatar };
 
-         });
-  
+      $.ajax(
+        {
+          type: 'PUT',
+          contentType: 'application/json',
+          data: JSON.stringify(postData),
+          url: `/api/users/pic/${gitUserName}`,
+        }).then((response) => console.log(response));
+
+      //  window.location.reload();
+
+    }); //first ajax call end tag
+  }; //get github fn end tag
 
 
-      $(document).on('click', '.devPic', function(){
-       
-        let profileId = $(this).data('value');
-        console.log(profileId);
-        // this needs a route to view another users profile
 
-      })
-    
-  } //getrepo end tag
+  // click to get view profile route
+  $(document).on('click', '.devPic', function () {
 
+    let UserId = $(this).data('value');
+    //  console.log(UserId)
+    window.location.replace(`/${UserId}`);
+  });
 
     // DELETE post
     $("#post-div").on("click", "button", function(event){
