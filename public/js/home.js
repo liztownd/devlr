@@ -14,79 +14,80 @@ $(document).ready(() => {
     deleteAccount(UserId);
   }); //initial get call end tag
 
-  var element= localStorage.getItem('status');
+  var element = localStorage.getItem('status');
   if (element == null || element == '') {
-      localStorage.setItem('status', 1);
-      $('#editProfileToast').toast('show');
+    localStorage.setItem('status', 1);
+    $('#editProfileToast').toast('show');
   }; //localstorage check end tag
 
-    function editProfile(UserId) {
-      $('form').on("submit", (e) => {
-        e.preventDefault();
-        // console.log('clicked')
-        const name = $('#userName').val()
-        const highGrad = $('#userGraduation').val().trim();
-        const school = $('#userSchool').val().trim();
-        const skills = $('#userSkills').val().trim();
-        const experience = parseInt($('#userExperience').val());
-        const position = $('#userPosition').val().trim();
-        const company = $('#userCompany').val().trim();
-        const startDate = $('#userStartDate').val().trim();
-        const endDate = $('#userEndDate').val().trim();
-        const gitUserName = $('#userGitHub').val().trim();
+  function editProfile(UserId) {
+    $('form').on("submit", (e) => {
+      e.preventDefault();
+      // console.log('clicked')
+      const name = $('#userName').val()
+      const highGrad = $('#userGraduation').val().trim();
+      const school = $('#userSchool').val().trim();
+      const skills = $('#userSkills').val().trim();
+      const experience = parseInt($('#userExperience').val());
+      const position = $('#userPosition').val().trim();
+      const company = $('#userCompany').val().trim();
+      const startDate = $('#userStartDate').val().trim();
+      const endDate = $('#userEndDate').val().trim();
+      const gitUserName = $('#userGitHub').val().trim();
 
-        const ProfileObj = {
-          "name": name,
-          "highestGraduation": highGrad,
-          "school": school,
-          "skills": skills,
-          "TotalYearsOfexp": experience,
-          "currentPosition": position,
-          "companyName": company,
-          "from": startDate,
-          "to": endDate,
-          "gitUserName": gitUserName,
-          "UserId": UserId
-        }
+      const ProfileObj = {
+        "name": name,
+        "highestGraduation": highGrad,
+        "school": school,
+        "skills": skills,
+        "TotalYearsOfexp": experience,
+        "currentPosition": position,
+        "companyName": company,
+        "from": startDate,
+        "to": endDate,
+        "gitUserName": gitUserName,
+        "UserId": UserId
+      }
 
-        console.log(ProfileObj)
+      console.log(ProfileObj)
 
-        $.ajax({
-          type: 'POST',
-          data: JSON.stringify(ProfileObj),
-          contentType: 'application/json',
-          url: '/api/profiles',
-          success: function (data) {
-            console.log('success');
-            console.log(JSON.stringify(data))
-          },
-          error: function (err) {
-            console.log(err)
-          }
-        }); //post ajax end tag
-        window.location.reload();
-      }); //submit onclick end tag
-    }; //editProfile fn end tag
-
-
-    // getting the user profile to show it on my background section
-    function getUserProfile(UserId) {
       $.ajax({
-        type: 'GET',
-        url: `/api/users/${UserId}`,
+        type: 'POST',
+        data: JSON.stringify(ProfileObj),
+        contentType: 'application/json',
+        url: '/api/profiles',
         success: function (data) {
           console.log('success');
+          console.log(JSON.stringify(data))
+        },
+        error: function (err) {
+          console.log(err)
+        }
+      }); //post ajax end tag
+      window.location.reload();
+      $('#pullProjectsToast').toast('show');
+    }); //submit onclick end tag
+  }; //editProfile fn end tag
 
-          const profile = data.Profile;
-          const posts = data.Posts
-          // console.log(profile);
-          let fromDate = profile.from;
-          fromDate = fromDate.split('T')[0];
-          let endDate = profile.to;
-          endDate = endDate.split('T')[0];
-          
-          let backgroundInfo = $(
-            `<div>
+
+  // getting the user profile to show it on my background section
+  function getUserProfile(UserId) {
+    $.ajax({
+      type: 'GET',
+      url: `/api/users/${UserId}`,
+      success: function (data) {
+        console.log(data);
+
+        const profile = data.Profile;
+        const posts = data.Posts
+        // console.log(profile);
+        let fromDate = profile.from;
+        fromDate = fromDate.split('T')[0];
+        let endDate = profile.to;
+        endDate = endDate.split('T')[0];
+
+        let backgroundInfo = $(
+          `<div>
             <h5>GitHub</h5>
             <p>${profile.gitUserName}</p>
             <hr class="75">
@@ -107,37 +108,37 @@ $(document).ready(() => {
             <p>From: ${fromDate} to ${endDate}</p>
             </div>
             `
-          )
+        )
 
-          const gitUserName = profile.gitUserName
+        const gitUserName = profile.gitUserName
 
-          $('#backgroundInfo').append(backgroundInfo);
-          $(".name").text(profile.name);
-          $(".gitUserName").text(`GitHub User Name: ${profile.gitUserName}`)
-          
-          
-          getAllPosts(posts);
-          githubRepo(gitUserName)
-          const themePref = profile.themePref;
-          const savedLang = profile.languages;
-          setThemePref(themePref);
-          getLang(savedLang);
-        } //success end tag
+        $('#backgroundInfo').append(backgroundInfo);
+        $(".name").text(profile.name);
+        $(".gitUserName").text(`GitHub User Name: ${profile.gitUserName}`)
 
 
-      }); //ajax call end tag
-    }//get profilie end tag
+        getAllPosts(posts);
+        githubRepo(gitUserName)
+        const themePref = profile.themePref;
+        const savedLang = profile.languages;
+        setThemePref(themePref);
+        getLang(savedLang);
+      } //success end tag
 
-    function getAllPosts(posts) {
-      console.log(posts);
-      let title = $('#post-title');
-      let body = $('#post-body');
-      let postDiv = $('#post-div');
 
-      for (let i = 0; i < posts.length; i++) {
-        title = posts[i].title
-        console.log(title);
-        body = posts[i].body;
+    }); //ajax call end tag
+  }//get profilie end tag
+
+  function getAllPosts(posts) {
+    console.log(posts);
+    let title = $('#post-title');
+    let body = $('#post-body');
+    let postDiv = $('#post-div');
+
+    for (let i = 0; i < posts.length; i++) {
+      title = posts[i].title
+      console.log(title);
+      body = posts[i].body;
 
         let id = posts[i].id;
 
@@ -152,13 +153,12 @@ $(document).ready(() => {
           `
         )
 
-          $(postDiv).prepend(postText);
+      $(postDiv).prepend(postText);
 
-      };//for loop end tag
+    };//for loop end tag
 
-    }; //getPost fn end tag
+  }; //getPost fn end tag
 
-   
 
     //add a new post
     function addPost(UserId) {
@@ -218,118 +218,158 @@ $(document).ready(() => {
           }) //post button onclick end tag
         }; //add post fn end tag
 
-        
 
-    // to change appearance
-    function setTheme(UserId) {
-      $('.theme').on('click', function (event) {
-        event.preventDefault();
 
-        let color = $(this).attr('id')
-        let r = document.querySelector(':root');
+  // to change appearance
+  function setTheme(UserId) {
+    $('.theme').on('click', function (event) {
+      event.preventDefault();
 
-        if (color === 'linen') {
-          r.style.setProperty('--main-bg-color', `#${color}`);
-          r.style.setProperty('--main-text-color', '#222222');
-          // r.style.setProperty('--secondary-bg-color', '#979797')
-        }
-        else {
-          r.style.setProperty('--main-bg-color', `#${color}`);
-          r.style.setProperty('--main-text-color', 'linen');
-          r.style.setProperty('--secondary-bg-color', 'transparent');
-        };
+      let color = $(this).attr('id')
+      let r = document.querySelector(':root');
 
-        $('#saveTheme').on('click', function (e) {
-          e.preventDefault();
+      if (color === 'linen') {
+        r.style.setProperty('--main-bg-color', `#${color}`);
+        r.style.setProperty('--main-text-color', '#222222');
+        // r.style.setProperty('--secondary-bg-color', '#979797')
+      }
+      else {
+        r.style.setProperty('--main-bg-color', `#${color}`);
+        r.style.setProperty('--main-text-color', 'linen');
+        r.style.setProperty('--secondary-bg-color', 'transparent');
+      };
 
-          // send it to the db
-          $.ajax(
-            {
-              type: 'PUT',
-              dataType: 'text',
-              data: { color: color },
-              url: `/api/users/${UserId}/color`,
-            }).then((response) => console.log(response));
+      $('#saveTheme').on('click', function (e) {
+        e.preventDefault();
 
-          // close modal automatically
-
-        }); //save theme onclick end tag
-      }); // choose theme onclick end tag
-    }; //set theme fn end tag
-
-    // add languages
-    function saveLanguage(UserId) {
-      $('#saveLang').on('click', function () {
-        let languages = [];
-        $.each($("input[name='langOpt']:checked"), function () {
-          languages.push($(this).val());
-        });
-        let postData = {
-          "lang": languages
-        }
-        // send to db
+        // send it to the db
         $.ajax(
           {
             type: 'PUT',
-            contentType: 'application/json',
-            data: JSON.stringify(postData),
-            url: `/api/users/languages/${UserId}`,
+            dataType: 'text',
+            data: { color: color },
+            url: `/api/users/${UserId}/color`,
           }).then((response) => console.log(response));
-        // we need a location reload here and to close the modal
-        window.location.reload();
-      });//onclick end tag
-    }; // saveLang fn end tag
+
+        // close modal automatically
+
+      }); //save theme onclick end tag
+    }); // choose theme onclick end tag
+  }; //set theme fn end tag
+
+  // add languages
+  function saveLanguage(UserId) {
+    $('#saveLang').on('click', function () {
+      let languages = [];
+      $.each($("input[name='langOpt']:checked"), function () {
+        languages.push($(this).val());
+      });
+      let postData = {
+        "lang": languages
+      }
+      // send to db
+      $.ajax(
+        {
+          type: 'PUT',
+          contentType: 'application/json',
+          data: JSON.stringify(postData),
+          url: `/api/users/languages/${UserId}`,
+        }).then((response) => console.log(response));
+      // we need a location reload here and to close the modal
+      window.location.reload();
+    });//onclick end tag
+  }; // saveLang fn end tag
 
 
 
 
-    // set theme stored in db
-    function setThemePref(themePref) {
-      console.log(themePref);
-      if (!themePref) {
-        return
+  // set theme stored in db
+  function setThemePref(themePref) {
+    console.log(themePref);
+    if (!themePref) {
+      return
+    }
+    else {
+      let r = document.querySelector(':root');
+      let color = themePref;
+
+      if (color === 'linen') {
+        r.style.setProperty('--main-bg-color', `#${color}`);
+        r.style.setProperty('--main-text-color', '#222222');
+        // r.style.setProperty('--secondary-bg-color', '#979797')
       }
       else {
-        let r = document.querySelector(':root');
-        let color = themePref;
+        r.style.setProperty('--main-bg-color', `#${color}`);
+        r.style.setProperty('--main-text-color', 'linen');
+        r.style.setProperty('--secondary-bg-color', 'transparent');
+      };//nested if else end tag
+    }//main if else end tag
 
-        if (color === 'linen') {
-          r.style.setProperty('--main-bg-color', `#${color}`);
-          r.style.setProperty('--main-text-color', '#222222');
-          // r.style.setProperty('--secondary-bg-color', '#979797')
-        }
-        else {
-          r.style.setProperty('--main-bg-color', `#${color}`);
-          r.style.setProperty('--main-text-color', 'linen');
-          r.style.setProperty('--secondary-bg-color', 'transparent');
-        };//nested if else end tag
-      }//main if else end tag
+  }; //setTheme end tag
 
-    }; //setTheme end tag
+  // load languages stored in db
+  function getLang(savedLang) {
+    console.log(savedLang);
 
-    // load languages stored in db
-    function getLang(savedLang) {
-      console.log(savedLang);
+    if (!savedLang) {
 
-      if (!savedLang) {
+      return
+    }
+    else {
 
-        return
-      }
-      else {
+      for (let i = 0; i < savedLang.length; i++) {
+        let langItems = $(
+          ` <button class="btn btn-secondary mx-2 my-3 language disabled">${savedLang[i]}</button>`
+        )
+        $('#langDisplay').append(langItems);
+      }; //for loop end tag
+    }; //else end tag
 
-        for (let i = 0; i < savedLang.length; i++) {
-          let langItems = $(
-            ` <button class="btn btn-secondary mx-2 my-3 language disabled">${savedLang[i]}</button>`
-          )
-          $('#langDisplay').append(langItems);
-        }; //for loop end tag
-      }; //else end tag
+  }; //getLang fn end tag
 
-    }; //getLang fn end tag
-    
 
-    //get featured devs info and append
-    function getFeaturedDevs() {
+  //get featured devs info and append
+  function getFeaturedDevs() {
+
+    $.ajax({
+      type: 'GET',
+      contentType: 'application/json',
+      url: '/api/devs/profiles',
+    }).then((response) => {
+
+      for (let i = 0; i < 3; i++) {
+        let len = response.length
+        let devIndex = Math.floor(Math.random() * Math.floor(len))
+        let UserId = response[devIndex].UserId;
+        let devName = response[devIndex].name;
+        let devGit = response[devIndex].gitUserName;
+        let devPic = response[devIndex].profilePic;
+
+        console.log(UserId);
+
+        let featDevDiv = $(
+          `<div class="separator mt-3"></div>
+          <div class="dev row align-items-center">
+          <div class="circle mt-3 devPic" data-value="${UserId}"><img src = ${devPic} class="img-fluid circle" height="250" width= "250"></img>
+          </div>
+          <div class="ml-3 mt-3">
+          <h5 class="text-center">${devName}</h5>
+          <h6 class="text-center">@${devGit}</h6>
+          </div>
+          </div>`
+        )
+
+        $('#Featured').append(featDevDiv);
+
+      };//for loop end tag
+    });//then end tag
+  }; //fn end tag
+
+
+  // browse users modal
+  $('#browse').on('click',
+
+    function getAllDevs() {
 
       $.ajax({
         type: 'GET',
@@ -337,73 +377,75 @@ $(document).ready(() => {
         url: '/api/devs/profiles',
       }).then((response) => {
 
-        for (let i = 0; i < 3; i++) {
-          let len = response.length
-          let devIndex = Math.floor(Math.random() * Math.floor(len))
-          let profId = response[devIndex].id;
-          let devName = response[devIndex].name;
-          let devGit = response[devIndex].gitUserName;
-          let devPic = response[devIndex].profilePic;
 
-          console.log(devPic);
+        for (let i = 0; i < response.length; i++) {
+          // let len = response.length
+          // let devIndex = Math.floor(Math.random() * Math.floor(len))
+          let UserId = response[i].UserId;
+          let devName = response[i].name;
+          let devGit = response[i].gitUserName;
+          let devPic = response[i].profilePic;
 
-            let featDevDiv = $(
-              `<div class="separator mt-3"></div>
+          // console.log(UserId);
+
+          let allDevDiv = $(
+            `<div class="separator mt-3"></div>
           <div class="dev row align-items-center">
-          <div class="circle mt-3 devPic" data-value="${profId}"><img src = ${devPic} class="img-fluid circle" height="250" width= "250"></img>
+          <div class="circle mt-3 devPic" data-value="${UserId}"><img src = ${devPic} class="img-fluid circle" height="250" width= "250"></img>
           </div>
           <div class="ml-3 mt-3">
           <h5 class="text-center">${devName}</h5>
           <h6 class="text-center">@${devGit}</h6>
           </div>
           </div>`
-            )
-            
+          )
 
+          $('#browseUsers').append(allDevDiv);
 
-            $('#Featured').append(featDevDiv);
-
-         
         };//for loop end tag
       });//then end tag
-    }; //fn end tag
+    }); //fn end tag
 
 
-    function deleteAccount(UserId){
-      $("#account").on("click", function(){
-        console.log("clicked");
-        $.ajax({
-          type: "DELETE",
-          url:`api/users/${UserId}`
-        }).then(response=> {console.log(response)
-          window.location.replace("/");
+
+
+
+  function deleteAccount(UserId) {
+    $("#account").on("click", function () {
+      console.log("clicked");
+      $.ajax({
+        type: "DELETE",
+        url: `api/users/${UserId}`
+      }).then(response => {
+        console.log(response)
+        window.location.replace("/");
+      }
+      );
+    });
+  };
+  //getting github repos and avatar
+  function githubRepo(gitUserName) {
+    $.ajax({
+      type: 'GET',
+      url: `/github/${gitUserName}`
+    }).then(data => {
+      console.log(data)
+      console.log(data[0].html_url);
+      console.log(data[0].full_name);
+      const avatar = data[0].owner.avatar_url;
+
+      for (let i = 0; i < 5; i++) {
+
+        var projDesc;
+
+        if (data[i].description === null) {
+          projDesc = 'This project does not have a description yet.'
         }
-        );
-      });
-    };
-        //getting github repos and avatar
-        function githubRepo(gitUserName){
-          $.ajax({
-            type:'GET',
-            url:`/github/${gitUserName}`
-          }).then(data=>{
-            console.log(data)
-            console.log(data[0].html_url);
-            console.log(data[0].full_name);
-            const avatar= data[0].owner.avatar_url;
+        else {
+          projDesc = data[i].description
+        }
 
-            for(let i=0; i<5; i++){
-
-              var projDesc;
-
-              if(data[i].description === null) {
-                projDesc = 'This project does not have a description yet.'
-              }
-              else{
-                projDesc = data[i].description
-              }
-
-            let repoDiv = $(
+        let repoDiv = $(
           `
           <div class="mt-2">
            <h5 class="">${data[i].name}</h5>
@@ -433,10 +475,7 @@ $(document).ready(() => {
           //  window.location.reload();
 
          });
-        
   
-      
-
 
 
       $(document).on('click', '.devPic', function(){
@@ -447,7 +486,7 @@ $(document).ready(() => {
 
       })
     
-    } //getrepo end tag
+  } //getrepo end tag
 
 
     // DELETE post

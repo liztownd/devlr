@@ -1,6 +1,7 @@
 
 const db = require('../../models');
 const passport = require("../passport");
+const path = require("path");
 const isAuthenticated = require("../middleware/isAuthenticated");
 require('dotenv').config();
 const axios = require('axios');
@@ -25,7 +26,7 @@ module.exports = function (app) {
                 id: req.params.id,
             },
             include: [db.Users],
-        }).then((dbProfile) => res.status(200).json(dbProfile))
+        }).then((dbProfile) => res.json(dbProfile))
             .catch(err => res.status(404).json({ msg: "cannot find a post for this id!" }))
     });
 
@@ -90,8 +91,6 @@ module.exports = function (app) {
     });
 
     // route for adding languages to profile
-
-
     app.put('/api/users/languages/:UserId', isAuthenticated, (req, res) => {
         console.log(req.body.lang);
         console.log(req.params.UserId);
@@ -109,7 +108,6 @@ module.exports = function (app) {
     })
 
     //route for adding theme to profile
-
     app.put('/api/users/:UserId/color', isAuthenticated, (req, res) => {
         console.log(req.body);
 
@@ -134,11 +132,10 @@ module.exports = function (app) {
     });
 
 
-
     // to get ids for featured dev for loop
     app.get('/api/devs/profiles', isAuthenticated, (req, res) => {
         db.Profile.findAll({
-            attributes: ['id', 'name', 'gitUserName', 'profilePic'],
+            attributes: ['name', 'gitUserName', 'profilePic', 'UserId' ],
         })
             .then(count => res.status(200).json(count))
             .catch(err => res.status(404).json({ msg: "cannot find profiles!" }))
@@ -156,7 +153,14 @@ module.exports = function (app) {
                 },
             }).then((dbProfile) => res.status(200).json(dbProfile))
             .catch((err) => res.status(500).json(err))
-    })
+    });
+
+    //view profile html route
+    app.get('/:UserId', isAuthenticated, (req, res) => {
+        const UserId = req.params.UserId;
+        res.render('profile', { UserId });
+      });
+    
 
 
 }
