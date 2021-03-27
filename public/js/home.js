@@ -499,7 +499,7 @@ $(document).ready(() => {
         success: function () {
           console.log(`Deleted post: ${id}`);
         }
-      }); //ajax call end tag
+      }).then(window.location.reload()); //ajax call end tag
       window.location.reload();
    }); //delete post button onclick end tag
   //delete post fn end tag
