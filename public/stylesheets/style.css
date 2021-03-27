@@ -212,6 +212,7 @@ div.feed-profile {
   height: 400px;
   overflow: auto;
   text-align: left;
+  min-width: 576px;
 }
 
 
