@@ -139,12 +139,17 @@ $(document).ready(() => {
         console.log(title);
         body = posts[i].body;
 
+        let id = posts[i].id;
+
         let postText = $(
           `<div class="mt-3"> <h5>${title}</h5>
+          <button class="btn btn-secondary float-right deletePost" style="border: none" data-value="${id}" type="submit">
+          <i class="material-icons" style="font-size:20px;">delete_outline</i></button>
           <p>${body}<p>
           <p class="small">${posts[i].createdAt.split('T')[0]}<p>
           <hr class="75">
-          </div>`
+          </div>
+          `
         )
 
           $(postDiv).prepend(postText);
@@ -184,7 +189,7 @@ $(document).ready(() => {
       }) //post button onclick end tag
     }; //add post fn end tag
 
-        //add a new post
+        //add a new post, modal version
         function addModalPost(UserId) {
           $('#modalPostBtn').on('click', (e) => {
             console.log('clicked');
@@ -214,6 +219,28 @@ $(document).ready(() => {
         }; //add post fn end tag
 
 
+        // Delete post
+        
+          $(document).on('click', '.deletePost', (e) => {
+            let id = $(this).data('value');
+            console.log(this);
+            console.log(id);
+            e.preventDefault();
+
+
+            // $.ajax({
+            //   type: 'DELETE',
+            //   contentType: 'application/json',
+            //   url: `/api/posts/${id}`,
+            //   success: function () {
+            //     console.log(res);
+            //     console.log(`Deleted post: ${id}`);
+            //     window.location.reload();
+            //   }
+            // }); //ajax call end tag
+          }); //delete post button onclick end tag
+         //delete post fn end tag
+    
 
     // to change appearance
     function setTheme(UserId) {
