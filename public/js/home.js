@@ -140,8 +140,12 @@ $(document).ready(() => {
       console.log(title);
       body = posts[i].body;
 
+      let id = posts[i].id;
+
       let postText = $(
         `<div class="mt-3"> <h5>${title}</h5>
+        <button class="btn btn-secondary float-right deletePost" style="border: none" data-value="${id}" type="submit">
+        <i class="material-icons" style="font-size:20px;">delete_outline</i></button>
           <p>${body}<p>
           <p class="small">${posts[i].createdAt.split('T')[0]}<p>
           <hr class="75">
@@ -483,5 +487,22 @@ $(document).ready(() => {
     window.location.replace(`/${UserId}`);
   });
 
+    // DELETE post
+    $("#post-div").on("click", "button", function(event){
+      console.log($(this));
+      let id = $(this).data('value');
 
+      $.ajax({
+        type: 'DELETE',
+        contentType: 'application/json',
+        url: `/api/posts/${id}`,
+        success: function () {
+          console.log(`Deleted post: ${id}`);
+        }
+      }); //ajax call end tag
+      window.location.reload();
+   }); //delete post button onclick end tag
+  //delete post fn end tag
+
+  
 }); //document ready end tag
