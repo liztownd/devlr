@@ -140,8 +140,12 @@ $(document).ready(() => {
       console.log(title);
       body = posts[i].body;
 
+      let id = posts[i].id;
+
       let postText = $(
         `<div class="mt-3"> <h5>${title}</h5>
+        <button class="btn btn-secondary float-right deletePost" style="border: none" data-value="${id}" type="submit">
+        <i class="material-icons" style="font-size:20px;">delete_outline</i></button>
           <p>${body}<p>
           <p class="small">${posts[i].createdAt.split('T')[0]}<p>
           <hr class="75">
