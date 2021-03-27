@@ -226,7 +226,12 @@
           </div>
           <div class="form-group">
             <label for="gitUserName">GitHub Username</label>
-            <input type="text" class="form-control" id="userGitHub" placeholder="@username">
+            <div class="input-group">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="at-addon">@</span>
+            </div>
+            <input type="text" class="form-control" id="userGitHub" aria-label="username" aria-describedby="at-addon" placeholder="username">
+            </div> 
           </div>
         </div>
       <div class="modal-footer">
