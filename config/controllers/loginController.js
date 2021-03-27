@@ -7,7 +7,7 @@ const path = require("path");
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../middleware/isAuthenticated");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the home page.
   // Otherwise the user will be sent an error
@@ -22,9 +22,9 @@ module.exports = function(app) {
     // If the user already has an account send them to the home page
     if (req.user) {
       res.redirect("/home");
-    }
-    console.log(__dirname);
-    res.render(path.join(__dirname, "../../views/login.handlebars"));
+    } else {
+      res.render(path.join(__dirname, "../../views/login.handlebars"));
+    };
   });
   app.get("/", (req, res) => {
     // If the user already has an account send them to the home page
