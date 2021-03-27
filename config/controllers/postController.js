@@ -8,7 +8,9 @@ module.exports = function (app) {
     
     app.get('/api/posts', isAuthenticated, (req,res)=>{
         db.Post.findAll({
-            include:[db.Users]
+            include:[db.Users],
+            limit: 10, 
+            sort: [updatedAt, descending]
         })
         .then(dbPosts=> res.status(200).json(dbPosts))
         .catch(err=>console.log(err))

@@ -194,7 +194,7 @@ background-color: var(--main-bg-color)!important;
 
 div.pp-scroll {
   width: 100%;
-  max-height: 650px;
+  max-height: 750px;
   overflow: auto;
   text-align: justify;
 }
