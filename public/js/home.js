@@ -362,6 +362,50 @@ $(document).ready(() => {
   }; //fn end tag
 
 
+  // browse users modal
+  $('#browse').on('click',
+
+    function getAllDevs() {
+
+      $.ajax({
+        type: 'GET',
+        contentType: 'application/json',
+        url: '/api/devs/profiles',
+      }).then((response) => {
+
+
+        for (let i = 0; i < response.length; i++) {
+          // let len = response.length
+          // let devIndex = Math.floor(Math.random() * Math.floor(len))
+          let UserId = response[i].UserId;
+          let devName = response[i].name;
+          let devGit = response[i].gitUserName;
+          let devPic = response[i].profilePic;
+
+          // console.log(UserId);
+
+          let allDevDiv = $(
+            `<div class="separator mt-3"></div>
+          <div class="dev row align-items-center">
+          <div class="circle mt-3 devPic" data-value="${UserId}"><img src = ${devPic} class="img-fluid circle" height="250" width= "250"></img>
+          </div>
+          <div class="ml-3 mt-3">
+          <h5 class="text-center">${devName}</h5>
+          <h6 class="text-center">@${devGit}</h6>
+          </div>
+          </div>`
+          )
+
+          $('#browseUsers').append(allDevDiv);
+
+        };//for loop end tag
+      });//then end tag
+    }); //fn end tag
+
+
+
+
+
   function deleteAccount(UserId) {
     $("#account").on("click", function () {
       console.log("clicked");
@@ -435,7 +479,7 @@ $(document).ready(() => {
   $(document).on('click', '.devPic', function () {
 
     let UserId = $(this).data('value');
-  //  console.log(UserId)
+    //  console.log(UserId)
     window.location.replace(`/${UserId}`);
   });
 
