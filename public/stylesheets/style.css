@@ -108,6 +108,7 @@ body {
 }
 
 #left-col {
+  position: relative;
   height: 900px;
 }
 
