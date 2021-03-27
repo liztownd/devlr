@@ -114,7 +114,7 @@ $(document).ready(() => {
 
         $('#backgroundInfo').append(backgroundInfo);
         $(".name").text(profile.name);
-        $(".gitUserName").text(`GitHub User Name: ${profile.gitUserName}`)
+        $(".gitUserName").text(`GitHub: ${profile.gitUserName}`)
 
 
         getAllPosts(posts);
