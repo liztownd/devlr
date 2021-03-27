@@ -223,6 +223,13 @@ div.bg-scroll {
   text-align: left;
 }
 
+div.bg-scroll-profile {
+  width: 100%;
+  max-height: 400px;
+  overflow: auto;
+  text-align: left;
+}
+
 ul {
   list-style: none;
 }
