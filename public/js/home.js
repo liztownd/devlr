@@ -442,6 +442,7 @@ $(document).ready(() => {
         url: `api/users/${UserId}`
       }).then(response => {
         console.log(response)
+        $.get('/logout');
         window.location.replace("/");
       }
       );
