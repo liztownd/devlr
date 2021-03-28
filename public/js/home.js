@@ -80,6 +80,29 @@ $(document).ready(() => {
 
         const profile = data.Profile;
         const posts = data.Posts
+
+        if (profile === null) {
+          let repoDiv = $(
+            `
+            <div class="mt-2 project">
+            <h5>Project Title</h5>
+            <p>You haven't linked your GitHub account yet! Create a profile to autofill this section.</p>
+          </div>
+           <hr class="75">`)
+    
+          $('#PinnedProjects').append(repoDiv)
+
+          let backgroundInfo = $(
+            `<div>
+              <p>This is where your background information will go. Create an account to autofill this section.</p>
+              </div>
+              `
+          )
+          $('#backgroundInfo').append(backgroundInfo);
+          $(".name").text('Name');
+          $(".gitUserName").text('GitHub:')
+        }
+        else{
         // console.log(profile);
         let fromDate = profile.from;
         fromDate = fromDate.split('T')[0];
@@ -123,6 +146,7 @@ $(document).ready(() => {
         const savedLang = profile.languages;
         setThemePref(themePref);
         getLang(savedLang);
+        }//else end tag
       } //success end tag
 
 
@@ -425,28 +449,28 @@ $(document).ready(() => {
   };
   //getting github repos and avatar
   function githubRepo(gitUserName) {
-    $.ajax({
-      type: 'GET',
-      url: `/github/${gitUserName}`
-    }).then(data => {
-      console.log(data)
-      console.log(data[0].html_url);
-      console.log(data[0].full_name);
-      const avatar = data[0].owner.avatar_url;
+      $.ajax({
+        type: 'GET',
+        url: `/github/${gitUserName}`
+      }).then(data => {
+        console.log(data)
+        console.log(data[0].html_url);
+        console.log(data[0].full_name);
+        const avatar = data[0].owner.avatar_url;
 
-      for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 5; i++) {
 
-        var projDesc;
+          var projDesc;
 
-        if (data[i].description === null) {
-          projDesc = 'This project does not have a description yet.'
-        }
-        else {
-          projDesc = data[i].description
-        }
+          if (data[i].description === null) {
+            projDesc = 'This project does not have a description yet.'
+          }
+          else {
+            projDesc = data[i].description
+          }
 
-        let repoDiv = $(
-          `
+          let repoDiv = $(
+            `
           <div class="mt-2">
            <h5 class="">${data[i].name}</h5>
            <p class="small my-2">${projDesc}</p>
@@ -454,27 +478,27 @@ $(document).ready(() => {
          </div>
          <hr class="75">`)
 
-        $('#PinnedProjects').append(repoDiv)
-      };
+          $('#PinnedProjects').append(repoDiv)
+        };
 
-      let avatarUrl = $(
-        `<img src = ${avatar} class="img-fluid circle" height="250" width= "250"></img>`
-      )
-      $('#userPic').append(avatarUrl);
+        let avatarUrl = $(
+          `<img src = ${avatar} class="img-fluid circle" height="250" width= "250"></img>`
+        )
+        $('#userPic').append(avatarUrl);
 
-      let postData = { profilePic: avatar };
+        let postData = { profilePic: avatar };
 
-      $.ajax(
-        {
-          type: 'PUT',
-          contentType: 'application/json',
-          data: JSON.stringify(postData),
-          url: `/api/users/pic/${gitUserName}`,
-        }).then((response) => console.log(response));
+        $.ajax(
+          {
+            type: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify(postData),
+            url: `/api/users/pic/${gitUserName}`,
+          }).then((response) => console.log(response));
 
-      //  window.location.reload();
+        //  window.location.reload();
 
-    }); //first ajax call end tag
+      }); //first ajax call end tag   
   }; //get github fn end tag
 
 
@@ -487,22 +511,22 @@ $(document).ready(() => {
     window.location.replace(`/${UserId}`);
   });
 
-    // DELETE post
-    $("#post-div").on("click", "button", function(event){
-      console.log($(this));
-      let id = $(this).data('value');
+  // DELETE post
+  $("#post-div").on("click", "button", function (event) {
+    console.log($(this));
+    let id = $(this).data('value');
 
-      $.ajax({
-        type: 'DELETE',
-        contentType: 'application/json',
-        url: `/api/posts/${id}`,
-        success: function () {
-          console.log(`Deleted post: ${id}`);
-        }
-      }).then(window.location.reload()); //ajax call end tag
-      window.location.reload();
-   }); //delete post button onclick end tag
+    $.ajax({
+      type: 'DELETE',
+      contentType: 'application/json',
+      url: `/api/posts/${id}`,
+      success: function () {
+        console.log(`Deleted post: ${id}`);
+      }
+    }).then(window.location.reload()); //ajax call end tag
+    window.location.reload();
+  }); //delete post button onclick end tag
   //delete post fn end tag
 
-  
+
 }); //document ready end tag
