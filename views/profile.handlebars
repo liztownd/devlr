@@ -11,8 +11,8 @@
           <li class="m-3"><a href="#" data-toggle="modal" data-target="#browseModal" id="browse"><i
                 class="material-icons">groups</i>
               Browse Users</li></a>
-          <li class="m-3"><a href="#" data-toggle="modal" data-target="#editProfileModal"><i
-                class="material-icons disabled">dashboard</i> Edit Profile</li></a>
+          <li class="m-3"><i
+                class="material-icons disabled">dashboard</i> Create Profile</li>
           <li class="m-3"><a href="#" data-toggle="modal" data-target="#deleteAccountModal"><i
                 class="material-icons">person_outline</i>
               Account</li></a>
@@ -23,7 +23,7 @@
       <div class="d-flex flex-column align-items-center">
         <button class="btn btn-lg btn-secondary mt-3 disabled" id="newBtn" data-toggle="modal"
           data-target="#newPostModal">
-          New
+          New Post
         </button>
         <div class="circle" id="userPic"></div>
         <div>
@@ -87,7 +87,7 @@
 <!-- Browse Modal -->
 
 <div class="modal fade gradient" id="browseModal" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h4>Browse Users</h4>

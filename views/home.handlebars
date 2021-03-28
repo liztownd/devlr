@@ -38,7 +38,7 @@
       </div>
       <div class="d-flex flex-column align-items-center">
         <button class="btn btn-lg btn-secondary mt-3" id="newBtn" data-toggle="modal" data-target="#newPostModal">
-          New
+          New Post
         </button>
         <div class="circle" id="userPic"></div>
         <div>
@@ -196,52 +196,54 @@
 
 <!-- DYNAMIC COMPONENTS: modals, toasts -->
 
-<!--Edit Profile Modal-->
+<!--Create Profile Modal-->
 <div class="modal fade gradient" id="editProfileModal" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h4>Edit Profile</h4>
+        <h4>Create Profile</h4>
+        
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
       </div>
       <div class="modal-body">
         <form>
+          <div class="small mb-2">For initial creation, all fields are required.</div>
           <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="userName" placeholder="Dev Doe">
+            <input type="text" class="form-control" id="userName" required="true" placeholder="Dev Doe">
           </div>
           <div class="form-group">
             <label for="highestGraduation">Highest Graduation</label>
-            <input type="text" class="form-control" id="userGraduation" placeholder="Masters">
+            <input type="text" class="form-control" id="userGraduation" required="true" placeholder="Masters">
           </div>
           <div class="form-group">
             <label for="school">School</label>
-            <input type="text" class="form-control" id="userSchool" placeholder="Dev University">
+            <input type="text" class="form-control" id="userSchool" required="true" placeholder="Dev University">
           </div>
           <div class="form-group">
             <label for="skills">Skills</label>
-            <input type="text" class="form-control" id="userSkills" placeholder="Relevant Skills">
+            <input type="text" class="form-control" id="userSkills" required="true" placeholder="Relevant Skills">
           </div>
           <div class="form-group">
             <label for="experience">Experience</label>
-            <input type="number" class="form-control" id="userExperience" placeholder="Years of Experience">
+            <input type="number" class="form-control" id="userExperience" required="true" placeholder="Years of Experience">
           </div>
           <div class="form-group">
             <label for="position">Position</label>
-            <input type="text" class="form-control" id="userPosition" placeholder="Current Position">
+            <input type="text" class="form-control" id="userPosition" required="true" placeholder="Current Position">
           </div>
           <div class="form-group">
             <label for="company">Company</label>
-            <input type="text" class="form-control" id="userCompany" placeholder="Company">
+            <input type="text" class="form-control" id="userCompany" required="true" placeholder="Company">
           </div>
           <div class="form-group">
             <label for="startDate">Start Date</label>
-            <input type="date" class="form-control" id="userStartDate" placeholder="MM/DD/YYYY">
+            <input type="date" class="form-control" id="userStartDate" required="true" placeholder="MM/DD/YYYY">
           </div>
           <div class="form-group">
             <label for="startDate">End Date</label>
-            <input type="date" class="form-control" id="userEndDate" placeholder="MM/DD/YYYY">
+            <input type="date" class="form-control" id="userEndDate" required="true" placeholder="MM/DD/YYYY">
           </div>
           <div class="form-group">
             <label for="gitUserName">GitHub Username</label>
@@ -249,7 +251,7 @@
             <div class="input-group-prepend">
             <span class="input-group-text" id="at-addon">@</span>
             </div>
-            <input type="text" class="form-control" id="userGitHub" aria-label="username" aria-describedby="at-addon" placeholder="username">
+            <input type="text" class="form-control" id="userGitHub" aria-label="username" aria-describedby="at-addon" required="true" placeholder="username">
             </div> 
           </div>
       </div>
@@ -265,7 +267,7 @@
 <!-- Browse Modal -->
 
 <div class="modal fade gradient" id="browseModal" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h4>Browse Users</h4>
