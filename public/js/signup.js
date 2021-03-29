@@ -1,11 +1,11 @@
 $(document).ready(() => {
   // Getting references to our form and input
-  const signUpForm = $("form.signup");
-  const emailInput = $("input#email-input");
-  const passwordInput = $("input#password-input");
+  const signUpForm = $('form.signup');
+  const emailInput = $('input#email-input');
+  const passwordInput = $('input#password-input');
 
   // When the signup button is clicked, we validate the email and password are not blank
-  signUpForm.on("submit", event => {
+  signUpForm.on('submit', event => {
     event.preventDefault();
     const userData = {
       email: emailInput.val().trim(),
@@ -17,30 +17,27 @@ $(document).ready(() => {
     }
     // If we have an email and password, run the signUpUser function
     signUpUser(userData.email, userData.password);
-    emailInput.val("");
-    passwordInput.val("");
+    emailInput.val('');
+    passwordInput.val('');
   });
 
   // Does a post to the signup route. If successful, we are redirected to the home page
   // Otherwise we log any errors
   function signUpUser(email, password) {
-    $.post("/api/signup", {
+    $.post('/api/signup', {
       email: email,
       password: password
     })
       .then(() => {
-        window.location.replace("/home");
+        window.location.replace('/home');
         // If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch(handleLoginErr());
-  }
+  };
 
   function handleLoginErr(email) {
-    $("#alert .msg").text(`Email already exists`);
-    $("#alert").fadeIn(500);
-  }
-  // function handleLoginErr(err) {
-  //   $("#alert .msg").text(err.responseJSON);
-  //   $("#alert").fadeIn(500);
-  // }
+    $('#alert .msg').text(`Email already exists`);
+    $('#alert').fadeIn(500);
+  };
+
 });

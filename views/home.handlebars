@@ -1,21 +1,21 @@
 <main class="container position-relative">
   <div class="d-flex flex-row align-items-center justify-content-around">
-  <!--Toast-->
-  <div class="toast" aria-live="polite" role="status" aria-atomic="true"
-  style="position: absolute; top: 2rem; left: -2rem; max-width: 200px;" data-autohide="false" id="editProfileToast">
-  <div class="toast-header">
-    <img src="/img/d-favicon.ico" style="height: 20px; width: 20px;" class="rounded mr-2" alt="devlr logo">
-    <strong class="mr-auto">devlr</strong>
-    <small>1 min ago</small>
-    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="toast-body">
-    <h6>Welcome, Dev! <span><i class="material-icons" style="font-size: 18px;">arrow_downward</i></span></h6>
-    Click Create Profile to begin.
-  </div>
-</div>
+    <!--Toast-->
+    <div class="toast" aria-live="polite" role="status" aria-atomic="true"
+      style="position: absolute; top: 2rem; left: -2rem; max-width: 200px;" data-autohide="false" id="editProfileToast">
+      <div class="toast-header">
+        <img src="/img/d-favicon.ico" style="height: 20px; width: 20px;" class="rounded mr-2" alt="devlr logo">
+        <strong class="mr-auto">devlr</strong>
+        <small>1 min ago</small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body">
+        <h6>Welcome, Dev! <span><i class="material-icons" style="font-size: 18px;">arrow_downward</i></span></h6>
+        Click Create Profile to begin.
+      </div>
+    </div>
     <!--LEFT column-->
     <div class="bg-secondary mr-4" id="left-col">
       <img src="img/devlr-logo-light.png" class="img-fluid logo mb-4 mx-auto circle" alt="devlr logo">
@@ -28,9 +28,9 @@
                 class="material-icons">groups</i>
               Browse Users</li></a>
           <li class="m-3"><a href="#" data-toggle="modal" data-target="#editProfileModal"><i
-              class="material-icons">dashboard</i> Create Profile</li></a>
-          <li class="m-3"><a href="#" data-toggle="modal" data-target="#deleteAccountModal"><i 
-              class="material-icons">manage_accounts</i>
+                class="material-icons">dashboard</i> Create Profile</li></a>
+          <li class="m-3"><a href="#" data-toggle="modal" data-target="#deleteAccountModal"><i
+                class="material-icons">manage_accounts</i>
               Account</li></a>
           <li class="m-3"><a href="/logout"><i class="material-icons">keyboard_return</i>
               Logout</li></a>
@@ -202,7 +202,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4>Create Profile</h4>
-        
+
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
       </div>
@@ -227,7 +227,8 @@
           </div>
           <div class="form-group">
             <label for="experience">Experience</label>
-            <input type="number" class="form-control" id="userExperience" required="true" placeholder="Years of Experience">
+            <input type="number" class="form-control" id="userExperience" required="true"
+              placeholder="Years of Experience">
           </div>
           <div class="form-group">
             <label for="position">Position</label>
@@ -248,11 +249,12 @@
           <div class="form-group">
             <label for="gitUserName">GitHub Username</label>
             <div class="input-group">
-            <div class="input-group-prepend">
-            <span class="input-group-text" id="at-addon">@</span>
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="at-addon">@</span>
+              </div>
+              <input type="text" class="form-control" id="userGitHub" aria-label="username" aria-describedby="at-addon"
+                required="true" placeholder="username">
             </div>
-            <input type="text" class="form-control" id="userGitHub" aria-label="username" aria-describedby="at-addon" required="true" placeholder="username">
-            </div> 
           </div>
       </div>
       <div class="modal-footer">
@@ -273,7 +275,7 @@
         <h4>Browse Users</h4>
       </div>
       <div class="modal-body">
-        <div class="tab bg-secondary mt-3 mb-1 gradient" >
+        <div class="tab bg-secondary mt-3 mb-1 gradient">
           <div id="browseUsers"></div>
         </div>
       </div>
@@ -293,11 +295,12 @@
         <h4>New Post</h4>
       </div>
       <div class="modal-body">
-      <div class="tab bg-secondary mt-3 mb-1 gradient" id="modalPostBox">
-        <textarea id="modalPostTitle" placeholder="Enter Post Title" style="font-size: 22px;" rows="1"></textarea>
-        <hr class="m-0">
-      <textarea id="modalWallPost" class="mt-1" placeholder="What's on your mind?" style="font-size: 22px;" rows="5"></textarea>
-      </div>
+        <div class="tab bg-secondary mt-3 mb-1 gradient" id="modalPostBox">
+          <textarea id="modalPostTitle" placeholder="Enter Post Title" style="font-size: 22px;" rows="1"></textarea>
+          <hr class="m-0">
+          <textarea id="modalWallPost" class="mt-1" placeholder="What's on your mind?" style="font-size: 22px;"
+            rows="5"></textarea>
+        </div>
       </div>
       <div class="modal-footer">
         <button class="btn btn-small btn-secondary" data-dismiss="modal">Cancel</button>
