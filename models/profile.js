@@ -1,7 +1,7 @@
-const db = require(".");
+const db = require('.');
 
 module.exports = function (sequelize, DataTypes) {
-    const Profile = sequelize.define("Profile", {
+    const Profile = sequelize.define('Profile', {
 
         name: {
             type: DataTypes.STRING,
@@ -65,9 +65,9 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: true,
         },
-        profilePic:{
-            type:DataTypes.STRING,
-            allowNull:true
+        profilePic: {
+            type: DataTypes.STRING,
+            allowNull: true
         }
 
     });
@@ -75,7 +75,7 @@ module.exports = function (sequelize, DataTypes) {
         // We're saying that a Profile should belong to an User
         // A Profile can't be created without a User due to the foreign key constraint
         Profile.belongsTo(models.Users, {
-        onDelete:'cascade'
+            onDelete: 'cascade'
         });
     };
     return Profile;
