@@ -28,7 +28,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 // Index route loads signup
 app.get('/', (req, res) => {
   res.render(path.join(__dirname, '/views/index.handlebars'))

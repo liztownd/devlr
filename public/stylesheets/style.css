@@ -412,7 +412,6 @@ hr {
   box-shadow: 0 0 0 0.2rem transparent !important;
 }
 
-
 .btn-thistle {
   background-color: #9F879F;
   border-color: linen;
@@ -427,7 +426,6 @@ hr {
   border-color: linen !important;
   box-shadow: 0 0 0 0.2rem transparent !important;
 }
-
 
 /* Targeted Styles*/
 
@@ -477,7 +475,6 @@ margin-block-end: 0;
     rgba(245, 245, 245, 0.1) 0%,
     rgba(250, 240, 230, 0.1) 49.48%
   );
-  /* border: none; */
 }
 
 #userPic {

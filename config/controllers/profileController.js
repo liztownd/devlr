@@ -1,4 +1,3 @@
-
 const db = require('../../models');
 const passport = require('../passport');
 const path = require('path');
