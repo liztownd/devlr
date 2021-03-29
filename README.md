@@ -1,4 +1,4 @@
-# <img src="https://github.com/liztownd/devlr/blob/main/public/img/devlr-logo-dark.png width="60"/>  devlr | show your skills, share your life
+# ![logo](/public/img/devlr-logo-dark-sm.png) devlr | show your skills, share your life
 ![GitHub license](https://img.shields.io/badge/License-MIT-orange)
 
 ### Create a customized profile to display your development background, pinned projects and status updates to share with other developers worldwide.
