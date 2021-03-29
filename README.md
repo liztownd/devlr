@@ -1,33 +1,42 @@
-# 👥 devlr | show your skills
+# <img src="https://github.com/brandyquinlan/Testing_Readme/blob/main/public/img/devlr-logo-dark.png" alt="logo" width="60"/>  devlr | show your skills, share your life
 ![GitHub license](https://img.shields.io/badge/License-MIT-orange)
 
-### Create a customized profile to display your development background, pinned projects and status updates and share with other developers worldwide.
+### Create a customized profile to display your development background, pinned projects and status updates to share with other developers worldwide.
 
 ### 📍 [Visit devlr on Heroku](http://devlr.herokuapp.com/) 📍
 
-## *Table of Contents*
+## Table of Contents
 
-- [Description](#description)
+- [Description](#program-description)
+- [Repo and Heroku App Links](#repo-and-heroku-app-links)
 - [User Story](#user-story)
 - [Acceptance Criteria](#acceptance-criteria)
 - [Development](#development)
 - [Usage](#usage)
+- [DEMO VIDEO](#DEMO-VIDEO)
 - [Screenshots](#screenshots)
-- [Credits](#credits)
+- [Functionality](#functionality)
+- [devlr Team](#devlr-team)
 
-## *Description*
+## Program Description
+Create a customized profile to display your development background, pinned projects and status updates to share with other developers worldwide.
 
-Introduction and description of app.
 
-### *User Story*
+## Repo and Heroku App Links
+* [Link to GitHub Repo - https://github.com/liztownd/devlr](https://github.com/liztownd/devlr)
+* [Link to Heroku App - http://devlr.herokuapp.com](http://devlr.herokuapp.com)
+* [Link to live App (COMING SOON) - http://devlrapp.com](http://devlrapp.com)
+
+
+### User Story
 
 ```
 AS an authenticated user...
-I WANT to use an app to display my web dev portfolio as a social media profile
+I WANT to use an app to display my web development portfolio as a social media profile
 SO THAT I can network with other developers
 ```
 
-### *Acceptance Criteria*
+### Acceptance Criteria
 
 ```
 As an authenticated user...
@@ -52,33 +61,48 @@ WHEN I click on Logout
     THEN I follow the /logout route and am sent to the root page
 ```
 
-## *Development*
-### This project was a collaborative effort between the listed contributors. 
+## Development
+### Wireframe
+![Wireframe](/public/img/devspace-wireframe.png)
 
-- Info
-- Wireframes
-
-![Wireframe](/public/assets/img/)
-
-## *Usage*
+## Usage
 ### To begin using devlr, sign up for an account.
 
-- Steps
-- Steps
-- Steps
+- Go to http://devlr.herokuapp.com/
+- Create an account on the "Signup" screen
+- Create a Profile
+- Have fun!
 
-## *Screenshots*
-![Demo](/public/assets/img/)
+## DEMO VIDEO
+* [Link to demo - https://drive.google.com/file/d/1gXhaNTOKmYi6MdRocPuC5cnHpRPc00q5/view?usp=sharing](https://drive.google.com/file/d/1gXhaNTOKmYi6MdRocPuC5cnHpRPc00q5/view?usp=sharing)
 
-## *Credits*
+## Screenshots
+![Screenshots](/public/img/screenshots.png)
 
-🔗 Liz Townsend [liztownd](https://github.com/liztownd)
 
-🔗 Brandy Quinlan [brandyquinlan](https://github.com/brandyquinlan)
+## Functionality
 
-🔗 Vinitha Kumar [selvivini](https://github.com/selvivini)
+The following technologies were used:
+```
+Node.js
+Express
+Express-handlebars
+Passort Middleware Authentication
+MySQL
+JAWSDB
+HTML
+CSS
+JavaScript
+Heroku
+GoDaddy
+```
 
-🔗 Kat Buchanan [katsign](https://github.com/katsign)
+## devlr Team
+
+- 🔗 Liz Townsend [liztownd](https://github.com/liztownd)
+- 🔗 Brandy Quinlan [brandyquinlan](https://github.com/brandyquinlan)
+- 🔗 Vinitha Kumar [selvivini](https://github.com/selvivini)
+- 🔗 Kat Buchanan [katsign](https://github.com/katsign)
 
 ---
 This project is MIT licensed. &copy; 2021
