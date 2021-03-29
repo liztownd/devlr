@@ -1,8 +1,8 @@
 
 const db = require('../../models');
-const passport = require("../passport");
-const path = require("path");
-const isAuthenticated = require("../middleware/isAuthenticated");
+const passport = require('../passport');
+const path = require('path');
+const isAuthenticated = require('../middleware/isAuthenticated');
 require('dotenv').config();
 const axios = require('axios');
 
@@ -13,7 +13,7 @@ module.exports = function (app) {
             include: [db.Users]
         })
             .then(dbProfiles => res.status(200).json(dbProfiles))
-            .catch(err => res.status(404).json({ msg: "cannot find profiles!" }))
+            .catch(err => res.status(404).json({ msg: 'cannot find profiles!' }))
     });
 
     //route to get a single post for a user
@@ -27,7 +27,7 @@ module.exports = function (app) {
             },
             include: [db.Users],
         }).then((dbProfile) => res.json(dbProfile))
-            .catch(err => res.status(404).json({ msg: "cannot find a post for this id!" }))
+            .catch(err => res.status(404).json({ msg: 'cannot find a post for this id!' }))
     });
 
     // route to post the profile
@@ -60,7 +60,8 @@ module.exports = function (app) {
             }
         }).then(dbProfile => req.status(200).json(dbProfile))
             .catch(err => res.status(500).json(err))
-    })
+    });
+
     //route for updating the profile
     app.put('/api/profiles/:id', isAuthenticated, (req, res) => {
         db.Profile.update(req.body, {
@@ -86,7 +87,7 @@ module.exports = function (app) {
             return res.json(gitHubResponse.data);
         } catch (error) {
             console.log(error);
-            return res.status(404).json({ msg: "No github profile found" });
+            return res.status(404).json({ msg: 'No github profile found' });
         }
     });
 
@@ -105,7 +106,7 @@ module.exports = function (app) {
                 },
             }).then((dbProfile) => res.status(200).json(dbProfile))
             .catch((err) => res.status(500).json(err))
-    })
+    });
 
     //route for adding theme to profile
     app.put('/api/users/:UserId/color', isAuthenticated, (req, res) => {
@@ -128,17 +129,17 @@ module.exports = function (app) {
                 UserId: req.params.UserId,
             },
         }).then((dbProfile) => res.status(200).json(dbProfile))
-        .catch((err) => res.status(500).json(err));
+            .catch((err) => res.status(500).json(err));
     });
 
 
     // to get ids for featured dev for loop
     app.get('/api/devs/profiles', isAuthenticated, (req, res) => {
         db.Profile.findAll({
-            attributes: ['name', 'gitUserName', 'profilePic', 'UserId' ],
+            attributes: ['name', 'gitUserName', 'profilePic', 'UserId'],
         })
             .then(count => res.status(200).json(count))
-            .catch(err => res.status(404).json({ msg: "cannot find profiles!" }))
+            .catch(err => res.status(404).json({ msg: 'cannot find profiles!' }))
     });
 
 
@@ -159,8 +160,6 @@ module.exports = function (app) {
     app.get('/:UserId', isAuthenticated, (req, res) => {
         const UserId = req.params.UserId;
         res.render('profile', { UserId });
-      });
-    
+    });
 
-
-}
+};

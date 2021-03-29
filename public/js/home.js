@@ -1,8 +1,8 @@
 $(document).ready(() => {
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
-  $.get("/api/user_data").then(data => {
-    $(".member-name").text(data.email);
+  $.get('/api/user_data').then(data => {
+    $('.member-name').text(data.email);
     const UserId = data.id;
     editProfile(UserId);
     setTheme(UserId);
@@ -21,7 +21,7 @@ $(document).ready(() => {
   }; //localstorage check end tag
 
   function editProfile(UserId) {
-    $('form').on("submit", (e) => {
+    $('form').on('submit', (e) => {
       e.preventDefault();
       // console.log('clicked')
       const name = $('#userName').val()
@@ -36,20 +36,19 @@ $(document).ready(() => {
       const gitUserName = $('#userGitHub').val().trim();
 
       const ProfileObj = {
-        "name": name,
-        "highestGraduation": highGrad,
-        "school": school,
-        "skills": skills,
-        "TotalYearsOfexp": experience,
-        "currentPosition": position,
-        "companyName": company,
-        "from": startDate,
-        "to": endDate,
-        "gitUserName": gitUserName,
-        "UserId": UserId
+        'name': name,
+        'highestGraduation': highGrad,
+        'school': school,
+        'skills': skills,
+        'TotalYearsOfexp': experience,
+        'currentPosition': position,
+        'companyName': company,
+        'from': startDate,
+        'to': endDate,
+        'gitUserName': gitUserName,
+        'UserId': UserId
       }
-
-      console.log(ProfileObj)
+      // console.log(ProfileObj)
 
       $.ajax({
         type: 'POST',
@@ -57,11 +56,11 @@ $(document).ready(() => {
         contentType: 'application/json',
         url: '/api/profiles',
         success: function (data) {
-          console.log('success');
-          console.log(JSON.stringify(data))
+          // console.log('success');
+          //  console.log(JSON.stringify(data))
         },
         error: function (err) {
-          console.log(err)
+          // console.log(err)
         }
       }); //post ajax end tag
       window.location.reload();
@@ -76,41 +75,40 @@ $(document).ready(() => {
       type: 'GET',
       url: `/api/users/${UserId}`,
       success: function (data) {
-        console.log(data);
+        //console.log(data);
 
         const profile = data.Profile;
         const posts = data.Posts
 
         if (profile === null) {
           let repoDiv = $(
-            `
-            <div class="mt-2 project">
+            `<div class="mt-2 project">
             <h5>Project Title</h5>
             <p>You haven't linked your GitHub account yet! Create a profile to autofill this section.</p>
-          </div>
+           </div>
            <hr class="75">`)
-    
+
           $('#PinnedProjects').append(repoDiv)
 
           let backgroundInfo = $(
             `<div>
               <p>This is where your background information will go. Create an account to autofill this section.</p>
-              </div>
-              `
+              </div>`
           )
+
           $('#backgroundInfo').append(backgroundInfo);
           $(".name").text('Name');
           $(".gitUserName").text('GitHub:')
         }
-        else{
-        // console.log(profile);
-        let fromDate = profile.from;
-        fromDate = fromDate.split('T')[0];
-        let endDate = profile.to;
-        endDate = endDate.split('T')[0];
+        else {
+          // console.log(profile);
+          let fromDate = profile.from;
+          fromDate = fromDate.split('T')[0];
+          let endDate = profile.to;
+          endDate = endDate.split('T')[0];
 
-        let backgroundInfo = $(
-          `<div>
+          let backgroundInfo = $(
+            `<div>
             <h5>GitHub</h5>
             <p>${profile.gitUserName}</p>
             <hr class="75">
@@ -129,32 +127,30 @@ $(document).ready(() => {
             <h5 class="my-2">Position</h5>
             <p>${profile.currentPosition}</p>
             <p>From: ${fromDate} to ${endDate}</p>
-            </div>
-            `
-        )
+            </div>`
+          )
 
-        const gitUserName = profile.gitUserName
+          const gitUserName = profile.gitUserName
 
-        $('#backgroundInfo').append(backgroundInfo);
-        $(".name").text(profile.name);
-        $(".gitUserName").text(`GitHub: ${profile.gitUserName}`)
+          $('#backgroundInfo').append(backgroundInfo);
+          $(".name").text(profile.name);
+          $(".gitUserName").text(`GitHub: ${profile.gitUserName}`)
 
 
-        getAllPosts(posts);
-        githubRepo(gitUserName)
-        const themePref = profile.themePref;
-        const savedLang = profile.languages;
-        setThemePref(themePref);
-        getLang(savedLang);
+          getAllPosts(posts);
+          githubRepo(gitUserName)
+          const themePref = profile.themePref;
+          const savedLang = profile.languages;
+          setThemePref(themePref);
+          getLang(savedLang);
         }//else end tag
       } //success end tag
 
-
     }); //ajax call end tag
-  }//get profilie end tag
+  }; //get profilie end tag
 
   function getAllPosts(posts) {
-    console.log(posts);
+    //console.log(posts);
     let title = $('#post-title');
     let body = $('#post-body');
     let postDiv = $('#post-div');
@@ -170,24 +166,21 @@ $(document).ready(() => {
         `<div class="mt-3"> <h5>${title}</h5>
         <button class="btn btn-secondary float-right deletePost" style="border: none" data-value="${id}" type="submit">
         <i class="material-icons" style="font-size:20px;">delete_outline</i></button>
-          <p>${body}<p>
-          <p class="small">${posts[i].createdAt.split('T')[0]}<p>
-          <hr class="75">
-          </div>`
+        <p>${body}<p>
+        <p class="small">${posts[i].createdAt.split('T')[0]}<p>
+        <hr class="75">
+        </div>`
       )
 
       $(postDiv).prepend(postText);
 
     };//for loop end tag
-
   }; //getPost fn end tag
-
-
 
   //add a new post
   function addPost(UserId) {
     $('#postBtn').on('click', (e) => {
-      console.log('clicked');
+      //console.log('clicked');
       e.preventDefault();
       const title = $('#postTitle').val().trim();
       const body = $('#wallPost').val().trim();
@@ -196,7 +189,7 @@ $(document).ready(() => {
         "body": body,
         "UserId": UserId
       }
-      console.log(postObj);
+      //console.log(postObj);
       $.ajax({
         type: 'POST',
         data: JSON.stringify(postObj),
@@ -207,16 +200,18 @@ $(document).ready(() => {
           console.log(JSON.stringify(data));
         }
       }); //ajax call end tag
+
       $('#postTitle').val("");
       $('#wallPost').val("");
       window.location.reload();
-    }) //post button onclick end tag
+
+    }); //post button onclick end tag
   }; //add post fn end tag
 
   //add a new post
   function addModalPost(UserId) {
     $('#modalPostBtn').on('click', (e) => {
-      console.log('clicked');
+      //console.log('clicked');
       e.preventDefault();
       const title = $('#modalPostTitle').val().trim();
       const body = $('#modalWallPost').val().trim();
@@ -225,15 +220,15 @@ $(document).ready(() => {
         "body": body,
         "UserId": UserId
       }
-      console.log(postObj);
+      //console.log(postObj);
       $.ajax({
         type: 'POST',
         data: JSON.stringify(postObj),
         contentType: 'application/json',
         url: '/api/posts',
         success: function (data) {
-          console.log('Posted successfully');
-          console.log(JSON.stringify(data));
+          //console.log('Posted successfully');
+          //console.log(JSON.stringify(data));
         }
       }); //ajax call end tag
       $('#modalPostTitle').val("");
@@ -273,9 +268,7 @@ $(document).ready(() => {
             dataType: 'text',
             data: { color: color },
             url: `/api/users/${UserId}/color`,
-          }).then((response) => console.log(response));
-
-        // close modal automatically
+          });
 
       }); //save theme onclick end tag
     }); // choose theme onclick end tag
@@ -289,7 +282,7 @@ $(document).ready(() => {
         languages.push($(this).val());
       });
       let postData = {
-        "lang": languages
+        'lang': languages
       }
       // send to db
       $.ajax(
@@ -336,19 +329,16 @@ $(document).ready(() => {
     console.log(savedLang);
 
     if (!savedLang) {
-
       return
     }
     else {
-
       for (let i = 0; i < savedLang.length; i++) {
         let langItems = $(
-          ` <button class="btn btn-secondary mx-2 my-3 language disabled">${savedLang[i]}</button>`
+          `<button class="btn btn-secondary mx-2 my-3 language disabled">${savedLang[i]}</button>`
         )
         $('#langDisplay').append(langItems);
       }; //for loop end tag
     }; //else end tag
-
   }; //getLang fn end tag
 
 
@@ -369,7 +359,7 @@ $(document).ready(() => {
         let devGit = response[devIndex].gitUserName;
         let devPic = response[devIndex].profilePic;
 
-        console.log(UserId);
+        //console.log(UserId);
 
         let featDevDiv = $(
           `<div class="separator mt-3"></div>
@@ -401,10 +391,7 @@ $(document).ready(() => {
         url: '/api/devs/profiles',
       }).then((response) => {
 
-
         for (let i = 0; i < response.length; i++) {
-          // let len = response.length
-          // let devIndex = Math.floor(Math.random() * Math.floor(len))
           let UserId = response[i].UserId;
           let devName = response[i].name;
           let devGit = response[i].gitUserName;
@@ -430,79 +417,70 @@ $(document).ready(() => {
       });//then end tag
     }); //fn end tag
 
-
-
-
-
+  // delete account functions
   function deleteAccount(UserId) {
-    $("#account").on("click", function () {
+    $('#account').on('click', function () {
       console.log("clicked");
       $.ajax({
-        type: "DELETE",
+        type: 'DELETE',
         url: `api/users/${UserId}`
       }).then(response => {
-        console.log(response)
+        //console.log(response)
         $.get('/logout');
-        window.location.replace("/");
+        window.location.replace('/');
       }
       );
     });
   };
   //getting github repos and avatar
   function githubRepo(gitUserName) {
-      $.ajax({
-        type: 'GET',
-        url: `/github/${gitUserName}`
-      }).then(data => {
-        console.log(data)
-        console.log(data[0].html_url);
-        console.log(data[0].full_name);
-        const avatar = data[0].owner.avatar_url;
+    $.ajax({
+      type: 'GET',
+      url: `/github/${gitUserName}`
+    }).then(data => {
+      //console.log(data)
+      //console.log(data[0].html_url);
+      //console.log(data[0].full_name);
+      const avatar = data[0].owner.avatar_url;
 
-        for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 5; i++) {
+        var projDesc;
 
-          var projDesc;
+        if (data[i].description === null) {
+          projDesc = 'This project does not have a description yet.'
+        }
+        else {
+          projDesc = data[i].description
+        }
 
-          if (data[i].description === null) {
-            projDesc = 'This project does not have a description yet.'
-          }
-          else {
-            projDesc = data[i].description
-          }
-
-          let repoDiv = $(
-            `
-          <div class="mt-2">
+        let repoDiv = $(
+          `<div class="mt-2">
            <h5 class="">${data[i].name}</h5>
            <p class="small my-2">${projDesc}</p>
-         <p><a class=" m-4" href= "${data[i].html_url}" target="_blank">Project Repo</a></p>
-         </div>
-         <hr class="75">`)
+          <p><a class=" m-4" href= "${data[i].html_url}" target="_blank">Project Repo</a></p>
+          </div>
+          <hr class="75">`)
 
-          $('#PinnedProjects').append(repoDiv)
-        };
+        $('#PinnedProjects').append(repoDiv)
+      };
 
-        let avatarUrl = $(
-          `<img src = ${avatar} class="img-fluid circle" height="250" width= "250"></img>`
-        )
-        $('#userPic').append(avatarUrl);
+      let avatarUrl = $(
+        `<img src = ${avatar} class="img-fluid circle" height="250" width= "250"></img>`
+      )
+      $('#userPic').append(avatarUrl);
 
-        let postData = { profilePic: avatar };
+      let postData = { profilePic: avatar };
 
-        $.ajax(
-          {
-            type: 'PUT',
-            contentType: 'application/json',
-            data: JSON.stringify(postData),
-            url: `/api/users/pic/${gitUserName}`,
-          }).then((response) => console.log(response));
+      $.ajax(
+        {
+          type: 'PUT',
+          contentType: 'application/json',
+          data: JSON.stringify(postData),
+          url: `/api/users/pic/${gitUserName}`,
+        }).then((response) => console.log(response));
 
-        //  window.location.reload();
-
-      }); //first ajax call end tag   
+    }); //first ajax call end tag   
   }; //get github fn end tag
-
-
 
   // click to get view profile route
   $(document).on('click', '.devPic', function () {
@@ -513,8 +491,8 @@ $(document).ready(() => {
   });
 
   // DELETE post
-  $("#post-div").on("click", "button", function (event) {
-    console.log($(this));
+  $('#post-div').on('click', 'button', function (event) {
+    //console.log($(this));
     let id = $(this).data('value');
 
     $.ajax({
@@ -522,12 +500,11 @@ $(document).ready(() => {
       contentType: 'application/json',
       url: `/api/posts/${id}`,
       success: function () {
-        console.log(`Deleted post: ${id}`);
+        // console.log(`Deleted post: ${id}`);
       }
     }).then(window.location.reload()); //ajax call end tag
     window.location.reload();
   }); //delete post button onclick end tag
   //delete post fn end tag
-
 
 }); //document ready end tag
