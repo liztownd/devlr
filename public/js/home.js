@@ -64,10 +64,8 @@ $(document).ready(() => {
         }
       }); //post ajax end tag
       window.location.reload();
-      $('#pullProjectsToast').toast('show');
     }); //submit onclick end tag
   }; //editProfile fn end tag
-
 
   // getting the user profile to show it on my background section
   function getUserProfile(UserId) {
@@ -145,7 +143,6 @@ $(document).ready(() => {
           getLang(savedLang);
         }//else end tag
       } //success end tag
-
     }); //ajax call end tag
   }; //get profilie end tag
 
@@ -157,7 +154,7 @@ $(document).ready(() => {
 
     for (let i = 0; i < posts.length; i++) {
       title = posts[i].title
-      console.log(title);
+      //console.log(title);
       body = posts[i].body;
 
       let id = posts[i].id;
@@ -196,8 +193,8 @@ $(document).ready(() => {
         contentType: 'application/json',
         url: '/api/posts',
         success: function (data) {
-          console.log('Posted successfully');
-          console.log(JSON.stringify(data));
+          //console.log('Posted successfully');
+          //console.log(JSON.stringify(data));
         }
       }); //ajax call end tag
 
@@ -236,8 +233,6 @@ $(document).ready(() => {
       window.location.reload();
     }) //post button onclick end tag
   }; //add post fn end tag
-
-
 
   // to change appearance
   function setTheme(UserId) {
@@ -291,18 +286,13 @@ $(document).ready(() => {
           contentType: 'application/json',
           data: JSON.stringify(postData),
           url: `/api/users/languages/${UserId}`,
-        }).then((response) => console.log(response));
-      // we need a location reload here and to close the modal
-      window.location.reload();
+        }).then(() => window.location.reload());
     });//onclick end tag
   }; // saveLang fn end tag
 
-
-
-
   // set theme stored in db
   function setThemePref(themePref) {
-    console.log(themePref);
+    //console.log(themePref);
     if (!themePref) {
       return
     }
@@ -321,12 +311,11 @@ $(document).ready(() => {
         r.style.setProperty('--secondary-bg-color', 'transparent');
       };//nested if else end tag
     }//main if else end tag
-
   }; //setTheme end tag
 
   // load languages stored in db
   function getLang(savedLang) {
-    console.log(savedLang);
+    //console.log(savedLang);
 
     if (!savedLang) {
       return
@@ -340,7 +329,6 @@ $(document).ready(() => {
       }; //for loop end tag
     }; //else end tag
   }; //getLang fn end tag
-
 
   //get featured devs info and append
   function getFeaturedDevs() {
@@ -379,7 +367,6 @@ $(document).ready(() => {
     });//then end tag
   }; //fn end tag
 
-
   // browse users modal
   $('#browse').on('click',
 
@@ -417,10 +404,10 @@ $(document).ready(() => {
       });//then end tag
     }); //fn end tag
 
-  // delete account functions
+  // delete account
   function deleteAccount(UserId) {
     $('#account').on('click', function () {
-      console.log("clicked");
+      //console.log("clicked");
       $.ajax({
         type: 'DELETE',
         url: `api/users/${UserId}`
@@ -432,6 +419,7 @@ $(document).ready(() => {
       );
     });
   };
+
   //getting github repos and avatar
   function githubRepo(gitUserName) {
     $.ajax({
@@ -477,7 +465,7 @@ $(document).ready(() => {
           contentType: 'application/json',
           data: JSON.stringify(postData),
           url: `/api/users/pic/${gitUserName}`,
-        }).then((response) => console.log(response));
+        });
 
     }); //first ajax call end tag   
   }; //get github fn end tag
