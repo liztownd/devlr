@@ -11,8 +11,8 @@
     "watch": "nodemon server.js"
   },
   "keywords": [],
-  "author": "Liz, Vinitha, Kat, & Brandy",
-  "license": "ISC",
+  "author": "Liz Townsend, Vinitha Kumar, Kat Buchanan, & Brandy Quinlan",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.21.1",
     "bcryptjs": "2.4.3",
