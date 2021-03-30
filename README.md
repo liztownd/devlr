@@ -105,11 +105,17 @@ GoDaddy
 ```
 
 ## devlr Team
+Please contact the devlr team with questions:
+```
+Brandy Quinlan
+Email: brandyquinlan@gmail.com
+Github link: brandyquinlan
+```
 
-- 🔗 Liz Townsend [liztownd](https://github.com/liztownd)
+- 🔗 Liz Townsend [liztownd](https://github.com/liztownd) 
 - 🔗 Brandy Quinlan [brandyquinlan](https://github.com/brandyquinlan)
 - 🔗 Vinitha Kumar [selvivini](https://github.com/selvivini)
-- 🔗 Kat Buchanan [katsign](https://github.com/katsign)
+- 🔗 Kat Buchanan [katsign](https://github.com/katsign) [email](katrbuch@gmail.com)
 
 ---
 This project is MIT licensed. &copy; 2021
