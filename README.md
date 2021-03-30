@@ -112,10 +112,10 @@ Email: brandyquinlan@gmail.com
 Github link: brandyquinlan
 ```
 
-- 🔗 Liz Townsend | GitHub - [liztownd](https://github.com/liztownd) 
-- 🔗 Brandy Quinlan | GitHub - brandyquinlan: [](https://github.com/brandyquinlan) | email:[brandyquinlan@gmail.com](mailto:brandyquinlan@gmail.com)
-- 🔗 Vinitha Kumar | GitHub - selvivini: [](https://github.com/selvivini) | email:[selvivini@gmail.com](mailto:selvivini@gmail.com)
-- 🔗 Kat Buchanan | GitHub - katsign: [](https://github.com/katsign) | email:[katrbuch@gmail.com](mailto:katrbuch@gmail.com)
+- 🔗 Liz Townsend | GitHub: [liztownd](https://github.com/liztownd) | email:[liz@gmail.com](mailto:liz@gmail.com)
+- 🔗 Brandy Quinlan | GitHub: [brandyquinlan](https://github.com/brandyquinlan) | email:[brandyquinlan@gmail.com](mailto:brandyquinlan@gmail.com)
+- 🔗 Vinitha Kumar | GitHub: [selvivini](https://github.com/selvivini) | email:[selvivini@gmail.com](mailto:selvivini@gmail.com)
+- 🔗 Kat Buchanan | GitHub: [katsign](https://github.com/katsign) | email:[katrbuch@gmail.com](mailto:katrbuch@gmail.com)
 
 ---
 This project is MIT licensed. &copy; 2021
