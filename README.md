@@ -87,7 +87,12 @@ The following technologies were used:
 Node.js
 Express
 Express-handlebars
+Express-session
+Passport-local
 Passort Middleware Authentication
+Bcrypt(password hashing)
+dotenv
+Sequelize
 MySQL
 JAWSDB
 HTML
