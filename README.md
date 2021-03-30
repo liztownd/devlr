@@ -115,7 +115,7 @@ Github link: brandyquinlan
 - 🔗 Liz Townsend [liztownd](https://github.com/liztownd) 
 - 🔗 Brandy Quinlan [brandyquinlan](https://github.com/brandyquinlan)
 - 🔗 Vinitha Kumar [selvivini](https://github.com/selvivini)
-- 🔗 Kat Buchanan GitHub:[https://github.com/katsign](https://github.com/katsign) email:[katrbuch@gmail.com](katrbuch@gmail.com)
+- 🔗 Kat Buchanan GitHub:[https://github.com/katsign](https://github.com/katsign) email:[katrbuch@gmail.com](mailto:katrbuch@gmail.com)
 
 ---
 This project is MIT licensed. &copy; 2021
