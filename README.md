@@ -1,4 +1,4 @@
-# <img src="/public/img/devlr-logo-dark.png width="60"/>  devlr | show your skills, share your life
+# ![logo](/public/img/devlr-logo-dark-sm.png) devlr | show your skills, share your life
 ![GitHub license](https://img.shields.io/badge/License-MIT-orange)
 
 ### Create a customized profile to display your development background, pinned projects and status updates to share with other developers worldwide.
@@ -87,7 +87,12 @@ The following technologies were used:
 Node.js
 Express
 Express-handlebars
+Express-session
+Passport-local
 Passort Middleware Authentication
+Bcrypt(password hashing)
+dotenv
+Sequelize
 MySQL
 JAWSDB
 HTML
@@ -100,11 +105,10 @@ GoDaddy
 ```
 
 ## devlr Team
-
-- 🔗 Liz Townsend [liztownd](https://github.com/liztownd)
-- 🔗 Brandy Quinlan [brandyquinlan](https://github.com/brandyquinlan)
-- 🔗 Vinitha Kumar [selvivini](https://github.com/selvivini)
-- 🔗 Kat Buchanan [katsign](https://github.com/katsign)
-
+Please contact the devlr team with questions:
+- 🔗 Liz Townsend | GitHub: [liztownd](https://github.com/liztownd)  |  email: [Liztown@gmail.com](mailto:Liztown@gmail.com)
+- 🔗 Kat Buchanan | GitHub: [katsign](https://github.com/katsign)  |  email: [katrbuch@gmail.com](mailto:katrbuch@gmail.com)
+- 🔗 Vinitha Kumar | GitHub: [selvivini](https://github.com/selvivini)  |  email: [selvivini@gmail.com](mailto:selvivini@gmail.com)
+- 🔗 Brandy Quinlan | GitHub: [brandyquinlan](https://github.com/brandyquinlan)  |  email: [brandyquinlan@gmail.com](mailto:brandyquinlan@gmail.com)
 ---
 This project is MIT licensed. &copy; 2021
