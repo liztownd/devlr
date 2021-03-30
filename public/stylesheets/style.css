@@ -257,6 +257,20 @@ hr {
   background-color: var(--main-text-color);
 }
 
+footer {
+  width: 100%;
+  height:auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(245, 245, 245);
+  background: linear-gradient(
+    180deg,
+    rgba(245, 245, 245, 0.2) 0%,
+    rgba(250, 240, 230, 0.2) 49.48%
+  );
+}
+
 .logo {
   max-width: 100px;
 }

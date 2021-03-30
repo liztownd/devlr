@@ -188,142 +188,148 @@
     </div>
   </div>
 
-<!--Create Profile Modal-->
-<div class="modal fade gradient" id="editProfileModal" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4>Create Profile</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="small mb-2">For initial creation, all fields are required.</div>
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="userName" required="true" placeholder="Dev Doe">
-          </div>
-          <div class="form-group">
-            <label for="highestGraduation">Highest Graduation</label>
-            <input type="text" class="form-control" id="userGraduation" required="true" placeholder="Masters">
-          </div>
-          <div class="form-group">
-            <label for="school">School</label>
-            <input type="text" class="form-control" id="userSchool" required="true" placeholder="Dev University">
-          </div>
-          <div class="form-group">
-            <label for="skills">Skills</label>
-            <input type="text" class="form-control" id="userSkills" required="true" placeholder="Relevant Skills">
-          </div>
-          <div class="form-group">
-            <label for="experience">Experience</label>
-            <input type="number" class="form-control" id="userExperience" required="true"
-              placeholder="Years of Experience">
-          </div>
-          <div class="form-group">
-            <label for="position">Position</label>
-            <input type="text" class="form-control" id="userPosition" required="true" placeholder="Current Position">
-          </div>
-          <div class="form-group">
-            <label for="company">Company</label>
-            <input type="text" class="form-control" id="userCompany" required="true" placeholder="Company">
-          </div>
-          <div class="form-group">
-            <label for="startDate">Start Date</label>
-            <input type="date" class="form-control" id="userStartDate" required="true" placeholder="MM/DD/YYYY">
-          </div>
-          <div class="form-group">
-            <label for="startDate">End Date</label>
-            <input type="date" class="form-control" id="userEndDate" required="true" placeholder="MM/DD/YYYY">
-          </div>
-          <div class="form-group">
-            <label for="gitUserName">GitHub Username</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="at-addon">@</span>
+  <!--Create Profile Modal-->
+  <div class="modal fade gradient" id="editProfileModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4>Create Profile</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="small mb-2">For initial creation, all fields are required.</div>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="userName" required="true" placeholder="Dev Doe">
+            </div>
+            <div class="form-group">
+              <label for="highestGraduation">Highest Graduation</label>
+              <input type="text" class="form-control" id="userGraduation" required="true" placeholder="Masters">
+            </div>
+            <div class="form-group">
+              <label for="school">School</label>
+              <input type="text" class="form-control" id="userSchool" required="true" placeholder="Dev University">
+            </div>
+            <div class="form-group">
+              <label for="skills">Skills</label>
+              <input type="text" class="form-control" id="userSkills" required="true" placeholder="Relevant Skills">
+            </div>
+            <div class="form-group">
+              <label for="experience">Experience</label>
+              <input type="number" class="form-control" id="userExperience" required="true"
+                placeholder="Years of Experience">
+            </div>
+            <div class="form-group">
+              <label for="position">Position</label>
+              <input type="text" class="form-control" id="userPosition" required="true" placeholder="Current Position">
+            </div>
+            <div class="form-group">
+              <label for="company">Company</label>
+              <input type="text" class="form-control" id="userCompany" required="true" placeholder="Company">
+            </div>
+            <div class="form-group">
+              <label for="startDate">Start Date</label>
+              <input type="date" class="form-control" id="userStartDate" required="true" placeholder="MM/DD/YYYY">
+            </div>
+            <div class="form-group">
+              <label for="startDate">End Date</label>
+              <input type="date" class="form-control" id="userEndDate" required="true" placeholder="MM/DD/YYYY">
+            </div>
+            <div class="form-group">
+              <label for="gitUserName">GitHub Username</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="at-addon">@</span>
+                </div>
+                <input type="text" class="form-control" id="userGitHub" aria-label="username"
+                  aria-describedby="at-addon" required="true" placeholder="username">
               </div>
-              <input type="text" class="form-control" id="userGitHub" aria-label="username" aria-describedby="at-addon"
-                required="true" placeholder="username">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-secondary gradient">Update Profile</button>
+          </form>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Browse Modal -->
+  <div class="modal fade gradient" id="browseModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4>Browse Users</h4>
+        </div>
+        <div class="modal-body">
+          <div class="tab bg-secondary mt-3 mb-1 gradient">
+            <div id="browseUsers"></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-small btn-secondary" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--New Post Modal-->
+  <div class="modal fade gradient" id="newPostModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4>New Post</h4>
+        </div>
+        <div class="modal-body">
+          <div class="tab bg-secondary mt-3 mb-1 gradient" id="modalPostBox">
+            <textarea id="modalPostTitle" placeholder="Enter Post Title" style="font-size: 22px;" rows="1"></textarea>
+            <hr class="m-0">
+            <textarea id="modalWallPost" class="mt-1" placeholder="What's on your mind?" style="font-size: 22px;"
+              rows="5"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-small btn-secondary" data-dismiss="modal">Cancel</button>
+          <button class="btn btn-small btn-secondary gradient" type="submit" id="modalPostBtn">Post</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Delete Account Modal-->
+  <div class="modal fade gradient" id="deleteAccountModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4>Delete Account</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </div>
+        <div class="modal-body">
+          <div class="tab bg-secondary gradient mt-3 mb-1" style="border: none!important;">
+            <div class="tab">
+              <span><i class="material-icons" style="font-size: 36px;">person_remove</i></span>
+              <hr>
+              <p class="lead">Are you sure you'd like to delete this devlr account?</p>
+              <br>
+              <p>This change is irreversible, but you can always create a new account.</p>
             </div>
           </div>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-secondary gradient">Update Profile</button>
-        </form>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Browse Modal -->
-<div class="modal fade gradient" id="browseModal" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4>Browse Users</h4>
-      </div>
-      <div class="modal-body">
-        <div class="tab bg-secondary mt-3 mb-1 gradient">
-          <div id="browseUsers"></div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-small btn-secondary gradient" id="account">Delete</button>
+          <button class="btn btn-small btn-secondary" data-dismiss="modal">Cancel</button>
         </div>
       </div>
-      <div class="modal-footer">
-        <button class="btn btn-small btn-secondary" data-dismiss="modal">Cancel</button>
-      </div>
     </div>
   </div>
-</div>
-<!--New Post Modal-->
-<div class="modal fade gradient" id="newPostModal" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4>New Post</h4>
-      </div>
-      <div class="modal-body">
-        <div class="tab bg-secondary mt-3 mb-1 gradient" id="modalPostBox">
-          <textarea id="modalPostTitle" placeholder="Enter Post Title" style="font-size: 22px;" rows="1"></textarea>
-          <hr class="m-0">
-          <textarea id="modalWallPost" class="mt-1" placeholder="What's on your mind?" style="font-size: 22px;"
-            rows="5"></textarea>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-small btn-secondary" data-dismiss="modal">Cancel</button>
-        <button class="btn btn-small btn-secondary gradient" type="submit" id="modalPostBtn">Post</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!--Delete Account Modal-->
-<div class="modal fade gradient" id="deleteAccountModal" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4>Delete Account</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-      </div>
-      <div class="modal-body">
-        <div class="tab bg-secondary gradient mt-3 mb-1" style="border: none!important;">
-          <div class="tab">
-            <span><i class="material-icons" style="font-size: 36px;">person_remove</i></span>
-            <hr>
-            <p class="lead">Are you sure you'd like to delete this devlr account?</p>
-            <br>
-            <p>This change is irreversible, but you can always create a new account.</p>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-small btn-secondary gradient" id="account">Delete</button>
-        <button class="btn btn-small btn-secondary" data-dismiss="modal">Cancel</button>
-      </div>
-    </div>
-  </div>
-</div>
 </main>
+
+<footer>
+  <div class="bg-secondary p-3">Connect with the devlr team on <a href="https://github.com/liztownd/devlr"> GitHub </a>
+    or shoot us an <a href="mailto:devlr.app.team@gmail.com"> email </a>
+  </div>
+</footer>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
