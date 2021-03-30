@@ -14,11 +14,11 @@ $(document).ready(() => {
     deleteAccount(UserId);
   }); //initial get call end tag
 
-  var element = localStorage.getItem('status');
-  if (element == null || element == '') {
-    localStorage.setItem('status', 1);
-    $('#editProfileToast').toast('show');
-  }; //localstorage check end tag
+  // var element = localStorage.getItem('status');
+  // if (element == null || element == '') {
+  //   localStorage.setItem('status', 1);
+  //   $('#editProfileToast').toast('show');
+  // }; //localstorage check end tag
 
   function editProfile(UserId) {
     $('form').on('submit', (e) => {
@@ -83,8 +83,8 @@ $(document).ready(() => {
             `<div class="mt-2 project">
             <h5>Project Title</h5>
             <p>You haven't linked your GitHub account yet! Create a profile to autofill this section.</p>
-           </div>
-           <hr class="75">`)
+            </div>
+            <hr class="75">`)
 
           $('#PinnedProjects').append(repoDiv)
 
@@ -443,8 +443,8 @@ $(document).ready(() => {
 
         let repoDiv = $(
           `<div class="mt-2">
-           <h5 class="">${data[i].name}</h5>
-           <p class="small my-2">${projDesc}</p>
+          <h5 class="">${data[i].name}</h5>
+          <p class="small my-2">${projDesc}</p>
           <p><a class=" m-4" href= "${data[i].html_url}" target="_blank">Project Repo</a></p>
           </div>
           <hr class="75">`)
@@ -467,7 +467,7 @@ $(document).ready(() => {
           url: `/api/users/pic/${gitUserName}`,
         });
 
-    }); //first ajax call end tag   
+    }); //first ajax call end tag
   }; //get github fn end tag
 
   // click to get view profile route
