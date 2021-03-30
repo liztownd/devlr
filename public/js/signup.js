@@ -32,11 +32,11 @@ $(document).ready(() => {
         window.location.replace('/home');
         // If there's an error, handle it by throwing up a bootstrap alert
       })
-      .catch(() => handleLoginErr());
+      .fail(() => handleLoginErr());
   };
 
-  function handleLoginErr(email) {
-    $('#alert .msg').text(`Email already exists`);
+  function handleLoginErr(err) {
+    $('#alert .msg').text('Email already exists');
     $('#alert').fadeIn(500);
   };
 
