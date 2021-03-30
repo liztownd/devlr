@@ -105,8 +105,7 @@ GoDaddy
 ```
 
 ## devlr Team
-Please contact the devlr team with questions: 
-email: [devlr.app.team@gmail.com](mailto:devlr.app.team@gmail.com)
+Please contact the devlr team with questions: [devlr.app.team@gmail.com](mailto:devlr.app.team@gmail.com)
   
 - 🔗 Liz Townsend | GitHub: [liztownd](https://github.com/liztownd)
 - 🔗 Kat Buchanan | GitHub: [katsign](https://github.com/katsign)
