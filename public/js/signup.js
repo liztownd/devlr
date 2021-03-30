@@ -37,7 +37,7 @@ $(document).ready(() => {
 
   function handleLoginErr(email) {
     $('#alert .msg').text(`Email already exists`);
-    $('#alert').fadeIn(500);
+    $('#alert').show(100).delay(4000).hide(300);
   };
 
 });
